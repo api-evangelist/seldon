@@ -1,0 +1,114 @@
+specificationVersion: "1.0"
+id: seldon-finops
+name: Seldon FinOps Framework
+description: >
+  Seldon is a self-hosted MLOps platform running on Kubernetes, so the primary FinOps
+  considerations relate to the underlying cloud infrastructure costs (compute, storage,
+  networking) rather than SaaS subscription fees. Organizations pay Seldon directly only
+  for commercial Enterprise Platform licenses. All other costs flow through the cloud
+  provider (AWS, GCP, Azure, or on-premises). FOCUS-aligned cost tracking applies to
+  the Kubernetes workloads that run Seldon components and the ML models they serve.
+provider: seldon
+url: https://www.seldon.io
+
+focus:
+  schemaVersion: "1.0"
+  currency: USD
+
+costCategories:
+
+  - id: seldon-enterprise-license
+    name: Seldon Enterprise Platform License
+    description: >
+      Annual commercial license fee paid to Seldon Technologies for the Enterprise Platform
+      (formerly Seldon Deploy), including support SLA. Pricing is custom and negotiated based
+      on number of models and organizational scale. Covers Seldon Core+, management API,
+      RBAC, audit logging, and enterprise support.
+    chargeType: Purchase
+    billingPeriod: Annual
+    chargeFrequency: Recurring
+    pricingModel: Custom / Negotiated
+    estimatedRange:
+      low: 50000
+      high: 500000
+      currency: USD
+      basis: Annual enterprise license; varies by model count and support tier
+    optimizationOpportunities:
+      - Negotiate multi-year contracts for better rates
+      - Right-size model count entitlements to actual production usage
+      - Consolidate model deployments to reduce per-model licensing exposure
+
+  - id: kubernetes-compute
+    name: Kubernetes Compute (CPU/GPU nodes)
+    description: >
+      The dominant cost driver for Seldon deployments. Seldon model servers, MLServer
+      instances, and inference pods consume CPU and GPU node resources. GPU nodes
+      (e.g., NVIDIA A100, V100, T4) for deep learning inference are significantly more
+      expensive than CPU nodes. Costs scale with the number of replicas, instance types,
+      and utilization.
+    chargeType: Usage
+    billingPeriod: Hourly
+    chargeFrequency: Recurring
+    pricingModel: Pay-as-you-go (cloud provider)
+    optimizationOpportunities:
+      - Use Kubernetes HPA to scale inference pods down during low-traffic periods
+      - Leverage spot/preemptible instances for non-critical inference workloads
+      - Use MLServer adaptive batching to maximize GPU utilization per node
+      - Right-size pod resource requests/limits to avoid over-provisioning
+      - Use multi-model serving to pack multiple models onto shared inference pods
+
+  - id: kubernetes-storage
+    name: Kubernetes Persistent Storage (Model Artifacts)
+    description: >
+      Model artifacts, training data, and drift detection reference datasets must be stored
+      in persistent volumes or object storage (S3, GCS, Azure Blob) accessible to Seldon pods.
+      Costs depend on model sizes and the number of model versions retained.
+    chargeType: Usage
+    billingPeriod: Monthly
+    chargeFrequency: Recurring
+    pricingModel: Pay-as-you-go (cloud provider)
+    optimizationOpportunities:
+      - Implement model artifact lifecycle policies to delete old versions
+      - Use storage tiers (e.g., S3 Infrequent Access) for archived model versions
+      - Compress model artifacts where framework permits
+
+  - id: kubernetes-networking
+    name: Kubernetes Networking (Ingress/Egress)
+    description: >
+      Inference requests entering Kubernetes clusters via ingress controllers (Ambassador,
+      Istio, Traefik) and any egress for model artifact downloads or external monitoring
+      integrations incur cloud networking costs. Multi-region or cross-zone traffic can
+      add significant cost at scale.
+    chargeType: Usage
+    billingPeriod: Monthly
+    chargeFrequency: Recurring
+    pricingModel: Pay-as-you-go (cloud provider)
+    optimizationOpportunities:
+      - Co-locate inference clients in the same availability zone as Seldon clusters
+      - Use private endpoints to avoid public egress charges for internal consumers
+      - Cache model artifacts within cluster storage to minimize cross-region pulls
+
+  - id: monitoring-observability
+    name: Monitoring and Observability Infrastructure
+    description: >
+      Seldon integrates with Prometheus for metrics scraping and Grafana for dashboards.
+      The Alibi-Detect drift detection component generates monitoring data that may be
+      stored in Elasticsearch or other backends. These observability stacks have their
+      own infrastructure cost footprint.
+    chargeType: Usage
+    billingPeriod: Monthly
+    chargeFrequency: Recurring
+    pricingModel: Pay-as-you-go (cloud provider or SaaS observability tool)
+    optimizationOpportunities:
+      - Set appropriate Prometheus retention periods to control storage costs
+      - Sample drift detection events rather than checking every request at scale
+      - Use cloud-native managed monitoring (Amazon Managed Prometheus, Google Cloud Monitoring)
+        to reduce operational overhead
+
+optimizationSummary: >
+  For Seldon deployments, the largest FinOps lever is Kubernetes compute cost, especially
+  GPU utilization for deep learning inference. Teams should instrument cost allocation
+  using Kubernetes namespace labels to map inference costs to business units or ML products.
+  MLServer's multi-model serving and adaptive batching are the primary efficiency mechanisms
+  to maximize hardware utilization before scaling out. Spot/preemptible instances with
+  appropriate fallback policies are recommended for batch inference workloads.

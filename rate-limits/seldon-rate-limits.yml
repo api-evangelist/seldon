@@ -1,0 +1,59 @@
+specificationVersion: "0.1"
+id: seldon-rate-limits
+name: Seldon Rate Limits
+description: >
+  Seldon Core and the Seldon Enterprise Platform are self-hosted, Kubernetes-native platforms.
+  As a result, there are no platform-enforced API rate limits set by Seldon itself — throughput
+  and concurrency are governed by the infrastructure resources allocated to the deployment
+  (CPU, memory, GPU) and the Kubernetes ingress controller configuration (e.g., Ambassador,
+  Istio, or Traefik). Organizations configure their own rate limiting at the ingress layer.
+  The Open Inference Protocol endpoints (REST and gRPC) are limited by Kubernetes pod replica
+  scaling and resource quotas set by the cluster administrator.
+provider: seldon
+url: https://docs.seldon.ai/seldon-core-2
+
+rateLimits:
+
+  - scope: Inference Endpoints (REST/gRPC)
+    description: >
+      Seldon inference endpoints do not have hard-coded platform rate limits. Throughput is
+      bounded by Kubernetes pod resources and horizontal pod autoscaler (HPA) configuration.
+      Administrators should configure ingress-level rate limiting (e.g., Ambassador rate limit
+      service or Istio EnvoyFilter) to protect against overload. Adaptive batching in MLServer
+      can improve throughput under high concurrency.
+    enforced: false
+    configurable: true
+    configurationLayer: Kubernetes Ingress / Ambassador / Istio
+    references:
+      - https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+      - https://docs.seldon.ai/seldon-core-2
+
+  - scope: Enterprise Platform Management API
+    description: >
+      The Seldon Enterprise Platform REST API ($ML_PLATFORM_HOST/seldon-deploy/swagger/) does
+      not publish specific rate limit thresholds. Access is authenticated via OIDC/OAuth2 and
+      session tokens. Organizations should apply ingress-level or API gateway rate policies
+      appropriate to their operational scale.
+    enforced: false
+    configurable: true
+    configurationLayer: Kubernetes Ingress / API Gateway
+    references:
+      - https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+
+  - scope: Kubernetes Resource Quotas
+    description: >
+      All Seldon workloads run inside Kubernetes namespaces subject to cluster-level resource
+      quotas (CPU, memory, GPU). Scaling behavior is managed through Kubernetes HPA policies
+      and is fully controlled by the platform administrator. Seldon does not impose additional
+      limits beyond what Kubernetes enforces.
+    enforced: true
+    configurable: true
+    configurationLayer: Kubernetes Namespace ResourceQuota
+    references:
+      - https://github.com/SeldonIO/seldon-core
+
+notes: >
+  Because Seldon is a self-hosted, infrastructure-agnostic platform, rate limits are an
+  operational responsibility of the deploying organization rather than a constraint imposed
+  by Seldon as a SaaS vendor. Teams should size their Kubernetes clusters and configure
+  autoscaling policies to meet their inference throughput SLOs.

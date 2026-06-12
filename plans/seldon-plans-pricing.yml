@@ -1,0 +1,92 @@
+specificationVersion: "0.1"
+id: seldon-plans-pricing
+name: Seldon Plans and Pricing
+description: >
+  Seldon offers a tiered pricing model spanning from open-source community editions
+  to enterprise-grade managed plans. Open source Seldon Core and MLServer are freely
+  available under Apache 2.0. Enterprise tiers provide commercial support, additional
+  features, and SLAs negotiated directly with Seldon.
+provider: seldon
+url: https://www.seldon.io/pricing/
+plans:
+
+  - name: Seldon Core (Open Source)
+    id: seldon-core-open-source
+    description: >
+      Seldon Core is an open-source MLOps framework available free of charge under the
+      Business Source License (BSL) for non-production use and Apache 2.0 for earlier
+      versions. Includes core model serving, canary deployments, A/B testing, and
+      Kubernetes-native deployment capabilities. Community support via GitHub and Slack.
+    url: https://github.com/SeldonIO/seldon-core
+    price: Free
+    currency: USD
+    features:
+      - Kubernetes-native model deployment
+      - REST and gRPC inference endpoints (Open Inference Protocol)
+      - Canary and shadow deployments
+      - A/B testing
+      - Multi-framework support (TensorFlow, PyTorch, scikit-learn, XGBoost)
+      - Alibi explainability integration
+      - Alibi-Detect drift detection integration
+      - Community Slack support
+      - GitHub issue tracker
+
+  - name: MLServer (Open Source)
+    id: mlserver-open-source
+    description: >
+      MLServer is Seldon's open-source, production-ready inference server implementing
+      the Open Inference Protocol. Freely available under Apache 2.0, it supports
+      multi-model serving, adaptive batching, and a broad set of ML framework runtimes.
+    url: https://github.com/SeldonIO/MLServer
+    price: Free
+    currency: USD
+    features:
+      - Open Inference Protocol (REST and gRPC)
+      - Multi-model serving
+      - Adaptive batching
+      - Framework runtimes (scikit-learn, XGBoost, LightGBM, MLflow, Hugging Face)
+      - Custom runtime support
+      - Prometheus metrics
+
+  - name: Seldon Enterprise Platform
+    id: seldon-enterprise-platform
+    description: >
+      Commercial enterprise tier providing the Seldon Enterprise Platform (formerly
+      Seldon Deploy) with a full REST management API, UI, enhanced security, audit
+      logging, role-based access control, and enterprise SLAs. Pricing is custom and
+      negotiated based on the number of models deployed and organizational requirements.
+      Contact Seldon sales for a quote.
+    url: https://www.seldon.io/seldon-enterprise-platform/
+    price: Custom
+    currency: USD
+    billingPeriod: Annual
+    features:
+      - All open source features
+      - Seldon Enterprise Platform REST API and Swagger UI
+      - Role-based access control (RBAC)
+      - Audit logging
+      - Single sign-on (OIDC/OAuth2)
+      - Advanced monitoring dashboards
+      - Model drift detection at scale
+      - Explainability at scale
+      - Batch inference jobs
+      - Enterprise SLA and dedicated support
+      - Multi-cluster management
+      - Custom model packaging
+
+  - name: Seldon Core+ (Enterprise Add-on)
+    id: seldon-core-plus
+    description: >
+      Extended enterprise add-on providing additional governance, compliance, and
+      operational features beyond the base Enterprise Platform. Custom pricing applies.
+      Includes unlimited models deployed and unlimited users.
+    url: https://www.seldon.io/pricing/
+    price: Custom
+    currency: USD
+    billingPeriod: Annual
+    features:
+      - All Enterprise Platform features
+      - Unlimited ML models in production
+      - Unlimited platform users
+      - Priority enterprise support
+      - Professional services and onboarding
