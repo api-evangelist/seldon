@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/seldon/main/json-schema/seldon-deployment.json",
+  "title": "SeldonDeployment",
+  "description": "Schema for a SeldonDeployment Kubernetes custom resource managed via the Seldon Enterprise Platform API.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "machinelearning.seldon.io/v1",
+      "description": "The Seldon Core API version."
+    },
+    "kind": {
+      "type": "string",
+      "const": "SeldonDeployment",
+      "description": "Always SeldonDeployment."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Standard Kubernetes object metadata.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the deployment."
+        },
+        "namespace": {
+          "type": "string",
+          "description": "The Kubernetes namespace."
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "annotations": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      },
+      "required": ["name"]
+    },
+    "spec": {
+      "type": "object",
+      "description": "The desired state of the SeldonDeployment.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The deployment name (used in the inference URL path)."
+        },
+        "predictors": {
+          "type": "array",
+          "description": "One or more predictor specifications defining model graphs.",
+          "items": {
+            "$ref": "#/$defs/PredictorSpec"
+          },
+          "minItems": 1
+        },
+        "annotations": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      },
+      "required": ["predictors"]
+    },
+    "status": {
+      "type": "object",
+      "description": "The observed state of the SeldonDeployment (read-only).",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["Available", "Creating", "Failed"],
+          "description": "The current state of the deployment."
+        },
+        "description": {
+          "type": "string"
+        },
+        "serviceUrl": {
+          "type": "string",
+          "description": "The external URL for the inference endpoint."
+        }
+      }
+    }
+  },
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "$defs": {
+    "PredictorSpec": {
+      "type": "object",
+      "title": "PredictorSpec",
+      "description": "A predictor in the inference graph with optional traffic weight.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Unique name for this predictor within the deployment."
+        },
+        "traffic": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of traffic routed to this predictor (default 100)."
+        },
+        "replicas": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of replicas for this predictor."
+        },
+        "graph": {
+          "$ref": "#/$defs/PredictiveUnit"
+        }
+      },
+      "required": ["name", "graph"]
+    },
+    "PredictiveUnit": {
+      "type": "object",
+      "title": "PredictiveUnit",
+      "description": "A node in the inference graph representing a model, router, combiner, or transformer.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the predictive unit, matching a container name."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["MODEL", "ROUTER", "COMBINER", "TRANSFORMER", "OUTPUT_TRANSFORMER"],
+          "description": "The role of this unit in the inference graph."
+        },
+        "implementation": {
+          "type": "string",
+          "description": "A pre-packaged inference server implementation (e.g. SKLEARN_SERVER, TENSORFLOW_SERVER)."
+        },
+        "modelUri": {
+          "type": "string",
+          "description": "URI of the serialized model artifact (e.g. gs://, s3://, pvc://)."
+        },
+        "envSecretRefName": {
+          "type": "string",
+          "description": "Name of the Kubernetes Secret providing cloud storage credentials."
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PredictiveUnit" },
+          "description": "Child nodes in the inference pipeline."
+        }
+      },
+      "required": ["name"]
+    }
+  },
+  "examples": [
+    {
+      "apiVersion": "machinelearning.seldon.io/v1",
+      "kind": "SeldonDeployment",
+      "metadata": {
+        "name": "iris-model",
+        "namespace": "default"
+      },
+      "spec": {
+        "name": "iris",
+        "predictors": [
+          {
+            "name": "default",
+            "traffic": 100,
+            "replicas": 1,
+            "graph": {
+              "name": "classifier",
+              "type": "MODEL",
+              "implementation": "SKLEARN_SERVER",
+              "modelUri": "gs://seldon-models/v1.20.0-dev/sklearn/iris"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

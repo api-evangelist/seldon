@@ -1,0 +1,137 @@
+vocabulary:
+  name: Seldon Vocabulary
+  description: >
+    Domain vocabulary for Seldon MLOps platform covering inference, model serving,
+    drift detection, explainability, and enterprise deployment management.
+  version: "1.0"
+  created: "2026-06-12"
+  source: https://docs.seldon.ai
+
+terms:
+
+  - term: SeldonDeployment
+    definition: >
+      A Kubernetes custom resource that describes one or more inference graphs consisting
+      of predictors, transformers, combiners, and routers deployed as microservices.
+    tags: [deployment, kubernetes, CRD]
+
+  - term: Predictor
+    definition: >
+      A component within a SeldonDeployment that wraps a machine learning model and
+      exposes it as an inference service via REST or gRPC endpoints.
+    tags: [inference, model-serving]
+
+  - term: InferenceServer
+    definition: >
+      A pre-packaged, optimised server for running models from popular ML frameworks
+      such as TensorFlow, PyTorch, scikit-learn, XGBoost, and MLflow.
+    tags: [inference, framework]
+
+  - term: OpenInferenceProtocol
+    definition: >
+      A standardised REST and gRPC API contract (also called V2 protocol) for model
+      serving interoperability between different inference servers and orchestration layers.
+    tags: [protocol, standard, inference]
+
+  - term: Pipeline
+    definition: >
+      A directed acyclic graph of models and transformers through which an inference
+      request flows, enabling chaining, routing, and combining of multiple models.
+    tags: [pipeline, graph, routing]
+
+  - term: CanaryDeployment
+    definition: >
+      A gradual traffic-shifting deployment strategy that routes a configurable percentage
+      of inference requests to a new model version while the stable version handles the rest.
+    tags: [deployment, strategy, canary]
+
+  - term: ABTest
+    definition: >
+      A deployment strategy that splits inference traffic between two or more model variants
+      to compare predictive performance under production conditions.
+    tags: [deployment, strategy, a/b-testing]
+
+  - term: ShadowDeployment
+    definition: >
+      A deployment mode in which a shadow model receives a copy of live inference traffic
+      but its responses are not returned to clients, enabling safe offline evaluation.
+    tags: [deployment, strategy, shadow]
+
+  - term: DriftDetector
+    definition: >
+      A model deployed via Alibi-Detect that monitors incoming request feature distributions
+      against a reference dataset to detect statistical data drift.
+    tags: [monitoring, drift, alibi-detect]
+
+  - term: Explainer
+    definition: >
+      A service deployed alongside a prediction model that uses the Alibi library to generate
+      human-interpretable explanations (e.g., SHAP, Anchors, Integrated Gradients) for
+      individual model predictions.
+    tags: [explainability, alibi, shap]
+
+  - term: ModelMetadata
+    definition: >
+      Structured information about a deployed model including its name, version, inputs,
+      outputs, and framework, returned by the /v2/models/{model_name} endpoint.
+    tags: [metadata, model-info]
+
+  - term: InferenceRequest
+    definition: >
+      A structured payload sent to an inference endpoint containing one or more named
+      input tensors with their shapes, datatypes, and data values.
+    tags: [inference, request, tensor]
+
+  - term: InferenceResponse
+    definition: >
+      A structured payload returned from an inference endpoint containing one or more named
+      output tensors with their shapes, datatypes, and inferred data values.
+    tags: [inference, response, tensor]
+
+  - term: Namespace
+    definition: >
+      A Kubernetes namespace used to scope and isolate SeldonDeployment resources and
+      their associated services within a cluster.
+    tags: [kubernetes, isolation]
+
+  - term: OIDC
+    definition: >
+      OpenID Connect — the authentication protocol used by the Seldon Enterprise Platform
+      REST API to authenticate programmatic clients.
+    tags: [security, authentication, oidc]
+
+  - term: AlibiDetect
+    definition: >
+      An open-source Python library for outlier, adversarial, and concept drift detection,
+      integrated into Seldon Core as a model-type deployment for monitoring inference traffic.
+    tags: [monitoring, drift, library]
+
+  - term: Alibi
+    definition: >
+      An open-source Python library providing model explainability algorithms including SHAP,
+      Integrated Gradients, Counterfactuals, and Anchors, integrated into Seldon as an explainer service.
+    tags: [explainability, library]
+
+  - term: SeldonCore
+    definition: >
+      The open-source Kubernetes operator and microservice framework that enables packaging,
+      deploying, and orchestrating machine learning models as inference services.
+    tags: [core, open-source, kubernetes]
+
+  - term: SeldonCore2
+    definition: >
+      The second-generation Seldon Core platform built on a Kafka-based data plane for
+      decoupled, streaming-capable inference pipelines with improved scalability.
+    tags: [core2, kafka, streaming]
+
+  - term: SeldonEnterprisePlatform
+    definition: >
+      The commercial Seldon product that extends Seldon Core with a management REST API,
+      UI dashboard, advanced monitoring, RBAC, and enterprise support features.
+    tags: [enterprise, commercial, management]
+
+  - term: Feedback
+    definition: >
+      An endpoint (/api/v1.0/feedback) that accepts ground-truth labels for previous
+      predictions, enabling reward-based routing for multi-armed bandit deployments.
+    tags: [feedback, routing, bandit]

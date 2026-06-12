@@ -54,6 +54,12 @@ apis:
         url: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
       - type: OpenAPI
         url: https://github.com/SeldonIO/seldon-core/blob/master/openapi/engine.oas3.json
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-openapi.yml
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-v2-openapi.yml
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-wrapper-api-openapi.yml
 
   - aid: seldon:seldon-enterprise-platform-api
     name: Seldon Enterprise Platform REST API
@@ -75,6 +81,8 @@ apis:
     properties:
       - type: Documentation
         url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-enterprise-platform-api-openapi.yml
 
   - aid: seldon:seldon-drift-detection-api
     name: Seldon Drift Detection API
@@ -152,6 +160,33 @@ common:
 
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/finops/seldon-finops.yml
+
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/vocabulary/seldon-vocabulary.yml
+
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/json-ld/seldon-context.jsonld
+
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/json-schema/seldon-inference-request.json
+
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/json-schema/seldon-inference-response.json
+
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/json-schema/seldon-deployment.json
+
+  - type: Example
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-inference-request-example.json
+
+  - type: Example
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-v2-inference-request-example.json
+
+  - type: Example
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-deployment-canary-example.json
+
+  - type: Example
+    url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-explainability-request-example.json
 
 maintainers:
   - FN: Kin Lane

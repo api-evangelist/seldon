@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/seldon/main/json-schema/seldon-inference-request.json",
+  "title": "Seldon Inference Request (Open Inference Protocol V2)",
+  "description": "Schema for an inference request payload sent to a Seldon model endpoint following the Open Inference Protocol V2.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Optional unique identifier for the inference request."
+    },
+    "inputs": {
+      "type": "array",
+      "description": "List of input tensors for the inference request.",
+      "items": {
+        "$ref": "#/$defs/InferenceTensor"
+      },
+      "minItems": 1
+    },
+    "outputs": {
+      "type": "array",
+      "description": "Optional list of requested output tensors.",
+      "items": {
+        "$ref": "#/$defs/InferenceTensor"
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Optional request-level parameters.",
+      "additionalProperties": true
+    }
+  },
+  "required": ["inputs"],
+  "$defs": {
+    "InferenceTensor": {
+      "type": "object",
+      "title": "InferenceTensor",
+      "description": "A named tensor with shape, datatype, and data.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the tensor."
+        },
+        "shape": {
+          "type": "array",
+          "description": "The shape of the tensor as an array of dimensions.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "datatype": {
+          "type": "string",
+          "description": "The datatype of the tensor.",
+          "enum": ["BOOL", "UINT8", "UINT16", "UINT32", "UINT64", "INT8", "INT16", "INT32", "INT64", "FP16", "FP32", "FP64", "BYTES", "STRING"]
+        },
+        "data": {
+          "description": "The tensor data as a flattened array or nested array matching the shape.",
+          "oneOf": [
+            { "type": "array" },
+            { "type": "string" }
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Optional per-tensor parameters.",
+          "additionalProperties": true
+        }
+      },
+      "required": ["name", "shape", "datatype", "data"]
+    }
+  },
+  "examples": [
+    {
+      "id": "req-001",
+      "inputs": [
+        {
+          "name": "input",
+          "shape": [1, 4],
+          "datatype": "FP32",
+          "data": [5.1, 3.5, 1.4, 0.2]
+        }
+      ]
+    }
+  ]
+}

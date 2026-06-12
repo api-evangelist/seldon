@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/seldon/main/json-schema/seldon-inference-response.json",
+  "title": "Seldon Inference Response (Open Inference Protocol V2)",
+  "description": "Schema for an inference response payload returned from a Seldon model endpoint following the Open Inference Protocol V2.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Echoed request identifier, or a server-generated identifier."
+    },
+    "model_name": {
+      "type": "string",
+      "description": "The name of the model that produced this response."
+    },
+    "model_version": {
+      "type": "string",
+      "description": "The version of the model that produced this response."
+    },
+    "outputs": {
+      "type": "array",
+      "description": "List of output tensors returned by the model.",
+      "items": {
+        "$ref": "#/$defs/InferenceTensor"
+      },
+      "minItems": 1
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Optional response-level parameters.",
+      "additionalProperties": true
+    }
+  },
+  "required": ["model_name", "outputs"],
+  "$defs": {
+    "InferenceTensor": {
+      "type": "object",
+      "title": "InferenceTensor",
+      "description": "A named tensor with shape, datatype, and data.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the output tensor."
+        },
+        "shape": {
+          "type": "array",
+          "description": "The shape of the tensor.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "datatype": {
+          "type": "string",
+          "description": "The datatype of the tensor.",
+          "enum": ["BOOL", "UINT8", "UINT16", "UINT32", "UINT64", "INT8", "INT16", "INT32", "INT64", "FP16", "FP32", "FP64", "BYTES", "STRING"]
+        },
+        "data": {
+          "description": "The tensor data.",
+          "oneOf": [
+            { "type": "array" },
+            { "type": "string" }
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["name", "shape", "datatype", "data"]
+    }
+  },
+  "examples": [
+    {
+      "id": "req-001",
+      "model_name": "iris-classifier",
+      "model_version": "v1",
+      "outputs": [
+        {
+          "name": "predict",
+          "shape": [1],
+          "datatype": "INT64",
+          "data": [0]
+        }
+      ]
+    }
+  ]
+}

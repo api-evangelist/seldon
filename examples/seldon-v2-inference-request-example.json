@@ -1,0 +1,36 @@
+{
+  "description": "Example V2 inference request to a Seldon model following the Open Inference Protocol V2 (KServe compatible)",
+  "request": {
+    "method": "POST",
+    "url": "http://seldon-gateway/v2/models/iris-classifier/infer",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "inputs": [
+        {
+          "name": "input-0",
+          "shape": [1, 4],
+          "datatype": "FP32",
+          "data": [5.1, 3.5, 1.4, 0.2]
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "model_name": "iris-classifier",
+      "model_version": "v1",
+      "id": "inference-12345",
+      "outputs": [
+        {
+          "name": "predict",
+          "shape": [1],
+          "datatype": "INT64",
+          "data": [0]
+        }
+      ]
+    }
+  }
+}

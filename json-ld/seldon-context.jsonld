@@ -1,0 +1,102 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "seldon": "https://seldon.io/vocab#",
+    "mlops": "https://mlcommons.org/vocab#",
+    "oip": "https://kserve.github.io/website/openinference/",
+
+    "SeldonDeployment": "seldon:SeldonDeployment",
+    "Predictor": "seldon:Predictor",
+    "InferenceServer": "seldon:InferenceServer",
+    "Pipeline": "seldon:Pipeline",
+    "CanaryDeployment": "seldon:CanaryDeployment",
+    "ABTest": "seldon:ABTest",
+    "ShadowDeployment": "seldon:ShadowDeployment",
+    "DriftDetector": "seldon:DriftDetector",
+    "Explainer": "seldon:Explainer",
+    "Feedback": "seldon:Feedback",
+    "SeldonCore": "seldon:SeldonCore",
+    "SeldonCore2": "seldon:SeldonCore2",
+    "SeldonEnterprisePlatform": "seldon:SeldonEnterprisePlatform",
+
+    "InferenceRequest": "oip:InferenceRequest",
+    "InferenceResponse": "oip:InferenceResponse",
+    "ModelMetadata": "oip:ModelMetadata",
+    "OpenInferenceProtocol": "oip:OpenInferenceProtocol",
+
+    "modelName": {
+      "@id": "seldon:modelName",
+      "@type": "@id"
+    },
+    "modelVersion": "seldon:modelVersion",
+    "namespace": "seldon:namespace",
+    "replicas": "seldon:replicas",
+    "trafficWeight": "seldon:trafficWeight",
+    "implementation": "seldon:implementation",
+    "storageUri": "seldon:storageUri",
+    "runtime": "seldon:runtime",
+    "inputs": "oip:inputs",
+    "outputs": "oip:outputs",
+    "datatype": "oip:datatype",
+    "shape": "oip:shape",
+    "data": "oip:data",
+    "parameters": "oip:parameters",
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "version": "schema:version",
+    "url": "schema:url",
+    "provider": {
+      "@id": "schema:provider",
+      "@type": "schema:Organization"
+    },
+    "Organization": "schema:Organization",
+    "WebAPI": "schema:WebAPI",
+    "EntryPoint": "schema:EntryPoint",
+    "contentType": "schema:contentType",
+    "encodingType": "schema:encodingType",
+    "httpMethod": "schema:httpMethod",
+    "urlTemplate": "schema:urlTemplate"
+  },
+  "@graph": [
+    {
+      "@type": "schema:Organization",
+      "@id": "https://seldon.io",
+      "schema:name": "Seldon",
+      "schema:url": "https://www.seldon.io",
+      "schema:description": "Kubernetes-native MLOps platform for deploying, monitoring, and explaining machine learning models at scale."
+    },
+    {
+      "@type": "schema:WebAPI",
+      "@id": "https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference",
+      "schema:name": "Seldon Inference API",
+      "schema:description": "REST and gRPC inference endpoints following the Open Inference Protocol (V2) for model predictions.",
+      "schema:provider": { "@id": "https://seldon.io" },
+      "schema:documentation": "https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference"
+    },
+    {
+      "@type": "schema:WebAPI",
+      "@id": "https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html",
+      "schema:name": "Seldon Enterprise Platform REST API",
+      "schema:description": "Management API for SeldonDeployments with OIDC authentication, accessible via Swagger UI.",
+      "schema:provider": { "@id": "https://seldon.io" },
+      "schema:documentation": "https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html"
+    },
+    {
+      "@type": "schema:WebAPI",
+      "@id": "https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift",
+      "schema:name": "Seldon Drift Detection API",
+      "schema:description": "Drift detection model endpoints powered by Alibi-Detect for monitoring inference data distribution.",
+      "schema:provider": { "@id": "https://seldon.io" },
+      "schema:documentation": "https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift"
+    },
+    {
+      "@type": "schema:WebAPI",
+      "@id": "https://docs.seldon.io/projects/seldon-core/en/latest/reference/apis/v2-protocol.html",
+      "schema:name": "Seldon Explainability API",
+      "schema:description": "REST /explain endpoint powered by Alibi for SHAP, anchors, and integrated gradient explanations.",
+      "schema:provider": { "@id": "https://seldon.io" },
+      "schema:documentation": "https://docs.seldon.io/projects/seldon-core/en/latest/reference/apis/v2-protocol.html"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "description": "Example inference request to a Seldon iris classification model using the Open Inference Protocol V2",
+  "request": {
+    "method": "POST",
+    "url": "http://seldon-gateway/seldon/default/iris-model/api/v1.0/predictions",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": {
+        "ndarray": [[5.1, 3.5, 1.4, 0.2]]
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": {
+        "ndarray": [0],
+        "names": ["predict"]
+      },
+      "meta": {
+        "requestPath": {
+          "classifier": "seldonio/sklearnserver:1.15.0"
+        }
+      }
+    }
+  }
+}

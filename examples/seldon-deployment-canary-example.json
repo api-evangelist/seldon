@@ -1,0 +1,60 @@
+{
+  "description": "Example SeldonDeployment with a canary deployment strategy splitting traffic 90/10 between stable and canary predictors",
+  "request": {
+    "method": "POST",
+    "url": "http://seldon-deploy/seldon-deploy/api/v1alpha1/namespaces/production/seldondeployments",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer <oidc-token>"
+    },
+    "body": {
+      "apiVersion": "machinelearning.seldon.io/v1",
+      "kind": "SeldonDeployment",
+      "metadata": {
+        "name": "iris-canary",
+        "namespace": "production"
+      },
+      "spec": {
+        "name": "iris-canary",
+        "predictors": [
+          {
+            "name": "stable",
+            "traffic": 90,
+            "replicas": 2,
+            "graph": {
+              "name": "classifier",
+              "type": "MODEL",
+              "implementation": "SKLEARN_SERVER",
+              "modelUri": "gs://seldon-models/iris/v1"
+            }
+          },
+          {
+            "name": "canary",
+            "traffic": 10,
+            "replicas": 1,
+            "graph": {
+              "name": "classifier",
+              "type": "MODEL",
+              "implementation": "SKLEARN_SERVER",
+              "modelUri": "gs://seldon-models/iris/v2"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "apiVersion": "machinelearning.seldon.io/v1",
+      "kind": "SeldonDeployment",
+      "metadata": {
+        "name": "iris-canary",
+        "namespace": "production"
+      },
+      "status": {
+        "state": "Creating"
+      }
+    }
+  }
+}

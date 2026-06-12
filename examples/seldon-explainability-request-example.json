@@ -1,0 +1,40 @@
+{
+  "description": "Example request to the Seldon /explain endpoint to get a SHAP-based explanation for an iris model prediction",
+  "request": {
+    "method": "POST",
+    "url": "http://seldon-gateway/seldon/default/iris-model/api/v1.0/explain",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "data": {
+        "ndarray": [[5.1, 3.5, 1.4, 0.2]]
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "meta": {},
+      "data": {
+        "anchor": ["Petal Length <= 2.45"],
+        "precision": 1.0,
+        "coverage": 0.3333,
+        "raw": {
+          "feature": [2],
+          "mean": [0.9998],
+          "precision": [1.0],
+          "coverage": [0.3333],
+          "examples": [
+            {
+              "covered_true": [[5.0, 3.4, 1.5, 0.2], [4.8, 3.0, 1.4, 0.3]],
+              "covered_false": []
+            }
+          ],
+          "prediction": 0,
+          "names": ["Petal Length <= 2.45"]
+        }
+      }
+    }
+  }
+}
