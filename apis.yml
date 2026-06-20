@@ -1,7 +1,7 @@
 aid: seldon
 name: Seldon
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -40,7 +40,7 @@ apis:
       standardized endpoints for model health checks, metadata queries, and prediction requests.
       Deployed models are accessible via REST at /seldon/{namespace}/{deployment}/api/v1.0/predictions
       and support multiple ML frameworks through pre-packaged inference servers.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
     baseURL: https://docs.seldon.ai
     tags:
@@ -70,7 +70,7 @@ apis:
       $ML_PLATFORM_HOST/seldon-deploy/swagger/ and supports authentication via OIDC and
       session-based methods. The API supports complex deployment pipeline integrations with
       upstream services.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
     baseURL: https://deploy.seldon.io
     tags:
@@ -92,7 +92,7 @@ apis:
       against reference training data distributions. Drift detectors are configured and managed
       via the Seldon Core 2 deployment API and expose detection results through standard
       inference endpoints.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift
     baseURL: https://docs.seldon.ai
     tags:
@@ -111,7 +111,7 @@ apis:
       algorithms including SHAP, integrated gradients, and anchor-based methods, allowing
       users to request human-interpretable explanations for individual model predictions
       in production.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.seldon.io/projects/seldon-core/en/latest/analytics/drift_detection.html
     baseURL: https://docs.seldon.io
     tags:
