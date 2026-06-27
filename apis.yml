@@ -149,7 +149,7 @@ common:
   - type: StatusPage
     url: https://status.seldon.io
 
-  - type: SDK
+  - type: SDKs
     url: https://github.com/SeldonIO/seldon-deploy-sdk
 
   - type: Plans
@@ -176,16 +176,16 @@ common:
   - type: JSONSchema
     url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/json-schema/seldon-deployment.json
 
-  - type: Example
+  - type: Examples
     url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-inference-request-example.json
 
-  - type: Example
+  - type: Examples
     url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-v2-inference-request-example.json
 
-  - type: Example
+  - type: Examples
     url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-deployment-canary-example.json
 
-  - type: Example
+  - type: Examples
     url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/examples/seldon-explainability-request-example.json
 
 maintainers:
