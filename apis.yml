@@ -125,6 +125,8 @@ apis:
 
 common:
 
+  - type: DomainSecurity
+    url: security/seldon-domain-security.yml
   - type: Authentication
     url: authentication/seldon-authentication.yml
   - type: OAuthScopes

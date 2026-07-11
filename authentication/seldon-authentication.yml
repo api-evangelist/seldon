@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/seldon-enterprise-platform-api-openapi.yml, openapi/seldon-inference-api-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - password
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: password
+    tokenUrl: https://Y.Y.Y.Y
+    scopes: 4
+  sources:
+  - openapi/seldon-enterprise-platform-api-openapi.yml
+- name: HTTPBearer
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/seldon-inference-api-openapi.yml
