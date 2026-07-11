@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/seldon-enterprise-platform-api-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/seldon-enterprise-platform-api-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://Y.Y.Y.Y
+scopes:
+- scope: '[]'
+  sources:
+  - openapi/seldon-enterprise-platform-api-openapi.yml
+- scope: email
+  flows:
+  - password
+  sources:
+  - openapi/seldon-enterprise-platform-api-openapi.yml
+- scope: groups
+  flows:
+  - password
+  sources:
+  - openapi/seldon-enterprise-platform-api-openapi.yml
+- scope: openid
+  flows:
+  - password
+  sources:
+  - openapi/seldon-enterprise-platform-api-openapi.yml
+- scope: profile
+  flows:
+  - password
+  sources:
+  - openapi/seldon-enterprise-platform-api-openapi.yml

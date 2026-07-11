@@ -125,6 +125,10 @@ apis:
 
 common:
 
+  - type: Authentication
+    url: authentication/seldon-authentication.yml
+  - type: OAuthScopes
+    url: scopes/seldon-scopes.yml
   - type: Website
     url: https://www.seldon.io
 
