@@ -1,0 +1,2271 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/seldon-enterprise-platform-api-openapi.yml, openapi/seldon-inference-api-openapi.yml,
+  openapi/seldon-inference-api-v2-openapi.yml, openapi/seldon-wrapper-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 147
+  by_action_class:
+    acting: 81
+    connected: 66
+  by_consequence:
+    write: 56
+    read: 66
+    physical: 24
+    safety-critical: 1
+  human_in_the_loop_required: 1
+operations:
+- path: /applicationlogs
+  method: post
+  operationId: ReadApplicationLogs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /cluster
+  method: get
+  operationId: ReadCluster
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /healthcheck
+  method: get
+  operationId: ReadHealthCheck
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/experiments/{name}/gitdiff
+  method: get
+  operationId: ReadExperimentGitDiff
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/experiments/{name}/gitlogs
+  method: get
+  operationId: ReadExperimentGitLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/gitdiffs
+  method: get
+  operationId: ReadGitDiffs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/gitops-status
+  method: get
+  operationId: ReadGitOpsStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/models
+  method: post
+  operationId: CreateModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/models/{name}
+  method: delete
+  operationId: DeleteModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/models/{name}
+  method: get
+  operationId: ReadModel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/models/{name}
+  method: put
+  operationId: UpdateModel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/models/{name}/gitdiff
+  method: get
+  operationId: ReadModelGitDiff
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/models/{name}/gitlogs
+  method: get
+  operationId: ReadModelGitLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines
+  method: get
+  operationId: ListPipelines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines
+  method: post
+  operationId: CreatePipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}
+  method: delete
+  operationId: DeletePipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}
+  method: get
+  operationId: ReadPipeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}
+  method: put
+  operationId: UpdatePipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/batchjobs
+  method: get
+  operationId: ListPipelineBatchJobs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/batchjobs
+  method: post
+  operationId: CreatePipelineBatchJob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/batchjobs/{jobName}
+  method: get
+  operationId: GetPipelineBatchJob
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment
+  method: delete
+  operationId: DeletePipelineExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment
+  method: get
+  operationId: GetPipelineExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment
+  method: post
+  operationId: CreatePipelineExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment
+  method: put
+  operationId: UpdatePipelineExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment/canary
+  method: delete
+  operationId: RemoveCanary
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment/canary
+  method: post
+  operationId: CreateCanaryExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment/canary
+  method: put
+  operationId: PromoteCanary
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment/shadow
+  method: delete
+  operationId: RemoveShadow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment/shadow
+  method: post
+  operationId: CreateShadowExperiment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/experiment/shadow
+  method: put
+  operationId: PromoteShadow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/explain
+  method: post
+  operationId: ExplainSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/explainer
+  method: delete
+  operationId: DeletePipelineExplainer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/explainer
+  method: get
+  operationId: ReadPipelineExplainer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/explainer
+  method: post
+  operationId: CreatePipelineExplainer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/explainer
+  method: put
+  operationId: UpdatePipelineExplainer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/gitdiff
+  method: get
+  operationId: ReadPipelineGitDiff
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/gitlogs
+  method: get
+  operationId: ReadPipelineGitLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/loadtestjobs
+  method: get
+  operationId: ListLoadtestPipeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/loadtestjobs
+  method: post
+  operationId: CreateLoadtestPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/loadtestjobs/{jobName}
+  method: delete
+  operationId: DeleteLoadtestPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/models
+  method: get
+  operationId: ListPipelineModels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector
+  method: get
+  operationId: ListDriftDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector
+  method: post
+  operationId: CreateDriftDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector/{detectorName}
+  method: delete
+  operationId: DeleteDriftDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector/{detectorName}
+  method: get
+  operationId: ReadDriftDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/featuredistributions
+  method: post
+  operationId: SeldonPipelineFeatureDistributions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/featurestatistics
+  method: post
+  operationId: SeldonPipelineFeatureStatistics
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector
+  method: get
+  operationId: ListOutlierDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector
+  method: post
+  operationId: CreateOutlierDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector/{detectorName}
+  method: delete
+  operationId: DeleteOutlierDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector/{detectorName}
+  method: get
+  operationId: ReadOutlierDetectorSeldonPipeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/predictcurl
+  method: put
+  operationId: ReadPredictCurlSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/pipelines/{name}/predictfile
+  method: post
+  operationId: PredictFileSeldonPipeline
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments
+  method: get
+  operationId: ListSeldonDeployments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments
+  method: post
+  operationId: CreateSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}
+  method: delete
+  operationId: DeleteSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}
+  method: get
+  operationId: ReadSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}
+  method: put
+  operationId: UpdateSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/batchjobs
+  method: get
+  operationId: ListSeldonDeploymentBatchJobs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/batchjobs
+  method: post
+  operationId: CreateSeldonDeploymentBatchJob
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName}
+  method: get
+  operationId: GetDeploymentBatchJob
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/explain
+  method: post
+  operationId: ExplainSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/gitdiff
+  method: get
+  operationId: ReadSeldonDeploymentGitDiff
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/gitlogs
+  method: get
+  operationId: ReadSeldonDeploymentGitLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/gitrestore
+  method: post
+  operationId: SeldonDeploymentGitRestore
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/gitrevert
+  method: post
+  operationId: SeldonDeploymentGitRevert
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs
+  method: get
+  operationId: ListLoadtestSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs
+  method: post
+  operationId: CreateLoadtestSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName}
+  method: delete
+  operationId: DeleteLoadtestSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector
+  method: get
+  operationId: ListDriftDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector
+  method: post
+  operationId: CreateDriftDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}
+  method: delete
+  operationId: DeleteDriftDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}
+  method: get
+  operationId: ReadDriftDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/featuredistributions
+  method: post
+  operationId: SeldonDeploymentFeatureDistributions
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/featurestatistics
+  method: post
+  operationId: SeldonDeploymentFeatureStatistics
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server
+  method: get
+  operationId: ListMetricsServerSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server
+  method: post
+  operationId: CreateMetricsServerSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName}
+  method: delete
+  operationId: DeleteMetricsServerSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server/{detectorName}
+  method: get
+  operationId: ReadMetricsServerSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector
+  method: get
+  operationId: ListOutlierDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector
+  method: post
+  operationId: CreateOutlierDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName}
+  method: delete
+  operationId: DeleteOutlierDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName}
+  method: get
+  operationId: ReadOutlierDetectorSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/predict
+  method: post
+  operationId: PredictSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/predictcurl
+  method: put
+  operationId: ReadPredictCurlSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/predictfile
+  method: post
+  operationId: PredictFileSeldonDeployment
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/{name}/resources
+  method: get
+  operationId: ListSeldonDeploymentResources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /namespaces/{namespace}/seldondeployments/validate
+  method: get
+  operationId: ValidateSeldonDeployment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /user
+  method: get
+  operationId: ReadUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /version
+  method: get
+  operationId: ReadVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /model/metadata
+  method: get
+  operationId: ModelMetadataService_ListModelMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /model/metadata
+  method: delete
+  operationId: ModelMetadataService_DeleteModelMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /model/metadata
+  method: post
+  operationId: ModelMetadataService_CreateModelMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /model/metadata
+  method: put
+  operationId: ModelMetadataService_UpdateModelMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /model/metadata/runtime
+  method: get
+  operationId: ModelMetadataService_ListRuntimeMetadataForModel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/groups
+  method: get
+  operationId: PermissionManagementService_GetGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/groups
+  method: post
+  operationId: PermissionManagementService_CreateGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/groups/{groupName}/members
+  method: get
+  operationId: PermissionManagementService_GetGroupMembers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/groups/{name}
+  method: delete
+  operationId: PermissionManagementService_DeleteGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/policy
+  method: delete
+  operationId: PermissionManagementService_DeletePolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/policy
+  method: post
+  operationId: PermissionManagementService_CreatePolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/policy/permissions
+  method: get
+  operationId: PermissionManagementService_GetPermissions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/policy/targets
+  method: get
+  operationId: PermissionManagementService_GetPolicyTargets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/users
+  method: get
+  operationId: PermissionManagementService_GetUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/users
+  method: post
+  operationId: PermissionManagementService_CreateUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/users/{username}
+  method: delete
+  operationId: PermissionManagementService_DeleteUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/users/{username}/groups
+  method: get
+  operationId: PermissionManagementService_GetUserGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /iam/users/{username}/groups/{group}
+  method: delete
+  operationId: PermissionManagementService_DeleteUserFromGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/users/{username}/groups/{group}
+  method: put
+  operationId: PermissionManagementService_AddUserToGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /iam/users/{username}/resetPassword
+  method: post
+  operationId: PermissionManagementService_ResetUserPassword
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+    scope:
+    - '[]'
+- path: /alerting/alerts
+  method: get
+  operationId: AlertingService_ListAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /alerting/test
+  method: post
+  operationId: AlertingService_TriggerTestAlert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /secrets/{namespace}/bucket/gcs/{remote}
+  method: post
+  operationId: SecretsService_CreateGCSBucketSecret
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /secrets/{namespace}/bucket/rclone/{remote}
+  method: post
+  operationId: SecretsService_CreateRcloneBucketSecret
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /secrets/{namespace}/bucket/s3/{remote}
+  method: post
+  operationId: SecretsService_CreateS3BucketSecret
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /secrets/{namespace}/registry/{name}
+  method: post
+  operationId: SecretsService_CreateRegistrySecret
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /secrets/{namespace}/{secretType}
+  method: get
+  operationId: SecretsService_ListSecrets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /secrets/{namespace}/{secretType}/{name}
+  method: delete
+  operationId: SecretsService_DeleteSecret
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /healthcheck/{dependency}
+  method: get
+  operationId: HealthcheckService_GetDependencyHealth
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /inference-logs/models
+  method: get
+  operationId: InferenceLogsService_ListModelInferenceLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /inference-logs/namespace/{namespace}/pipelines/{pipelineName}/models/{modelName}
+  method: post
+  operationId: InferenceLogsService_GetModelInferenceLogs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /inference-logs/namespace/{namespace}/seldondeployments/{deploymentName}
+  method: post
+  operationId: InferenceLogsService_GetDeploymentInferenceLogs
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - '[]'
+- path: /inference-logs/seldondeployments
+  method: get
+  operationId: InferenceLogsService_ListDeploymentInferenceLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - '[]'
+- path: /seldon/{namespace}/{deployment}/api/v1.0/predictions
+  method: post
+  operationId: Predict
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /seldon/{namespace}/{deployment}/api/v1.0/feedback
+  method: post
+  operationId: SendFeedback
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/health/live
+  method: get
+  operationId: server-live
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/health/ready
+  method: get
+  operationId: server-ready
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/models/{model_name}/versions/{model_version}/ready
+  method: get
+  operationId: model-version-ready
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/models/{model_name}/ready
+  method: get
+  operationId: model-ready
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2
+  method: get
+  operationId: server-metadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/models/{model_name}/versions/{model_version}
+  method: get
+  operationId: model-version-metadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/models/{model_name}
+  method: get
+  operationId: model-metadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/models/{model_name}/versions/{model_version}/infer
+  method: post
+  operationId: model-version-inference
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/models/{model_name}/infer
+  method: post
+  operationId: model-inference
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /aggregate
+  method: post
+  operationId: Aggregate2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /aggregate
+  method: get
+  operationId: Aggregate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /predict
+  method: get
+  operationId: TransformInput4
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /predict
+  method: post
+  operationId: TransformInput3
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /route
+  method: get
+  operationId: Route2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /route
+  method: post
+  operationId: Route
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /send-feedback
+  method: get
+  operationId: SendFeedback2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /send-feedback
+  method: post
+  operationId: SendFeedback
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /transform-input
+  method: get
+  operationId: TransformInput2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transform-input
+  method: post
+  operationId: TransformInput
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /transform-output
+  method: get
+  operationId: TransformOutput2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transform-output
+  method: post
+  operationId: TransformOutput
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

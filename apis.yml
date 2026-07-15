@@ -125,6 +125,8 @@ apis:
 
 common:
 
+  - type: AgenticAccess
+    url: agentic-access/seldon-agentic-access.yml
   - type: DomainSecurity
     url: security/seldon-domain-security.yml
   - type: Authentication
