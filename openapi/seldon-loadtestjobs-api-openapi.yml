@@ -1,0 +1,249 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService LoadtestJobs API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- description: Loadtest Jobs APIs for Seldon Deploy
+  name: LoadtestJobs
+paths:
+  /namespaces/{namespace}/pipelines/{name}/loadtestjobs:
+    get:
+      description: List Pipeline load test jobs
+      operationId: ListLoadtestPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - LoadtestJobs
+    post:
+      description: Create Pipeline load test
+      operationId: CreateLoadtestPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CreateLoadtestPipeline'
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - LoadtestJobs
+  /namespaces/{namespace}/pipelines/{name}/loadtestjobs/{jobName}:
+    delete:
+      description: Delete Pipeline load test jobs
+      operationId: DeleteLoadtestPipeline
+      parameters:
+      - description: JobName identifies a job name
+        in: path
+        name: jobName
+        required: true
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - LoadtestJobs
+  /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs:
+    get:
+      description: List Seldon Deployment load test jobs
+      operationId: ListLoadtestSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - LoadtestJobs
+    post:
+      description: Create Seldon Deployment load test
+      operationId: CreateLoadtestSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/CreateLoadtestPipeline'
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - LoadtestJobs
+  /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs/{jobName}:
+    delete:
+      description: Delete Seldon Deployment load test jobs
+      operationId: DeleteLoadtestSeldonDeployment
+      parameters:
+      - description: JobName identifies a job name
+        in: path
+        name: jobName
+        required: true
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - LoadtestJobs
+components:
+  requestBodies:
+    CreateLoadtestPipeline:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              loadFile:
+                description: Prediction contains predict payload
+                type: string
+                format: binary
+              connectionsNumber:
+                description: Connections Number provides number of allowed connections
+                type: string
+              requestsNumber:
+                description: Requests Number provides number of allowed requests
+                type: string
+              duration:
+                description: Duration of load test in seconds
+                type: string
+            required:
+            - loadFile
+      required: true
+  schemas:
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    Message:
+      description: Message Message
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+      type: object
+  responses:
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

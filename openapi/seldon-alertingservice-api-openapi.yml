@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: AlertingService
+paths:
+  /alerting/alerts:
+    get:
+      summary: List currently firing alerts.
+      operationId: AlertingService_ListAlerts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListAlertsResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      tags:
+      - AlertingService
+  /alerting/test:
+    post:
+      summary: Triggers a test alert to check alerting workflow.
+      operationId: AlertingService_TriggerTestAlert
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1TriggerTestAlertResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: boolean
+        description: 'Set to true if you wish to test Prometheus -> Alertmanager connection
+
+          False sends an alert payload directly to Alertmanager, skipping Prometheus metrics/alert flow'
+        required: true
+      tags:
+      - AlertingService
+components:
+  schemas:
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1TriggerTestAlertResponse:
+      type: object
+    v1ListAlertsResponse:
+      type: object
+      properties:
+        firingAlerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FiringAlert'
+    v1FiringAlert:
+      type: object
+      properties:
+        name:
+          type: string
+        severity:
+          type: string
+        description:
+          type: string
+        title:
+          type: string
+        activeAt:
+          type: string
+          format: date-time
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

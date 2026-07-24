@@ -1,0 +1,144 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService HealthcheckService API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: HealthcheckService
+paths:
+  /healthcheck/{dependency}:
+    get:
+      summary: List the current health of a specific Seldon Deploy dependency or all of them
+      operationId: HealthcheckService_GetDependencyHealth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DependencyHealthResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: dependency
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - ALL
+          - PROMETHEUS
+          - ELASTICSEARCH
+          - ALERTMANAGER
+          - POSTGRES
+          - KEYCLOAK
+          - KAFKA
+          - SELDONCORE_V1
+          - SELDONCORE_V2
+          - GITEA
+          - ARGOCD
+          - ARGOWF
+          - KNATIVE
+          - METRONOME
+          - MINIO
+          - FLUENTD
+      tags:
+      - HealthcheckService
+components:
+  schemas:
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1DeployDependencyStatus:
+      type: string
+      enum:
+      - UNSPECIFIED
+      - DISABLED
+      - ENABLED_AND_UNREACHABLE
+      - ENABLED_AND_REACHABLE
+      default: UNSPECIFIED
+    v1DependencyHealthResponse:
+      type: object
+      properties:
+        dependenciesHealth:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1DeployDependencyHealth'
+    v1DeployDependency:
+      type: string
+      enum:
+      - ALL
+      - PROMETHEUS
+      - ELASTICSEARCH
+      - ALERTMANAGER
+      - POSTGRES
+      - KEYCLOAK
+      - KAFKA
+      - SELDONCORE_V1
+      - SELDONCORE_V2
+      - GITEA
+      - ARGOCD
+      - ARGOWF
+      - KNATIVE
+      - METRONOME
+      - MINIO
+      - FLUENTD
+      default: ALL
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1DeployDependencyHealth:
+      type: object
+      properties:
+        dependency:
+          $ref: '#/components/schemas/v1DeployDependency'
+        status:
+          $ref: '#/components/schemas/v1DeployDependencyStatus'
+        description:
+          type: string
+        fetchedAt:
+          type: string
+          format: date-time
+        lastActiveFetchedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

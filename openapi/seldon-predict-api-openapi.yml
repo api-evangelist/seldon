@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService Predict API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- description: Prediction APIs for Seldon Deploy
+  name: Predict
+paths:
+  /namespaces/{namespace}/pipelines/{name}/predictcurl:
+    put:
+      description: Read the specified Seldon Pipeline predict curl
+      operationId: ReadPredictCurlSeldonPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ReadPredictCurlSeldonPipelinePrediction'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - Predict
+  /namespaces/{namespace}/pipelines/{name}/predictfile:
+    post:
+      description: Create Seldon Pipeline prediction
+      operationId: PredictFileSeldonPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PredictFileSeldonPipeline'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - Predict
+  /namespaces/{namespace}/seldondeployments/{name}/predict:
+    post:
+      description: Create Seldon Deployment prediction
+      operationId: PredictSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ReadPredictCurlSeldonPipelinePrediction'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - Predict
+  /namespaces/{namespace}/seldondeployments/{name}/predictcurl:
+    put:
+      description: Read the specified Seldon Deployment predict curl
+      operationId: ReadPredictCurlSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ReadPredictCurlSeldonPipelinePrediction'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - Predict
+  /namespaces/{namespace}/seldondeployments/{name}/predictfile:
+    post:
+      description: Create Seldon Deployment prediction
+      operationId: PredictFileSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/PredictFileSeldonPipeline'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - Predict
+components:
+  requestBodies:
+    PredictFileSeldonPipeline:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              predictFile:
+                description: PredictionFile
+                type: string
+                format: binary
+            required:
+            - predictFile
+      required: true
+    ReadPredictCurlSeldonPipelinePrediction:
+      content:
+        application/json:
+          schema: {}
+      description: Prediction
+      required: true
+  responses:
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

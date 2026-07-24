@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService ApplicationLogs API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- description: ApplicationLogs APIs for Seldon Deploy
+  name: ApplicationLogs
+paths:
+  /applicationlogs:
+    post:
+      operationId: ReadApplicationLogs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationLogsParams'
+        description: ApplicationLogs
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ApplicationLogsResponse'
+        '400':
+          $ref: '#/components/responses/ErrorDefault'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      summary: Read application container logs from elastic search.
+      tags:
+      - ApplicationLogs
+components:
+  schemas:
+    ApplicationLogsResponse:
+      description: 'ApplicationLogsResponse represents the collection of application logs
+
+        and their total size after being parsed from their raw forms
+
+        e.g. from json strings or map[string]any types.'
+      properties:
+        logs:
+          items:
+            $ref: '#/components/schemas/ApplicationLog'
+          type: array
+        total:
+          format: int64
+          type: integer
+      type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    ApplicationLogsParams:
+      description: 'ApplicationLogsParams describes a set of parameters that can be
+
+        used to build a search query for an application''s logs.
+
+        In most cases, only ContainerId, From, and Size are required in
+
+        order to create a search query.'
+      properties:
+        container_id:
+          type: string
+        container_name:
+          type: string
+        deployment_namespace:
+          type: string
+        from:
+          format: int64
+          type: integer
+        pod_name:
+          type: string
+        size:
+          format: int64
+          type: integer
+      type: object
+    ApplicationLog:
+      description: 'ApplicationLog represents the message and timestamp of a single
+
+        application log entry.'
+      properties:
+        message:
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+      type: object
+  responses:
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ApplicationLogsResponse:
+      description: Application Logs
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApplicationLogsResponse'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

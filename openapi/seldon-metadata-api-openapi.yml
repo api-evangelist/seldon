@@ -1,0 +1,193 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService metadata API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: metadata
+paths:
+  /v2:
+    get:
+      summary: Server Metadata
+      tags:
+      - metadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataServerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataServerErrorResponse'
+      operationId: server-metadata
+      description: The server metadata endpoint provides information about the server. A server metadata request is made with an HTTP GET to a server metadata endpoint.
+  /v2/models/{model_name}/versions/{model_version}:
+    parameters:
+    - schema:
+        type: string
+      name: model_name
+      in: path
+      required: true
+    - schema:
+        type: string
+      name: model_version
+      in: path
+      required: true
+    get:
+      summary: Model Metadata
+      tags:
+      - metadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataModelResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataModelErrorResponse'
+      operationId: model-version-metadata
+      description: The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
+  /v2/models/{model_name}:
+    parameters:
+    - schema:
+        type: string
+      name: model_name
+      in: path
+      required: true
+    get:
+      summary: Model Metadata
+      tags:
+      - metadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataModelResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataModelErrorResponse'
+      operationId: model-metadata
+      description: The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
+components:
+  schemas:
+    Parameters:
+      type: object
+      title: Parameters
+      x-examples: {}
+      additionalProperties: true
+      properties:
+        content_type:
+          type: string
+        headers:
+          type: object
+    MetadataServerErrorResponse:
+      title: MetadataServerErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    MetadataServerResponse:
+      title: MetadataServerResponse
+      type: object
+      description: ''
+      x-examples: {}
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        extensions:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - version
+      - extensions
+    MetadataTensor:
+      title: MetadataTensor
+      type: object
+      properties:
+        name:
+          type: string
+        datatype:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - datatype
+      - shape
+    MetadataModelErrorResponse:
+      title: MetadataModelErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    MetadataModelResponse:
+      title: MetadataModelResponse
+      type: object
+      properties:
+        name:
+          type: string
+        versions:
+          type: array
+          items:
+            type: string
+        platform:
+          type: string
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTensor'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTensor'
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - platform
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

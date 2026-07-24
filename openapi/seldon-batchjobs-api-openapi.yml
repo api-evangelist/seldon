@@ -1,0 +1,400 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService BatchJobs API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- description: Batch Jobs APIs for Seldon Deploy
+  name: BatchJobs
+paths:
+  /namespaces/{namespace}/pipelines/{name}/batchjobs:
+    get:
+      description: Read the pipeline batch jobs
+      operationId: ListPipelineBatchJobs
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: Limit of items returned in one response
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Requested page
+        in: query
+        name: Page
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/BatchJobsListResponse'
+        '400':
+          $ref: '#/components/responses/ErrorDefault'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - BatchJobs
+    post:
+      description: Create the pipeline batch jobs
+      operationId: CreatePipelineBatchJob
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/BatchJobDefinition'
+      responses:
+        '200':
+          $ref: '#/components/responses/BatchJobPostResponse'
+        '400':
+          $ref: '#/components/responses/ErrorDefault'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - BatchJobs
+  /namespaces/{namespace}/pipelines/{name}/batchjobs/{jobName}:
+    get:
+      description: Get details on the pipeline batch job
+      operationId: GetPipelineBatchJob
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: JobName identifies a job name
+        in: path
+        name: jobName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/BatchJobGetResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - BatchJobs
+  /namespaces/{namespace}/seldondeployments/{name}/batchjobs:
+    get:
+      description: Read the seldondeployment's batch jobs
+      operationId: ListSeldonDeploymentBatchJobs
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: Limit of items returned in one response
+        in: query
+        name: limit
+        schema:
+          type: string
+      - description: Requested page
+        in: query
+        name: Page
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/BatchJobsListResponse'
+        '400':
+          $ref: '#/components/responses/ErrorDefault'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - BatchJobs
+    post:
+      description: Create the seldondeployment's batch jobs
+      operationId: CreateSeldonDeploymentBatchJob
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/BatchJobDefinition'
+      responses:
+        '200':
+          $ref: '#/components/responses/BatchJobPostResponse'
+        '400':
+          $ref: '#/components/responses/ErrorDefault'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - BatchJobs
+  /namespaces/{namespace}/seldondeployments/{name}/batchjobs/{jobName}:
+    get:
+      description: Get details on the seldondeployment's batch job
+      operationId: GetDeploymentBatchJob
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: JobName identifies a job name
+        in: path
+        name: jobName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/BatchJobGetResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - BatchJobs
+components:
+  schemas:
+    BatchJobPostResponse:
+      description: 'BatchJobPostResponse represents the name and uid of the batch job
+
+        created after a post request'
+      properties:
+        workflowName:
+          description: 'Name of created Argo Workflow
+
+            in: body'
+          type: string
+        workflowUID:
+          $ref: '#/components/schemas/UID'
+      type: object
+    BatchJobDescription:
+      description: BatchJobDescription describes the workflow of the batch job
+      properties:
+        FinishedAt:
+          description: Time when job finished
+          type: string
+        StartedAt:
+          description: Time when job started
+          type: string
+        workflowName:
+          description: Name of related Argo Workflow
+          type: string
+        workflowStatus:
+          $ref: '#/components/schemas/WorkflowPhase'
+        workflowUID:
+          $ref: '#/components/schemas/UID'
+      type: object
+    BatchJobGetResponse:
+      description: 'BatchJobGetResponse represents the full description and definition of a
+
+        retrieved batch job'
+      properties:
+        Definition:
+          $ref: '#/components/schemas/BatchJobDefinition'
+        Description:
+          $ref: '#/components/schemas/BatchJobDescription'
+      type: object
+    UID:
+      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
+
+        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
+
+        intent and helps make sure that UIDs and names do not get conflated.'
+      type: string
+    WorkflowPhase:
+      description: the workflow's phase
+      type: string
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    BatchJobDescriptionList:
+      description: BatchJobDescriptionList is a list of BatchJobDescription
+      items:
+        $ref: '#/components/schemas/BatchJobDescription'
+      type: array
+    BatchJobDefinition:
+      description: BatchJobDefinition is a common interface for BatchJob v1 and v2 which specifies necessary arguments
+      properties:
+        batchDataType:
+          description: Batch Data Type (data, json or str)
+          type: string
+        batchInterval:
+          description: Interval between batches
+          format: double
+          type: number
+        batchMethod:
+          description: Batch Method (predict, feedback (for SCv1))
+          type: string
+        batchPayloadType:
+          description: Batch Payload Type (ndarray, tensor, tftensor, v2raw, v2binary - only if DataType=data)
+          type: string
+        batchRetries:
+          description: Number of retries for each instance
+          format: int64
+          type: integer
+        batchSize:
+          description: Size of the batch (number of predictions per request)
+          format: int64
+          type: integer
+        batchTransportProtocol:
+          description: Batch Transport Protocol (rest or grpc)
+          type: string
+        batchWorkers:
+          description: Number of batch workers
+          format: int64
+          type: integer
+        inputData:
+          description: S3 URI of input data file
+          type: string
+        limitsCpu:
+          description: 'Container Resources for running batch jobs: limits: CPU'
+          type: string
+        limitsMemory:
+          description: 'Container Resources for running batch jobs: limits: Memory'
+          type: string
+        objectStoreSecretName:
+          description: name of Kubernetes Secret with S3 credentials
+          type: string
+        outputData:
+          description: S3 URI of output data file
+          type: string
+        pvcSize:
+          description: Size of PVC required for the batch job
+          type: string
+        requestsCpu:
+          description: 'Container Resources for running batch jobs: requests: CPU'
+          type: string
+        requestsMemory:
+          description: 'Container Resources for running batch jobs: requests: Memory'
+          type: string
+      type: object
+    BatchJobsListResponse:
+      description: 'BatchJobsListResponse represents the list of batch descriptions and their
+
+        limit, page, and page counts.'
+      properties:
+        batchJobs:
+          $ref: '#/components/schemas/BatchJobDescriptionList'
+        limit:
+          description: 'Limit of the request
+
+            in: body'
+          format: int64
+          type: integer
+        page:
+          description: 'Returned Page (counting from 0)
+
+            in: body'
+          format: int64
+          type: integer
+        pagesCount:
+          description: 'Number of available pages (Page = 0, ..., PagesCount - 1)
+
+            in: body'
+          format: int64
+          type: integer
+      type: object
+  responses:
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BatchJobGetResponse:
+      description: Batch Job Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobGetResponse'
+    BatchJobPostResponse:
+      description: Batch Job Post Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobPostResponse'
+    BatchJobsListResponse:
+      description: Batch Jobs List Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobsListResponse'
+  requestBodies:
+    BatchJobDefinition:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobDefinition'
+      description: WorkflowName
+      required: true
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

@@ -1,0 +1,468 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService GitOps API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- description: GitOps APIs for Seldon Deploy
+  name: GitOps
+paths:
+  /namespaces/{namespace}/experiments/{name}/gitdiff:
+    get:
+      description: Read the git diff for an experiment
+      operationId: ReadExperimentGitDiff
+      parameters:
+      - description: Hash
+        in: query
+        name: hash
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitDiffResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/experiments/{name}/gitlogs:
+    get:
+      description: Read the git commits for an experiment
+      operationId: ReadExperimentGitLogs
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitLogsResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/gitdiffs:
+    get:
+      description: Read the git diffs from hashes
+      operationId: ReadGitDiffs
+      parameters:
+      - description: Hashes is an array of git commit hashes to get diffs for
+        in: query
+        name: hashes
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitDiffsResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/gitops-status:
+    get:
+      description: Read the GitOps status
+      operationId: ReadGitOpsStatus
+      parameters:
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericResponse'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/models/{name}/gitdiff:
+    get:
+      description: Read the git diff for a model
+      operationId: ReadModelGitDiff
+      parameters:
+      - description: Hash
+        in: query
+        name: hash
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitDiffResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/models/{name}/gitlogs:
+    get:
+      description: Read the git commits for a model
+      operationId: ReadModelGitLogs
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitLogsResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/pipelines/{name}/gitdiff:
+    get:
+      description: Read the git diff for a pipeline
+      operationId: ReadPipelineGitDiff
+      parameters:
+      - description: Hash
+        in: query
+        name: hash
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitDiffResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/pipelines/{name}/gitlogs:
+    get:
+      description: Read the git commits for a pipeline
+      operationId: ReadPipelineGitLogs
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitLogsResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/seldondeployments/{name}/gitdiff:
+    get:
+      description: Read the git diff for a Seldon deployment
+      operationId: ReadSeldonDeploymentGitDiff
+      parameters:
+      - description: Hash
+        in: query
+        name: hash
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitDiffResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/seldondeployments/{name}/gitlogs:
+    get:
+      description: Read the git commits for a Seldon deployment
+      operationId: ReadSeldonDeploymentGitLogs
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GitLogsResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/seldondeployments/{name}/gitrestore:
+    post:
+      description: Restore the git commit
+      operationId: SeldonDeploymentGitRestore
+      parameters:
+      - description: Hash
+        in: query
+        name: hash
+        schema:
+          type: string
+      - description: Action
+        in: query
+        name: action
+        schema:
+          type: string
+      - description: Message
+        in: query
+        name: message
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+  /namespaces/{namespace}/seldondeployments/{name}/gitrevert:
+    post:
+      description: Revert the git commit
+      operationId: SeldonDeploymentGitRevert
+      parameters:
+      - description: Hash
+        in: query
+        name: hash
+        schema:
+          type: string
+      - description: Action
+        in: query
+        name: action
+        schema:
+          type: string
+      - description: Message
+        in: query
+        name: message
+        schema:
+          type: string
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - GitOps
+components:
+  responses:
+    GitLogsResponse:
+      description: Git Logs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AuditLog'
+            type: array
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    GitDiffsResponse:
+      description: Git Diffs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/FileDiff'
+            type: array
+    GitDiffResponse:
+      description: Git Diff
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileDiff'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+  schemas:
+    AuditLog:
+      properties:
+        AuthorName:
+          type: string
+        AuthorWhen:
+          format: date-time
+          type: string
+        CommitterName:
+          type: string
+        CommitterWhen:
+          format: date-time
+          type: string
+        Hash:
+          type: string
+      type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    FileDiff:
+      description: 'note diff is html that needs to be unicode decoded/unescaped
+
+        from and to are raw values
+
+        GitHubUrl is a github compare url'
+      properties:
+        ChangeType:
+          type: string
+        CommitHash:
+          type: string
+        Diff:
+          type: string
+        FileName:
+          type: string
+        From:
+          type: string
+        GitHubUrl:
+          type: string
+        PrevCommitHash:
+          type: string
+        To:
+          type: string
+      type: object
+    Message:
+      description: Message Message
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+      type: object
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

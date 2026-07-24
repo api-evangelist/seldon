@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService health API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: health
+paths:
+  /v2/health/live:
+    get:
+      summary: Server Live
+      responses:
+        '200':
+          description: OK
+      operationId: server-live
+      description: The “server live” API indicates if the inference server is able to receive and respond to metadata and inference requests. The “server live” API can be used directly to implement the Kubernetes `livenessProbe`.
+      tags:
+      - health
+  /v2/health/ready:
+    get:
+      summary: Server Ready
+      tags:
+      - health
+      responses:
+        '200':
+          description: OK
+      operationId: server-ready
+      description: The “server ready” health API indicates if all the models are ready for inferencing. The “server ready” health API can be used directly to implement the Kubernetes readinessProbe.
+  /v2/models/{model_name}/versions/{model_version}/ready:
+    parameters:
+    - schema:
+        type: string
+      name: model_name
+      in: path
+      required: true
+    - schema:
+        type: string
+      name: model_version
+      in: path
+      required: true
+    get:
+      summary: Model Ready
+      tags:
+      - health
+      responses:
+        '200':
+          description: OK
+      operationId: model-version-ready
+      description: The “model ready” health API indicates if a specific model is ready for inferencing. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies.
+  /v2/models/{model_name}/ready:
+    parameters:
+    - schema:
+        type: string
+      name: model_name
+      in: path
+      required: true
+    get:
+      summary: Model Ready
+      tags:
+      - health
+      responses:
+        '200':
+          description: OK
+      operationId: model-ready
+      description: The “model ready” health API indicates if a specific model is ready for inferencing. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies.
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

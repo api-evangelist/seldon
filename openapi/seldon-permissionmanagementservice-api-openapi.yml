@@ -1,0 +1,792 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService PermissionManagementService API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: PermissionManagementService
+paths:
+  /iam/groups:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      tags:
+      - PermissionManagementService
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_CreateGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CreateGroupResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1CreateGroupRequest'
+        required: true
+      tags:
+      - PermissionManagementService
+  /iam/groups/{groupName}/members:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetGroupMembers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGroupMembersResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: groupName
+        description: The name of the group for which to get members.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+  /iam/groups/{name}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeleteGroupResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: name
+        description: The name of the group to be deleted.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+  /iam/policy:
+    delete:
+      summary: Delete an authorization policy. The user must have `grant` permissions on the resource in the policy.
+      operationId: PermissionManagementService_DeletePolicy
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeletePolicyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: users
+        description: The user IDs from which to revoke the given resource/action permission.
+        in: query
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: groups
+        description: The groups from which to revoke the given resource/action permission.
+        in: query
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: action
+        description: The action part of the resource/action permission to revoke.
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: resource
+        description: The resource part of the resource/action permission to revoke.
+        in: query
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+    post:
+      summary: Create an authorization policy. The user must have `grant` permissions on the resource in the policy.
+      operationId: PermissionManagementService_CreatePolicy
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CreatePolicyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1Policy'
+        required: true
+      tags:
+      - PermissionManagementService
+  /iam/policy/permissions:
+    get:
+      summary: List all permissions associated with the given users and groups. A regular user will be able to see only their permissions and the permissions of their groups. A user with `read` permission on `system/iam` can see all permissions.
+      operationId: PermissionManagementService_GetPermissions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetPermissionsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: users
+        description: The user IDs for which to list permission.
+        in: query
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: groups
+        description: The groups for which to list permission.
+        in: query
+        required: false
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: callerPermissions
+        description: If true will list the permissions of the user making the request. All users have permissions to check their permissions.
+        in: query
+        required: false
+        schema:
+          type: boolean
+      tags:
+      - PermissionManagementService
+  /iam/policy/targets:
+    get:
+      summary: List all users and groups who have access to the given resource/action pair. The user calling this endpoint must have `grant` access to the given resource.
+      operationId: PermissionManagementService_GetPolicyTargets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetPolicyTargetsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: action
+        description: The action a target should be able to perform on the given resource.
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: resource
+        description: The resource a target should have access to.
+        in: query
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+  /iam/users:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetUsersResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: username
+        description: The username of the user to fetch. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: email
+        description: The email of the user to fetch. It must be a valid email.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: firstName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_CreateUser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CreateUserResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1CreateUserRequest'
+        required: true
+      tags:
+      - PermissionManagementService
+  /iam/users/{username}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteUser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeleteUserResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: username
+        description: The username of the user to be deleted.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+  /iam/users/{username}/groups:
+    get:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.
+      operationId: PermissionManagementService_GetUserGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetUserGroupsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: username
+        description: The name of the user for who to get groups.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+  /iam/users/{username}/groups/{group}:
+    delete:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_DeleteUserFromGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1DeleteUserFromGroupResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: username
+        description: The name of the user to be removed from a group.
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        description: The name of the group from which to remove a user.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+    put:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_AddUserToGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1AddUserToGroupResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: username
+        description: The name of the user to be added to a group.
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        description: The name of the group to which to add a user.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+  /iam/users/{username}/resetPassword:
+    post:
+      summary: Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.
+      operationId: PermissionManagementService_ResetUserPassword
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ResetUserPasswordResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: username
+        description: The username of the user to be deleted.
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - PermissionManagementService
+components:
+  schemas:
+    v1CreateGroupResponse:
+      type: object
+    v1ResourceActionPair:
+      type: object
+      properties:
+        action:
+          type: string
+        resource:
+          type: string
+    v1Policy:
+      type: object
+      properties:
+        userGrants:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1UserPolicy'
+        groupGrants:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1GroupPolicy'
+    v1Group:
+      type: object
+      properties:
+        name:
+          type: string
+    v1GetPermissionsResponse:
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1ResourceActionPair'
+    v1DeleteGroupResponse:
+      type: object
+    v1CreateUserResponse:
+      type: object
+    v1DeletePolicyResponse:
+      type: object
+    v1GroupPolicy:
+      type: object
+      properties:
+        group:
+          type: string
+        permission:
+          $ref: '#/components/schemas/v1ResourceActionPair'
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1UserPolicy:
+      type: object
+      properties:
+        user:
+          type: string
+        permission:
+          $ref: '#/components/schemas/v1ResourceActionPair'
+    v1CreatePolicyResponse:
+      type: object
+    v1AddUserToGroupResponse:
+      type: object
+    v1DeleteUserFromGroupResponse:
+      type: object
+    v1GetUsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1User'
+    v1GetPolicyTargetsResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: string
+        groups:
+          type: array
+          items:
+            type: string
+    v1GetGroupMembersResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1User'
+    v1DeleteUserResponse:
+      type: object
+    v1GetUserGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Group'
+    v1ResetUserPasswordResponse:
+      type: object
+    v1CreateGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the group to be created.
+      required:
+      - name
+    v1User:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        enabled:
+          type: boolean
+        emailVerified:
+          type: boolean
+        creationTime:
+          type: string
+          format: date-time
+    v1GetGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Group'
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1CreateUserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The username of the user. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters. It can be used for login and be part of policies.
+        email:
+          type: string
+          description: The email of the user. It must be a valid email. The user will receive instructions for setting credentials on this email.
+        firstName:
+          type: string
+        lastName:
+          type: string
+      required:
+      - username
+      - email
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

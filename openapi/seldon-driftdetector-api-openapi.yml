@@ -1,0 +1,377 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService DriftDetector API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- description: Drift Detector APIs for Seldon Deploy
+  name: DriftDetector
+paths:
+  /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector:
+    get:
+      description: List the specified Seldon Pipeline Drift Detector
+      operationId: ListDriftDetectorSeldonPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/DetectorListResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+    post:
+      description: Create the specified Seldon Pipeline Drift Detector
+      operationId: CreateDriftDetectorSeldonPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/DetectorConfigData'
+      responses:
+        '200':
+          $ref: '#/components/responses/DetectorResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+  /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector/{detectorName}:
+    delete:
+      description: Read the specified Seldon Pipeline Drift Detector
+      operationId: DeleteDriftDetectorSeldonPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: Detector Name
+        in: path
+        name: detectorName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+    get:
+      description: Read the specified Seldon Pipeline Drift Detector
+      operationId: ReadDriftDetectorSeldonPipeline
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: Detector Name
+        in: path
+        name: detectorName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/DetectorResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector:
+    get:
+      description: Read the specified Seldon Deployment Drift Detector
+      operationId: ListDriftDetectorSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/DetectorListResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+    post:
+      description: Create the specified Seldon Deployment Drift Detector
+      operationId: CreateDriftDetectorSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/DetectorConfigData'
+      responses:
+        '200':
+          $ref: '#/components/responses/DetectorResponse'
+        '400':
+          $ref: '#/components/responses/ErrorDefault'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+  /namespaces/{namespace}/seldondeployments/{name}/monitor/drift-detector/{detectorName}:
+    delete:
+      description: Read the specified Seldon Deployment Drift Detector
+      operationId: DeleteDriftDetectorSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: Detector Name
+        in: path
+        name: detectorName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/MessageResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+    get:
+      description: Read the specified Seldon Deployment Drift Detector
+      operationId: ReadDriftDetectorSeldonDeployment
+      parameters:
+      - description: Name identifies a resource
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Namespace provides a logical grouping of resources
+        in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - description: Detector Name
+        in: path
+        name: detectorName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/DetectorResponse'
+        '500':
+          $ref: '#/components/responses/ErrorDefault'
+      tags:
+      - DriftDetector
+components:
+  schemas:
+    DetectorData:
+      properties:
+        config:
+          $ref: '#/components/schemas/DetectorConfiguration'
+        deployment_kind:
+          type: string
+        deployment_name:
+          type: string
+        detector_type:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        status:
+          $ref: '#/components/schemas/DetectorStatus'
+      type: object
+    BasicDetectorConfiguration:
+      properties:
+        drift_batch_size:
+          type: string
+        drift_type_feature:
+          type: boolean
+        env_secret_ref:
+          type: string
+        project:
+          type: string
+        storage_uri:
+          type: string
+      type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    DetectorDeploymentConfiguration:
+      properties:
+        event_source:
+          type: string
+        event_type:
+          type: string
+        http_port:
+          type: string
+        memory_requirement:
+          type: string
+        model_name:
+          type: string
+        prom_scraping:
+          type: boolean
+        protocol:
+          type: string
+          description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>The corresponding protocol OIP value for Seldon Deployment detectors is ''kfserving.http''. For Seldon ML Pipelines, this is the only supported protocol.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
+        reply_url:
+          type: string
+        user_permission:
+          format: int64
+          type: integer
+      type: object
+    DetectorConfiguration:
+      properties:
+        basic:
+          $ref: '#/components/schemas/BasicDetectorConfiguration'
+        deployment:
+          $ref: '#/components/schemas/DetectorDeploymentConfiguration'
+      type: object
+    DetectorStatus:
+      type: string
+    DetectorConfigData:
+      properties:
+        config:
+          $ref: '#/components/schemas/DetectorConfiguration'
+        name:
+          type: string
+      type: object
+    Message:
+      description: Message Message
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+      type: object
+  responses:
+    DetectorListResponse:
+      description: Detector configuration data list
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/DetectorData'
+            type: array
+    DetectorResponse:
+      description: Detector configuration data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DetectorData'
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    DetectorConfigData:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DetectorConfigData'
+      description: Deployment Detector Data
+      required: true
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

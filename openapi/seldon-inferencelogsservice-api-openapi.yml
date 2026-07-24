@@ -1,0 +1,422 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService InferenceLogsService API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: InferenceLogsService
+paths:
+  /inference-logs/models:
+    get:
+      summary: Get inference logs metadata for seldon models.
+      operationId: InferenceLogsService_ListModelInferenceLogs
+      responses:
+        '200':
+          description: Inference logs metadata for seldon models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListModelInferenceLogsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        '501':
+          description: Service not implemented or enabled
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: namespace
+        description: The namespace that this seldon deployment belongs to.
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: pipelineName
+        description: The name of the seldon pipeline to get inference logs for.
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: modelName
+        description: The name of the seldon model to get inference logs for.
+        in: query
+        required: true
+        schema:
+          type: string
+      tags:
+      - InferenceLogsService
+  /inference-logs/namespace/{namespace}/pipelines/{pipelineName}/models/{modelName}:
+    post:
+      summary: Get inference logs for seldon models.
+      operationId: InferenceLogsService_GetModelInferenceLogs
+      responses:
+        '200':
+          description: Inference logs metadata for seldon models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetModelInferenceLogsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        '501':
+          description: Service not implemented or enabled
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: namespace
+        description: The namespace that this seldon deployment belongs to.
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pipelineName
+        description: The name of the seldon pipeline to get inference logs for.
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: modelName
+        description: The name of the seldon model to get inference logs for.
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startTime:
+                  type: string
+                  format: date-time
+                  example: '2020-01-01T00:00:00Z'
+                  description: The start time of the inference logs to get.
+                endTime:
+                  type: string
+                  format: date-time
+                  example: '2020-01-01T00:00:00Z'
+                  description: The end time of the inference logs to get.
+                limit:
+                  type: integer
+                  format: int32
+                  example: 100
+                  description: The maximum number of inference logs to get.
+                pageToken:
+                  type: string
+                  example: my-page-token
+                  description: The page token to use to get the next page of inference logs.
+        required: true
+      tags:
+      - InferenceLogsService
+  /inference-logs/namespace/{namespace}/seldondeployments/{deploymentName}:
+    post:
+      summary: Get inference logs for seldon deployments.
+      operationId: InferenceLogsService_GetDeploymentInferenceLogs
+      responses:
+        '200':
+          description: Inference logs metadata for seldon deployments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetDeploymentInferenceLogsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        '501':
+          description: Service not implemented or enabled
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: namespace
+        description: The namespace that this seldon deployment belongs to.
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: deploymentName
+        description: The name of the seldon deployment to get inference logs for.
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                predictorName:
+                  type: string
+                  example: default
+                  description: The predictor name of the seldon deployment to get inference logs for. e.g. "default", "canary", "shadow"
+                containerName:
+                  type: string
+                  example: my-container
+                  description: The container name of the seldon deployment to get inference logs for. e.g. "my-container", "input-transformer", "output-transformer"
+                startTime:
+                  type: string
+                  format: date-time
+                  example: '2020-01-01T00:00:00Z'
+                  description: The start time of the inference logs to get.
+                endTime:
+                  type: string
+                  format: date-time
+                  example: '2020-01-01T00:00:00Z'
+                  description: The end time of the inference logs to get.
+                limit:
+                  type: integer
+                  format: int32
+                  example: 100
+                  description: The maximum number of inference logs to get.
+                pageToken:
+                  type: string
+                  example: my-page-token
+                  description: The page token to use to get the next page of inference logs.
+              required:
+              - predictorName
+              - containerName
+        required: true
+      tags:
+      - InferenceLogsService
+  /inference-logs/seldondeployments:
+    get:
+      summary: Get inference logs metadata for seldon deployments.
+      operationId: InferenceLogsService_ListDeploymentInferenceLogs
+      responses:
+        '200':
+          description: Inference logs metadata for seldon deployments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListDeploymentInferenceLogsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        '501':
+          description: Service not implemented or enabled
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: namespace
+        description: The namespace that this seldon deployment belongs to.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: deploymentName
+        description: The name of the seldon deployment to get inference logs for.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: predictorName
+        description: The predictor name of the seldon deployment to get inference logs for. e.g. "default", "canary", "shadow"
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: containerName
+        description: The container name of the seldon deployment to get inference logs for. e.g. "my-container", "input-transformer", "output-transformer"
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - InferenceLogsService
+components:
+  schemas:
+    v1InferenceLogsModelItem:
+      type: object
+      properties:
+        namespace:
+          type: string
+        pipelineName:
+          type: string
+        modelName:
+          type: string
+        count:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    v1GetDeploymentInferenceLogsResponse:
+      type: object
+      properties:
+        namespace:
+          type: string
+        deploymentName:
+          type: string
+        predictorName:
+          type: string
+        containerName:
+          type: string
+        payloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
+        nextPageToken:
+          type: string
+        totalCount:
+          type: integer
+          format: int32
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1ListDeploymentInferenceLogsResponse:
+      type: object
+      properties:
+        inferenceLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
+    v1ListModelInferenceLogsResponse:
+      type: object
+      properties:
+        inferenceLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsModelItem'
+    v1InferenceLogsDeploymentItem:
+      type: object
+      properties:
+        namespace:
+          type: string
+        name:
+          type: string
+        predictor:
+          type: string
+        container:
+          type: string
+        count:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    v1InferenceLogsRawPayload:
+      type: object
+      properties:
+        requestId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        request: {}
+        response: {}
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1GetModelInferenceLogsResponse:
+      type: object
+      properties:
+        namespace:
+          type: string
+        pipelineName:
+          type: string
+        modelName:
+          type: string
+        payloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
+        nextPageToken:
+          type: string
+        totalCount:
+          type: integer
+          format: int32
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

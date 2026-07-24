@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService server API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: server
+paths:
+  /v2/health/live:
+    get:
+      summary: Server Live
+      responses:
+        '200':
+          description: OK
+      operationId: server-live
+      description: The “server live” API indicates if the inference server is able to receive and respond to metadata and inference requests. The “server live” API can be used directly to implement the Kubernetes `livenessProbe`.
+      tags:
+      - server
+  /v2/health/ready:
+    get:
+      summary: Server Ready
+      tags:
+      - server
+      responses:
+        '200':
+          description: OK
+      operationId: server-ready
+      description: The “server ready” health API indicates if all the models are ready for inferencing. The “server ready” health API can be used directly to implement the Kubernetes readinessProbe.
+  /v2:
+    get:
+      summary: Server Metadata
+      tags:
+      - server
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataServerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataServerErrorResponse'
+      operationId: server-metadata
+      description: The server metadata endpoint provides information about the server. A server metadata request is made with an HTTP GET to a server metadata endpoint.
+components:
+  schemas:
+    MetadataServerErrorResponse:
+      title: MetadataServerErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    MetadataServerResponse:
+      title: MetadataServerResponse
+      type: object
+      description: ''
+      x-examples: {}
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        extensions:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - version
+      - extensions
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''

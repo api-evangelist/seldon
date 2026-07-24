@@ -1,0 +1,653 @@
+openapi: 3.0.0
+info:
+  description: 'API to interact and manage the lifecycle of your machine learning models
+
+    deployed through Seldon Deploy.'
+  title: Seldon Deploy AlertingService ModelMetadataService API
+  version: v1alpha1
+servers:
+- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
+- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
+security:
+- OAuth2:
+  - '[]'
+tags:
+- name: ModelMetadataService
+paths:
+  /model/metadata:
+    get:
+      summary: List Model Metadata entries.
+      description: 'List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.'
+      operationId: ModelMetadataService_ListModelMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ModelMetadataListResponse'
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: URI
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: artifactType
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - UNKNOWN
+          - CUSTOM
+          - TENSORFLOW
+          - SKLEARN
+          - XGBOOST
+          - MLFLOW
+          - PYTORCH
+          - ONNX
+          - TENSORRT
+          - ALIBI_EXPLAIN
+          - ALIBI_DETECT
+          - HUGGINGFACE
+          - MLSERVER_PYTHON
+          - TRITON_PYTHON
+          default: UNKNOWN
+      - name: taskType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: modelType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: query
+        description: For more complex queries where other logical operators like OR, NOT, etc.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        description: Optional. The maximum number of Folders to return in the response.
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        description: 'Optional. A pagination token returned from a previous call to `List`
+
+          that indicates where this listing should continue from.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: listMask
+        description: 'Optional. Can be used to specify which fields of Model you wish to return in the response.
+
+          If left empty all fields will be returned.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: project
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orderBy
+        description: 'Based on https://cloud.google.com/apis/design/design_patterns#sorting_order
+
+
+          The order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: defaultProtocol
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - PROTOCOL_UNKNOWN
+          - PROTOCOL_SELDON
+          - PROTOCOL_TENSORFLOW
+          - PROTOCOL_V2
+          default: PROTOCOL_UNKNOWN
+      tags:
+      - ModelMetadataService
+    delete:
+      summary: Delete a Model Metadata entry.
+      operationId: ModelMetadataService_DeleteModelMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ModelMetadataDeleteResponse'
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: URI
+        description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: project
+        description: The project that this model belongs to.
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - ModelMetadataService
+    post:
+      summary: Create a Model Metadata entry.
+      operationId: ModelMetadataService_CreateModelMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ModelMetadataCreateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      requestBody:
+        $ref: '#/components/requestBodies/v1Model'
+      tags:
+      - ModelMetadataService
+    put:
+      summary: Update a Model Metadata entry.
+      operationId: ModelMetadataService_UpdateModelMetadata
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ModelMetadataUpdateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      requestBody:
+        $ref: '#/components/requestBodies/v1Model'
+      tags:
+      - ModelMetadataService
+  /model/metadata/runtime:
+    get:
+      summary: List Runtime Metadata for all deployments associated with a model.
+      operationId: ModelMetadataService_ListRuntimeMetadataForModel
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1RuntimeMetadataListResponse'
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema: {}
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+      parameters:
+      - name: ModelURI
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: DeploymentUID
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: DeploymentName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: DeploymentNamespace
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: DeploymentStatus
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - Running
+          - Stopped
+          - Unknown
+          default: Running
+      - name: PredictorName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: NodeName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        description: Optional. The maximum number of Folders to return in the response.
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        description: 'Optional. A pagination token returned from a previous call to `List`
+
+          that indicates where this listing should continue from.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: listMask
+        description: 'Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response.
+
+          If left empty all fields will be returned.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: deploymentType
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - UndefinedDeploymentType
+          - SeldonDeployment
+          - SeldonModel
+          - KnativeDetector
+          default: UndefinedDeploymentType
+      tags:
+      - ModelMetadataService
+components:
+  schemas:
+    v1DataType:
+      type: string
+      enum:
+      - FLOAT
+      - INT
+      - BOOL
+      - STRING
+      - BYTES
+      default: FLOAT
+    v1FeatureType:
+      type: string
+      enum:
+      - REAL
+      - CATEGORICAL
+      - PROBA
+      - ONE_HOT
+      - TEXT
+      - TENSOR
+      default: REAL
+      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
+    v1PredictionSchema:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureSchema'
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureSchema'
+      required:
+      - requests
+      - responses
+    v1DeploymentType:
+      type: string
+      enum:
+      - UndefinedDeploymentType
+      - SeldonDeployment
+      - SeldonModel
+      - KnativeDetector
+      default: UndefinedDeploymentType
+    v1ArtifactType:
+      type: string
+      enum:
+      - UNKNOWN
+      - CUSTOM
+      - TENSORFLOW
+      - SKLEARN
+      - XGBOOST
+      - MLFLOW
+      - PYTORCH
+      - ONNX
+      - TENSORRT
+      - ALIBI_EXPLAIN
+      - ALIBI_DETECT
+      - HUGGINGFACE
+      - MLSERVER_PYTHON
+      - TRITON_PYTHON
+      default: UNKNOWN
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1RuntimeDefaults:
+      type: object
+      properties:
+        defaultProtocol:
+          $ref: '#/components/schemas/v1DefaultProtocol'
+    v1FeatureCategorySchema:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/v1DataType'
+      required:
+      - name
+    v1DeploymentStatus:
+      type: string
+      enum:
+      - Running
+      - Stopped
+      - Unknown
+      default: Running
+    v1FeatureSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/v1FeatureType'
+        dataType:
+          $ref: '#/components/schemas/v1DataType'
+        nCategories:
+          type: string
+          format: int64
+        categoryMap:
+          type: object
+          additionalProperties:
+            type: string
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureCategorySchema'
+        shape:
+          type: array
+          items:
+            type: string
+            format: int64
+      required:
+      - name
+      - type
+    v1Model:
+      type: object
+      properties:
+        URI:
+          type: string
+          example: gs://seldon-models/sklearn/iris
+          description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters.
+        name:
+          type: string
+          example: Iris Classifier
+          description: The name of the model. It must not exceed 200 characters.
+        version:
+          type: string
+          example: v1.2.3
+          default: '"v0.0.1"'
+          description: The version of the model. It must not exceed 50 characters.
+        artifactType:
+          $ref: '#/components/schemas/v1ArtifactType'
+        taskType:
+          type: string
+          example: classification
+          description: The task type of the model. It must not exceed 50 characters.
+        tags:
+          type: object
+          example:
+            author: Jon
+          additionalProperties:
+            type: string
+          description: Key-value pairs of arbitrary metadata associated with the model. Each key and value must not exceed 100 and 500 characters respectively.
+        metrics:
+          type: object
+          example:
+            trainingPrecision: 0.78
+            trainingRecall: 0.87
+          additionalProperties:
+            type: number
+            format: double
+          description: Key-value pairs of static metrics associated with the model. For dynamic metrics look into metrics https://deploy.seldon.io/en/latest/contents/getting-started/production-installation/metrics.html. Keys must not exceed 100 characters.
+        creationTime:
+          type: string
+          format: date-time
+          example: '2017-01-15T01:30:15.01Z'
+          description: The creation timestamp for the model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+        predictionSchema:
+          $ref: '#/components/schemas/v1PredictionSchema'
+        project:
+          type: string
+          example: project_1
+          description: The project that this model belongs to.
+        runtimeDefaults:
+          $ref: '#/components/schemas/v1RuntimeDefaults'
+      required:
+      - URI
+    v1ModelMetadataCreateResponse:
+      type: object
+    v1RuntimeMetadataListResponse:
+      type: object
+      properties:
+        runtimeMetadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1RuntimeMetadata'
+        nextPageToken:
+          type: string
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
+    v1ModelMetadataListResponse:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Model'
+        nextPageToken:
+          type: string
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
+    v1RuntimeMetadata:
+      type: object
+      properties:
+        modelUri:
+          type: string
+          example: gs://seldon-models/sklearn/iris
+          description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+        deploymentName:
+          type: string
+          example: iris
+          description: The name of the Kubernetes deployment that is associated with a model.
+        deploymentNamespace:
+          type: string
+          example: seldon
+          description: The Kubernetes namespace in which this deployment is running in.
+        deploymentKubernetesUid:
+          type: string
+          example: 2c60bdb0-8a8e-46bf-a3c5-627ad507f76b
+          description: The Kubernetes UID of the deployment associated with a model. See https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids for details
+        predictorName:
+          type: string
+          example: default
+          description: The name of the predictor inside the deployment that contains the referenced model.
+        nodeName:
+          type: string
+          example: default-node
+          description: The name of the node inside the predictor that contains the referenced model. This is relevant and populated only for SeldonDeployment deployment types.
+        deploymentStatus:
+          $ref: '#/components/schemas/v1DeploymentStatus'
+        deploymentType:
+          $ref: '#/components/schemas/v1DeploymentType'
+        traffic:
+          type: string
+          format: int64
+          description: The amount of traffic server by this model in the deployment.
+        shadow:
+          type: boolean
+          description: True if this model is a shadow in the deployment.
+        creationTime:
+          type: string
+          format: date-time
+          example: '2017-01-15T01:30:15.01Z'
+          description: The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+        model:
+          $ref: '#/components/schemas/v1Model'
+        explainer:
+          type: boolean
+          description: True if this model is a explainer in the deployment.
+        replicas:
+          type: string
+          format: int64
+          description: The number of replicas for this model.
+    v1DefaultProtocol:
+      type: string
+      enum:
+      - PROTOCOL_UNKNOWN
+      - PROTOCOL_SELDON
+      - PROTOCOL_TENSORFLOW
+      - PROTOCOL_V2
+      default: PROTOCOL_UNKNOWN
+      description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1ModelMetadataUpdateResponse:
+      type: object
+    v1ModelMetadataDeleteResponse:
+      type: object
+  requestBodies:
+    v1Model:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/v1Model'
+      required: true
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://Y.Y.Y.Y
+          scopes:
+            email: ''
+            groups: ''
+            openid: ''
+            profile: ''
