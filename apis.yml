@@ -1,7 +1,20 @@
 aid: seldon
 name: Seldon
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/seldon.png
 url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -31,98 +44,410 @@ tags:
   - LLMOps
 
 apis:
-
-  - aid: seldon:seldon-inference-api
-    name: Seldon Inference API
-    description: >
-      The Seldon Inference API provides REST and gRPC endpoints for serving machine learning
-      model predictions at scale. Following the Open Inference Protocol (V2), the API exposes
-      standardized endpoints for model health checks, metadata queries, and prediction requests.
-      Deployed models are accessible via REST at /seldon/{namespace}/{deployment}/api/v1.0/predictions
-      and support multiple ML frameworks through pre-packaged inference servers.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-    baseURL: https://docs.seldon.ai
-    tags:
-      - Inference
-      - Model Serving
-      - REST
-      - gRPC
-      - Open Inference Protocol
-    properties:
-      - type: Documentation
-        url: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-      - type: OpenAPI
-        url: https://github.com/SeldonIO/seldon-core/blob/master/openapi/engine.oas3.json
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-openapi.yml
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-v2-openapi.yml
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-wrapper-api-openapi.yml
-
-  - aid: seldon:seldon-enterprise-platform-api
-    name: Seldon Enterprise Platform REST API
-    description: >
-      The Seldon Enterprise Platform REST API enables programmatic interaction with machine
-      learning deployment management, providing endpoints to create, update, and monitor
-      SeldonDeployments. The interactive API reference is accessible via Swagger UI at
-      $ML_PLATFORM_HOST/seldon-deploy/swagger/ and supports authentication via OIDC and
-      session-based methods. The API supports complex deployment pipeline integrations with
-      upstream services.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-    baseURL: https://deploy.seldon.io
-    tags:
-      - Enterprise
-      - Deployment Management
-      - REST
-      - Swagger
-    properties:
-      - type: Documentation
-        url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-enterprise-platform-api-openapi.yml
-
-  - aid: seldon:seldon-drift-detection-api
-    name: Seldon Drift Detection API
-    description: >
-      Seldon integrates Alibi-Detect drift detection models that can be deployed as standard
-      Seldon models, providing REST endpoints for monitoring incoming request distribution
-      against reference training data distributions. Drift detectors are configured and managed
-      via the Seldon Core 2 deployment API and expose detection results through standard
-      inference endpoints.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift
-    baseURL: https://docs.seldon.ai
-    tags:
-      - Drift Detection
-      - Monitoring
-      - Alibi-Detect
-    properties:
-      - type: Documentation
-        url: https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift
-
-  - aid: seldon:seldon-explainability-api
-    name: Seldon Explainability API
-    description: >
-      Seldon provides a dedicated /explain REST endpoint alongside each deployed model,
-      powered by the Alibi explainability library. The endpoint supports multiple explanation
-      algorithms including SHAP, integrated gradients, and anchor-based methods, allowing
-      users to request human-interpretable explanations for individual model predictions
-      in production.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.seldon.io/projects/seldon-core/en/latest/analytics/drift_detection.html
-    baseURL: https://docs.seldon.io
-    tags:
-      - Explainability
-      - SHAP
-      - Alibi
-      - Model Interpretability
-    properties:
-      - type: Documentation
-        url: https://docs.seldon.io/projects/seldon-core/en/latest/reference/apis/v2-protocol.html
-
+- aid: seldon:seldon-inference-api
+  name: Seldon Inference API
+  description: >
+    The Seldon Inference API provides REST and gRPC endpoints for serving machine learning model predictions
+    at scale. Following the Open Inference Protocol (V2), the API exposes standardized endpoints for model
+    health checks, metadata queries, and prediction requests. Deployed models are accessible via REST
+    at /seldon/{namespace}/{deployment}/api/v1.0/predictions and support multiple ML frameworks through
+    pre-packaged inference servers.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Inference
+  - Model Serving
+  - REST
+  - gRPC
+  - Open Inference Protocol
+  properties:
+  - type: Documentation
+    url: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  - type: OpenAPI
+    url: https://github.com/SeldonIO/seldon-core/blob/master/openapi/engine.oas3.json
+  - type: OpenAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-openapi.yml
+  - type: OpenAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-v2-openapi.yml
+  - type: OpenAPI
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-wrapper-api-openapi.yml
+- aid: seldon:seldon-drift-detection-api
+  name: Seldon Drift Detection API
+  description: >
+    Seldon integrates Alibi-Detect drift detection models that can be deployed as standard Seldon models,
+    providing REST endpoints for monitoring incoming request distribution against reference training data
+    distributions. Drift detectors are configured and managed via the Seldon Core 2 deployment API and
+    expose detection results through standard inference endpoints.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Drift Detection
+  - Monitoring
+  - Alibi-Detect
+  properties:
+  - type: Documentation
+    url: https://docs.seldon.ai/seldon-core-2/user-guide/data-science-monitoring/drift
+- aid: seldon:seldon-explainability-api
+  name: Seldon Explainability API
+  description: >
+    Seldon provides a dedicated /explain REST endpoint alongside each deployed model, powered by the Alibi
+    explainability library. The endpoint supports multiple explanation algorithms including SHAP, integrated
+    gradients, and anchor-based methods, allowing users to request human-interpretable explanations for
+    individual model predictions in production.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.seldon.io/projects/seldon-core/en/latest/analytics/drift_detection.html
+  baseURL: https://docs.seldon.io
+  tags:
+  - Explainability
+  - SHAP
+  - Alibi
+  - Model Interpretability
+  properties:
+  - type: Documentation
+    url: https://docs.seldon.io/projects/seldon-core/en/latest/reference/apis/v2-protocol.html
+- aid: seldon:seldon-alertingservice-api
+  name: Seldon AlertingService API
+  description: The AlertingService API from Seldon — 2 operation(s) for alertingservice.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - AlertingService
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-alertingservice-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-applicationlogs-api
+  name: Seldon ApplicationLogs API
+  description: ApplicationLogs APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - ApplicationLogs
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-applicationlogs-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-batchjobs-api
+  name: Seldon BatchJobs API
+  description: Batch Jobs APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - BatchJobs
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-batchjobs-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-driftdetector-api
+  name: Seldon DriftDetector API
+  description: Drift Detector APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - DriftDetector
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-driftdetector-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-environment-api
+  name: Seldon Environment API
+  description: Environment APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Environment
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-environment-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-experiments-api
+  name: Seldon Experiments API
+  description: Seldon Core Experiment APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Experiments
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-experiments-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-explain-api
+  name: Seldon Explain API
+  description: Explanation APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Explain
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-explain-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-external-ambassador-api-api
+  name: Seldon External Ambassador API API
+  description: >-
+    The External Ambassador API API from Seldon — 2 operation(s) for external ambassador api.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - External Ambassador API
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-external-ambassador-api-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-gitops-api
+  name: Seldon GitOps API
+  description: GitOps APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - GitOps
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-gitops-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-health-api
+  name: Seldon health API
+  description: The health API from Seldon — 4 operation(s) for health.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - health
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-health-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-healthcheckservice-api
+  name: Seldon HealthcheckService API
+  description: The HealthcheckService API from Seldon — 1 operation(s) for healthcheckservice.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - HealthcheckService
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-healthcheckservice-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-inferencelogsservice-api
+  name: Seldon InferenceLogsService API
+  description: The InferenceLogsService API from Seldon — 4 operation(s) for inferencelogsservice.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - InferenceLogsService
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-inferencelogsservice-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-internal-api
+  name: Seldon Internal API
+  description: The Internal API from Seldon — 6 operation(s) for internal.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Internal
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-internal-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-kubernetesresources-api
+  name: Seldon KubernetesResources API
+  description: KubernetesResources APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - KubernetesResources
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-kubernetesresources-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-loadtestjobs-api
+  name: Seldon LoadtestJobs API
+  description: Loadtest Jobs APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - LoadtestJobs
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-loadtestjobs-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-metadata-api
+  name: Seldon metadata API
+  description: The metadata API from Seldon — 3 operation(s) for metadata.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-metricsserver-api
+  name: Seldon MetricsServer API
+  description: Metrics Server APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - MetricsServer
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-metricsserver-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-model-api
+  name: Seldon model API
+  description: The model API from Seldon — 6 operation(s) for model.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - model
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-model-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-modelmetadataservice-api
+  name: Seldon ModelMetadataService API
+  description: The ModelMetadataService API from Seldon — 2 operation(s) for modelmetadataservice.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - ModelMetadataService
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-modelmetadataservice-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-models-api
+  name: Seldon Models API
+  description: Seldon Core Model APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-models-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-monitor-api
+  name: Seldon Monitor API
+  description: The Monitor API from Seldon — 4 operation(s) for monitor.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Monitor
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-monitor-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-outlierdetector-api
+  name: Seldon OutlierDetector API
+  description: Outlier Detector APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - OutlierDetector
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-outlierdetector-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-permissionmanagementservice-api
+  name: Seldon PermissionManagementService API
+  description: >-
+    The PermissionManagementService API from Seldon — 11 operation(s) for permissionmanagementservice.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - PermissionManagementService
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-permissionmanagementservice-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-pipelines-api
+  name: Seldon Pipelines API
+  description: Seldon Core Pipeline APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Pipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-pipelines-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-predict-api
+  name: Seldon Predict API
+  description: Prediction APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Predict
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-predict-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-secretsservice-api
+  name: Seldon SecretsService API
+  description: The SecretsService API from Seldon — 6 operation(s) for secretsservice.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - SecretsService
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-secretsservice-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-seldondeployments-api
+  name: Seldon SeldonDeployments API
+  description: SeldonDeployments APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - SeldonDeployments
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-seldondeployments-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-server-api
+  name: Seldon server API
+  description: The server API from Seldon — 3 operation(s) for server.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - server
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-server-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 common:
 
   - type: AgenticAccess
