@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService Environment API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ReadCluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/cluster"
+          },
+          "docs": "Read the cluster info"
+        },
+        {
+          "info": {
+            "name": "ReadHealthCheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/healthcheck"
+          },
+          "docs": "Read the healthcheck"
+        },
+        {
+          "info": {
+            "name": "ReadUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/user"
+          },
+          "docs": "Read the request user"
+        },
+        {
+          "info": {
+            "name": "ReadVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/version"
+          },
+          "docs": "Read the version"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

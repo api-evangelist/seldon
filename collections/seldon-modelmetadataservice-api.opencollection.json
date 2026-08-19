@@ -1,0 +1,238 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService ModelMetadataService API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ModelMetadataService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Model Metadata entries.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/model/metadata",
+            "params": [
+              {
+                "name": "URI",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "artifactType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modelType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "For more complex queries where other logical operators like OR, NOT, etc."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Optional. The maximum number of Folders to return in the response."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Optional. A pagination token returned from a previous call to `List`\nthat indicates where this listing should continue from."
+              },
+              {
+                "name": "listMask",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Can be used to specify which fields of Model you wish to return in the response.\nIf left empty all fields will be returned."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "Based on https://cloud.google.com/apis/design/design_patterns#sorting_order\n\nThe order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type."
+              },
+              {
+                "name": "defaultProtocol",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`."
+        },
+        {
+          "info": {
+            "name": "Create a Model Metadata entry.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/model/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Model Metadata entry."
+        },
+        {
+          "info": {
+            "name": "Update a Model Metadata entry.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/model/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Model Metadata entry."
+        },
+        {
+          "info": {
+            "name": "Delete a Model Metadata entry.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/model/metadata",
+            "params": [
+              {
+                "name": "URI",
+                "value": "",
+                "type": "query",
+                "description": "The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "The project that this model belongs to."
+              }
+            ]
+          },
+          "docs": "Delete a Model Metadata entry."
+        },
+        {
+          "info": {
+            "name": "List Runtime Metadata for all deployments associated with a model.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/model/metadata/runtime",
+            "params": [
+              {
+                "name": "ModelURI",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DeploymentUID",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DeploymentName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DeploymentNamespace",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DeploymentStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PredictorName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "NodeName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Optional. The maximum number of Folders to return in the response."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Optional. A pagination token returned from a previous call to `List`\nthat indicates where this listing should continue from."
+              },
+              {
+                "name": "listMask",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response.\nIf left empty all fields will be returned."
+              },
+              {
+                "name": "deploymentType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Runtime Metadata for all deployments associated with a model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

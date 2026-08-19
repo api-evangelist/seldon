@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService model API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "model",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Model Ready",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/versions/:model_version/ready",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model_version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The “model ready” health API indicates if a specific model is ready for inferencing. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies."
+        },
+        {
+          "info": {
+            "name": "Model Ready",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/ready",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The “model ready” health API indicates if a specific model is ready for inferencing. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies."
+        },
+        {
+          "info": {
+            "name": "Model Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/versions/:model_version",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model_version",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error."
+        },
+        {
+          "info": {
+            "name": "Model Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error."
+        },
+        {
+          "info": {
+            "name": "Model Inference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/versions/:model_version/infer",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model_version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error."
+        },
+        {
+          "info": {
+            "name": "Model Inference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/infer",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

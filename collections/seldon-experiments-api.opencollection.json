@@ -1,0 +1,389 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService Experiments API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Experiments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetPipelineExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read Seldon Pipeline Experiment"
+        },
+        {
+          "info": {
+            "name": "CreatePipelineExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Seldon Pipeline Experiment"
+        },
+        {
+          "info": {
+            "name": "UpdatePipelineExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the specified Seldon Pipeline Experiment"
+        },
+        {
+          "info": {
+            "name": "DeletePipelineExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Delete Seldon Pipeline Experiment Pipelines"
+        },
+        {
+          "info": {
+            "name": "CreateCanaryExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment/canary",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "weight",
+                "value": "",
+                "type": "query",
+                "description": "Weight of the traffic directed to the canary pipeline, between 0 and 100"
+              }
+            ]
+          },
+          "docs": "Create the specified Seldon Pipeline Canary experiment"
+        },
+        {
+          "info": {
+            "name": "PromoteCanary",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment/canary",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Promote the specified Seldon Pipeline Canary"
+        },
+        {
+          "info": {
+            "name": "RemoveCanary",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment/canary",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Delete the specified Seldon Pipeline Canary"
+        },
+        {
+          "info": {
+            "name": "CreateShadowExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment/shadow",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Create the specified Seldon Pipeline Shadow experiment"
+        },
+        {
+          "info": {
+            "name": "PromoteShadow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment/shadow",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Promote the specified Seldon Pipeline Shadow"
+        },
+        {
+          "info": {
+            "name": "RemoveShadow",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/experiment/shadow",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Delete the specified Seldon Pipeline Shadow"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,897 @@
+{
+  "item": [
+    {
+      "id": "f6bef3b4-01b3-48f4-89a7-b90c7e970cde",
+      "name": "MetricsServer",
+      "description": {
+        "content": "Metrics Server APIs for Seldon Deploy",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9460842-cc5b-40a4-9fb4-b22343751ca2",
+          "name": "List Metrics Server Seldon Deployment",
+          "request": {
+            "name": "List Metrics Server Seldon Deployment",
+            "description": {
+              "content": "Read the specified Seldon Deployment Metrics Server",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "metrics-server"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0272609-b02d-47b2-9c45-b48001a6a6f4",
+              "name": "Detector configuration data list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"config\": {\n      \"basic\": {\n        \"drift_batch_size\": \"string\",\n        \"drift_type_feature\": false,\n        \"env_secret_ref\": \"string\",\n        \"project\": \"string\",\n        \"storage_uri\": \"string\"\n      },\n      \"deployment\": {\n        \"event_source\": \"string\",\n        \"event_type\": \"string\",\n        \"http_port\": \"string\",\n        \"memory_requirement\": \"string\",\n        \"model_name\": \"string\",\n        \"prom_scraping\": true,\n        \"protocol\": \"string\",\n        \"reply_url\": \"string\",\n        \"user_permission\": 4558\n      }\n    },\n    \"deployment_kind\": \"string\",\n    \"deployment_name\": \"string\",\n    \"detector_type\": \"string\",\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"config\": {\n      \"basic\": {\n        \"drift_batch_size\": \"string\",\n        \"drift_type_feature\": false,\n        \"env_secret_ref\": \"string\",\n        \"project\": \"string\",\n        \"storage_uri\": \"string\"\n      },\n      \"deployment\": {\n        \"event_source\": \"string\",\n        \"event_type\": \"string\",\n        \"http_port\": \"string\",\n        \"memory_requirement\": \"string\",\n        \"model_name\": \"string\",\n        \"prom_scraping\": false,\n        \"protocol\": \"string\",\n        \"reply_url\": \"string\",\n        \"user_permission\": 1676\n      }\n    },\n    \"deployment_kind\": \"string\",\n    \"deployment_name\": \"string\",\n    \"detector_type\": \"string\",\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5aaa312-ebce-4dcc-a6ff-8310fb8170be",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4958,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb01812d-6aab-4b2d-93a7-d6e8065d03b7",
+          "name": "Create Metrics Server Seldon Deployment",
+          "request": {
+            "name": "Create Metrics Server Seldon Deployment",
+            "description": {
+              "content": "Create the specified Seldon Deployment Metrics Server",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "metrics-server"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f227567e-70a0-4b97-a83d-c9863bc7a581",
+              "name": "Detector configuration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"deployment_kind\": \"string\",\n  \"deployment_name\": \"string\",\n  \"detector_type\": \"string\",\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b23081e7-cdf1-4d42-abe6-921a147a000e",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4958,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d19c0a1c-5e67-47b3-9937-3b882656cea4",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4958,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ebb586c-cbda-44e0-9c35-c1bd89e3f69a",
+          "name": "Delete Metrics Server Seldon Deployment",
+          "request": {
+            "name": "Delete Metrics Server Seldon Deployment",
+            "description": {
+              "content": "Read the specified Seldon Deployment Metrics Server",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "metrics-server",
+                ":detectorName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detectorName",
+                  "description": "(Required) Detector Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e73b6be3-bd64-4bbd-8dc9-a0f6707ce25e",
+              "name": "GenericMessage Message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 612,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c9a7ee0-4776-44f7-926f-5fc5f404b122",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4958,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f98ada9b-2c13-460e-a936-14ca1e854d5e",
+          "name": "Read Metrics Server Seldon Deployment",
+          "request": {
+            "name": "Read Metrics Server Seldon Deployment",
+            "description": {
+              "content": "Read the specified Seldon Deployment Metrics Server",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "metrics-server",
+                ":detectorName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detectorName",
+                  "description": "(Required) Detector Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02be3f2a-2fa8-4760-b8a2-f957f1c16c9b",
+              "name": "Detector configuration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"deployment_kind\": \"string\",\n  \"deployment_name\": \"string\",\n  \"detector_type\": \"string\",\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81311cec-d7e9-4f0c-8560-4f4f19408a84",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "metrics-server",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4958,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d23ca47a-f777-4f2d-8376-dbe6096e207b",
+    "name": "Seldon Deploy AlertingService MetricsServer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

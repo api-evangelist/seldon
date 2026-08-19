@@ -1,0 +1,1682 @@
+{
+  "item": [
+    {
+      "id": "e930dfe9-76db-4fa5-9175-d15c48df94cf",
+      "name": "DriftDetector",
+      "description": {
+        "content": "Drift Detector APIs for Seldon Deploy",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37de8f2c-3420-4e5f-96a1-39515602236a",
+          "name": "List Drift Detector Seldon Pipeline",
+          "request": {
+            "name": "List Drift Detector Seldon Pipeline",
+            "description": {
+              "content": "List the specified Seldon Pipeline Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "monitor",
+                "drift-detector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f360a882-3dd9-41a8-8c42-a5e28bb3fb4b",
+              "name": "Detector configuration data list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"config\": {\n      \"basic\": {\n        \"drift_batch_size\": \"string\",\n        \"drift_type_feature\": true,\n        \"env_secret_ref\": \"string\",\n        \"project\": \"string\",\n        \"storage_uri\": \"string\"\n      },\n      \"deployment\": {\n        \"event_source\": \"string\",\n        \"event_type\": \"string\",\n        \"http_port\": \"string\",\n        \"memory_requirement\": \"string\",\n        \"model_name\": \"string\",\n        \"prom_scraping\": false,\n        \"protocol\": \"string\",\n        \"reply_url\": \"string\",\n        \"user_permission\": 9505\n      }\n    },\n    \"deployment_kind\": \"string\",\n    \"deployment_name\": \"string\",\n    \"detector_type\": \"string\",\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"config\": {\n      \"basic\": {\n        \"drift_batch_size\": \"string\",\n        \"drift_type_feature\": true,\n        \"env_secret_ref\": \"string\",\n        \"project\": \"string\",\n        \"storage_uri\": \"string\"\n      },\n      \"deployment\": {\n        \"event_source\": \"string\",\n        \"event_type\": \"string\",\n        \"http_port\": \"string\",\n        \"memory_requirement\": \"string\",\n        \"model_name\": \"string\",\n        \"prom_scraping\": true,\n        \"protocol\": \"string\",\n        \"reply_url\": \"string\",\n        \"user_permission\": 293\n      }\n    },\n    \"deployment_kind\": \"string\",\n    \"deployment_name\": \"string\",\n    \"detector_type\": \"string\",\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "089bf14d-2b7b-48b6-a83d-8bb71d83ef7b",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf301ddc-28c9-4554-839b-186d998297ee",
+          "name": "Create Drift Detector Seldon Pipeline",
+          "request": {
+            "name": "Create Drift Detector Seldon Pipeline",
+            "description": {
+              "content": "Create the specified Seldon Pipeline Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "monitor",
+                "drift-detector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a5d078c-c537-410b-8084-5c6be17f778a",
+              "name": "Detector configuration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"deployment_kind\": \"string\",\n  \"deployment_name\": \"string\",\n  \"detector_type\": \"string\",\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5f915b2-aff1-43c9-9cf8-c51b2cd85379",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ab52136-0821-436a-b1cc-353667e9b2e3",
+          "name": "Delete Drift Detector Seldon Pipeline",
+          "request": {
+            "name": "Delete Drift Detector Seldon Pipeline",
+            "description": {
+              "content": "Read the specified Seldon Pipeline Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "monitor",
+                "drift-detector",
+                ":detectorName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detectorName",
+                  "description": "(Required) Detector Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bdec53e-958a-4896-8635-86ee3a217a15",
+              "name": "GenericMessage Message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7628,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c6d43dd-1356-4b8e-b863-0761b593ff0f",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dbfd8a4-8071-4c0f-9172-4f8c7fdf5ccb",
+          "name": "Read Drift Detector Seldon Pipeline",
+          "request": {
+            "name": "Read Drift Detector Seldon Pipeline",
+            "description": {
+              "content": "Read the specified Seldon Pipeline Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "monitor",
+                "drift-detector",
+                ":detectorName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detectorName",
+                  "description": "(Required) Detector Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4e1edd0-93b5-41ad-ad51-08383d2f478a",
+              "name": "Detector configuration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"deployment_kind\": \"string\",\n  \"deployment_name\": \"string\",\n  \"detector_type\": \"string\",\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cdfa846-e71d-4528-a773-edeb42df9115",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02827463-2c14-45c0-bee9-274c1e12a36c",
+          "name": "List Drift Detector Seldon Deployment",
+          "request": {
+            "name": "List Drift Detector Seldon Deployment",
+            "description": {
+              "content": "Read the specified Seldon Deployment Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "drift-detector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3f84d17-ed65-446e-8279-d805aa216a36",
+              "name": "Detector configuration data list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"config\": {\n      \"basic\": {\n        \"drift_batch_size\": \"<string>\",\n        \"drift_type_feature\": \"<boolean>\",\n        \"env_secret_ref\": \"<string>\",\n        \"project\": \"<string>\",\n        \"storage_uri\": \"<string>\"\n      },\n      \"deployment\": {\n        \"event_source\": \"<string>\",\n        \"event_type\": \"<string>\",\n        \"http_port\": \"<string>\",\n        \"memory_requirement\": \"<string>\",\n        \"model_name\": \"<string>\",\n        \"prom_scraping\": \"<boolean>\",\n        \"protocol\": \"<string>\",\n        \"reply_url\": \"<string>\",\n        \"user_permission\": \"<long>\"\n      }\n    },\n    \"deployment_kind\": \"string\",\n    \"deployment_name\": \"string\",\n    \"detector_type\": \"string\",\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"config\": {\n      \"basic\": {\n        \"drift_batch_size\": \"<string>\",\n        \"drift_type_feature\": \"<boolean>\",\n        \"env_secret_ref\": \"<string>\",\n        \"project\": \"<string>\",\n        \"storage_uri\": \"<string>\"\n      },\n      \"deployment\": {\n        \"event_source\": \"<string>\",\n        \"event_type\": \"<string>\",\n        \"http_port\": \"<string>\",\n        \"memory_requirement\": \"<string>\",\n        \"model_name\": \"<string>\",\n        \"prom_scraping\": \"<boolean>\",\n        \"protocol\": \"<string>\",\n        \"reply_url\": \"<string>\",\n        \"user_permission\": \"<long>\"\n      }\n    },\n    \"deployment_kind\": \"string\",\n    \"deployment_name\": \"string\",\n    \"detector_type\": \"string\",\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89e55bd6-6726-4e07-a23f-19028c915acc",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18d633cb-04f5-4a31-b0c7-ac5280c63bac",
+          "name": "Create Drift Detector Seldon Deployment",
+          "request": {
+            "name": "Create Drift Detector Seldon Deployment",
+            "description": {
+              "content": "Create the specified Seldon Deployment Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "drift-detector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0abcb139-7f5a-4db5-a817-0867636065b8",
+              "name": "Detector configuration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"deployment_kind\": \"string\",\n  \"deployment_name\": \"string\",\n  \"detector_type\": \"string\",\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c59729c9-6e9d-4090-865c-c7d151652ab7",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e220241-8703-4ea8-8da5-ad9ae90673d7",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2323c3c-335f-486a-9e7f-a334ca1a9b34",
+          "name": "Delete Drift Detector Seldon Deployment",
+          "request": {
+            "name": "Delete Drift Detector Seldon Deployment",
+            "description": {
+              "content": "Read the specified Seldon Deployment Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "drift-detector",
+                ":detectorName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detectorName",
+                  "description": "(Required) Detector Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6318cc98-33d9-4fd3-bb20-90f46fc5a328",
+              "name": "GenericMessage Message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7628,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f011244-4cd5-482c-b066-f0cd464e38fb",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "447507ef-4abb-469c-8bc8-0ee93f3de6ca",
+          "name": "Read Drift Detector Seldon Deployment",
+          "request": {
+            "name": "Read Drift Detector Seldon Deployment",
+            "description": {
+              "content": "Read the specified Seldon Deployment Drift Detector",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "drift-detector",
+                ":detectorName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "detectorName",
+                  "description": "(Required) Detector Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8fba944a-845d-41c2-bd33-527901eef6eb",
+              "name": "Detector configuration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"basic\": {\n      \"drift_batch_size\": \"<string>\",\n      \"drift_type_feature\": \"<boolean>\",\n      \"env_secret_ref\": \"<string>\",\n      \"project\": \"<string>\",\n      \"storage_uri\": \"<string>\"\n    },\n    \"deployment\": {\n      \"event_source\": \"<string>\",\n      \"event_type\": \"<string>\",\n      \"http_port\": \"<string>\",\n      \"memory_requirement\": \"<string>\",\n      \"model_name\": \"<string>\",\n      \"prom_scraping\": \"<boolean>\",\n      \"protocol\": \"<string>\",\n      \"reply_url\": \"<string>\",\n      \"user_permission\": \"<long>\"\n    }\n  },\n  \"deployment_kind\": \"string\",\n  \"deployment_name\": \"string\",\n  \"detector_type\": \"string\",\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32d22dba-048c-4be1-b10a-3366099ee233",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "drift-detector",
+                    ":detectorName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "detectorName",
+                      "description": "(Required) Detector Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2995,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a121c1ea-204d-4c43-8d96-86a32e9e85aa",
+    "name": "Seldon Deploy AlertingService DriftDetector API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

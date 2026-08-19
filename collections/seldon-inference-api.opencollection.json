@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService inference API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "inference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Model Inference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/versions/:model_version/infer",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "model_version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error."
+        },
+        {
+          "info": {
+            "name": "Model Inference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/v2/models/:model_name/infer",
+            "params": [
+              {
+                "name": "model_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

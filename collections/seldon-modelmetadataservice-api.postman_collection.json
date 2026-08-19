@@ -1,0 +1,1886 @@
+{
+  "item": [
+    {
+      "id": "065467b3-7f61-49e9-95c3-f826dc419084",
+      "name": "ModelMetadataService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38029e76-6a02-4ae9-a9c5-ca2beececd1b",
+          "name": "List Model Metadata entries.",
+          "request": {
+            "name": "List Model Metadata entries.",
+            "description": {
+              "content": "List takes several parameters that are present in the Model Metadata and tries to list all metadata entries that match all supplied fields. To filter by `tags` or `metrics` you can use a map as a query parameter. For example: `?tags[key]=value`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "model",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "URI",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "artifactType",
+                  "value": "UNKNOWN"
+                },
+                {
+                  "disabled": false,
+                  "key": "taskType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modelType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "For more complex queries where other logical operators like OR, NOT, etc."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Optional. The maximum number of Folders to return in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Optional. A pagination token returned from a previous call to `List`\nthat indicates where this listing should continue from."
+                },
+                {
+                  "disabled": false,
+                  "key": "listMask",
+                  "value": "<string>",
+                  "description": "Optional. Can be used to specify which fields of Model you wish to return in the response.\nIf left empty all fields will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "Based on https://cloud.google.com/apis/design/design_patterns#sorting_order\n\nThe order in which to return the model metadata. The string value should follow SQL syntax: comma separated list of fields. The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. Valid field names include: uri, name, version, project, artifact_type, task_type."
+                },
+                {
+                  "disabled": false,
+                  "key": "defaultProtocol",
+                  "value": "PROTOCOL_UNKNOWN"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4afa9be0-85ab-48cc-a1c6-4e373815d4ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modelType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "defaultProtocol",
+                      "value": "PROTOCOL_UNKNOWN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"models\": [\n    {\n      \"URI\": \"gs://seldon-models/sklearn/iris\",\n      \"name\": \"Iris Classifier\",\n      \"version\": \"v1.2.3\",\n      \"artifactType\": \"UNKNOWN\",\n      \"taskType\": \"classification\",\n      \"tags\": {\n        \"author\": \"Jon\"\n      },\n      \"metrics\": {\n        \"trainingPrecision\": 0.78,\n        \"trainingRecall\": 0.87\n      },\n      \"creationTime\": \"2017-01-15T01:30:15.01Z\",\n      \"predictionSchema\": {\n        \"requests\": [\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"responses\": [\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"project\": \"project_1\",\n      \"runtimeDefaults\": {\n        \"defaultProtocol\": \"PROTOCOL_UNKNOWN\"\n      }\n    },\n    {\n      \"URI\": \"gs://seldon-models/sklearn/iris\",\n      \"name\": \"Iris Classifier\",\n      \"version\": \"v1.2.3\",\n      \"artifactType\": \"UNKNOWN\",\n      \"taskType\": \"classification\",\n      \"tags\": {\n        \"author\": \"Jon\"\n      },\n      \"metrics\": {\n        \"trainingPrecision\": 0.78,\n        \"trainingRecall\": 0.87\n      },\n      \"creationTime\": \"2017-01-15T01:30:15.01Z\",\n      \"predictionSchema\": {\n        \"requests\": [\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"responses\": [\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"string\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nCategories\": \"string\",\n            \"categoryMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"schema\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"shape\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"project\": \"project_1\",\n      \"runtimeDefaults\": {\n        \"defaultProtocol\": \"PROTOCOL_UNKNOWN\"\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7781b95-f29e-4796-b367-c236ea5b084e",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modelType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "defaultProtocol",
+                      "value": "PROTOCOL_UNKNOWN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ae3c5cf-70a4-48e5-a5e9-933dfdb45759",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modelType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "defaultProtocol",
+                      "value": "PROTOCOL_UNKNOWN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a6e1b37-594c-4b20-8755-37842d13fdb9",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modelType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "defaultProtocol",
+                      "value": "PROTOCOL_UNKNOWN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d737957d-c959-46b7-a622-1c26cf1d77a9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "artifactType",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "modelType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "defaultProtocol",
+                      "value": "PROTOCOL_UNKNOWN"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8849,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {},\n      \"key_4\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5d63874-893d-4cdd-a7e9-c5c1377dc7c7",
+          "name": "Delete a Model Metadata entry.",
+          "request": {
+            "name": "Delete a Model Metadata entry.",
+            "description": {},
+            "url": {
+              "path": [
+                "model",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "URI",
+                  "value": "<string>",
+                  "description": "(Required) The URI for the storage bucket containing the model, or the URI to the docker image for custom models. It must be a valid URI as defined in RFC 3986, and must not exceed 200 characters."
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "The project that this model belongs to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e4a3e90-24c4-44ca-b2c9-1ee92416bac7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "820bf3c9-10d8-449f-8087-662801a1789a",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8523815f-9dc2-42e1-8302-d15f70506d0b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93379b78-3bdb-480e-90e0-40b1b5769b5d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "URI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7089,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24a9b2e8-e97f-4d79-9d4d-ea17f16c8ea0",
+          "name": "Create a Model Metadata entry.",
+          "request": {
+            "name": "Create a Model Metadata entry.",
+            "description": {},
+            "url": {
+              "path": [
+                "model",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"URI\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"\\\"v0.0.1\\\"\",\n  \"artifactType\": \"UNKNOWN\",\n  \"taskType\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"metrics\": {\n    \"key_0\": \"<double>\",\n    \"key_1\": \"<double>\"\n  },\n  \"creationTime\": \"<dateTime>\",\n  \"predictionSchema\": {\n    \"requests\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      }\n    ],\n    \"responses\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      }\n    ]\n  },\n  \"project\": \"<string>\",\n  \"runtimeDefaults\": {\n    \"defaultProtocol\": \"PROTOCOL_UNKNOWN\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bbfab18-babd-4a5e-92c7-9112e226d1fc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f385775d-8c78-40d1-adf1-030e69b5acf5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdc9521e-420d-437f-8500-d9c1863256c1",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0206b3b9-6c65-45f9-a361-302e89f89a0b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7089,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e188a465-8e72-4cd2-b875-c096c4d231b6",
+          "name": "Update a Model Metadata entry.",
+          "request": {
+            "name": "Update a Model Metadata entry.",
+            "description": {},
+            "url": {
+              "path": [
+                "model",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"URI\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"\\\"v0.0.1\\\"\",\n  \"artifactType\": \"UNKNOWN\",\n  \"taskType\": \"<string>\",\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"metrics\": {\n    \"key_0\": \"<double>\",\n    \"key_1\": \"<double>\"\n  },\n  \"creationTime\": \"<dateTime>\",\n  \"predictionSchema\": {\n    \"requests\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      }\n    ],\n    \"responses\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"REAL\",\n        \"dataType\": \"FLOAT\",\n        \"nCategories\": \"<int64>\",\n        \"categoryMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"schema\": [\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"dataType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"shape\": [\n          \"<int64>\",\n          \"<int64>\"\n        ]\n      }\n    ]\n  },\n  \"project\": \"<string>\",\n  \"runtimeDefaults\": {\n    \"defaultProtocol\": \"PROTOCOL_UNKNOWN\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99892a71-f050-4761-86d8-0e2e5fc4c051",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbcbc77c-f165-447b-9f66-64175cd74001",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75f0df54-87ba-4c1e-a78a-1aab1f4d0eb6",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17e5a9de-9e58-472a-a8a8-7c604d0eb41f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7089,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ac51899-a8b4-4610-8db3-1838d2afbba3",
+          "name": "List Runtime Metadata for all deployments associated with a model.",
+          "request": {
+            "name": "List Runtime Metadata for all deployments associated with a model.",
+            "description": {},
+            "url": {
+              "path": [
+                "model",
+                "metadata",
+                "runtime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ModelURI",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "DeploymentUID",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "DeploymentName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "DeploymentNamespace",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "DeploymentStatus",
+                  "value": "Running"
+                },
+                {
+                  "disabled": false,
+                  "key": "PredictorName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "NodeName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Optional. The maximum number of Folders to return in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Optional. A pagination token returned from a previous call to `List`\nthat indicates where this listing should continue from."
+                },
+                {
+                  "disabled": false,
+                  "key": "listMask",
+                  "value": "<string>",
+                  "description": "Optional. Can be used to specify which fields of RuntimeMetadata you wish to return in the response.\nIf left empty all fields will be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "deploymentType",
+                  "value": "UndefinedDeploymentType"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c0a979a-2912-46d4-9fc0-628fb87d50f2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata",
+                    "runtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ModelURI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentStatus",
+                      "value": "Running"
+                    },
+                    {
+                      "key": "PredictorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "NodeName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentType",
+                      "value": "UndefinedDeploymentType"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"runtimeMetadata\": [\n    {\n      \"modelUri\": \"gs://seldon-models/sklearn/iris\",\n      \"deploymentName\": \"iris\",\n      \"deploymentNamespace\": \"seldon\",\n      \"deploymentKubernetesUid\": \"2c60bdb0-8a8e-46bf-a3c5-627ad507f76b\",\n      \"predictorName\": \"default\",\n      \"nodeName\": \"default-node\",\n      \"deploymentStatus\": \"Running\",\n      \"deploymentType\": \"UndefinedDeploymentType\",\n      \"traffic\": \"string\",\n      \"shadow\": true,\n      \"creationTime\": \"2017-01-15T01:30:15.01Z\",\n      \"model\": {\n        \"URI\": \"gs://seldon-models/sklearn/iris\",\n        \"name\": \"Iris Classifier\",\n        \"version\": \"v1.2.3\",\n        \"artifactType\": \"UNKNOWN\",\n        \"taskType\": \"classification\",\n        \"tags\": {\n          \"author\": \"Jon\"\n        },\n        \"metrics\": {\n          \"trainingPrecision\": 0.78,\n          \"trainingRecall\": 0.87\n        },\n        \"creationTime\": \"2017-01-15T01:30:15.01Z\",\n        \"predictionSchema\": {\n          \"requests\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"project\": \"project_1\",\n        \"runtimeDefaults\": {\n          \"defaultProtocol\": \"PROTOCOL_UNKNOWN\"\n        }\n      },\n      \"explainer\": false,\n      \"replicas\": \"string\"\n    },\n    {\n      \"modelUri\": \"gs://seldon-models/sklearn/iris\",\n      \"deploymentName\": \"iris\",\n      \"deploymentNamespace\": \"seldon\",\n      \"deploymentKubernetesUid\": \"2c60bdb0-8a8e-46bf-a3c5-627ad507f76b\",\n      \"predictorName\": \"default\",\n      \"nodeName\": \"default-node\",\n      \"deploymentStatus\": \"Running\",\n      \"deploymentType\": \"UndefinedDeploymentType\",\n      \"traffic\": \"string\",\n      \"shadow\": true,\n      \"creationTime\": \"2017-01-15T01:30:15.01Z\",\n      \"model\": {\n        \"URI\": \"gs://seldon-models/sklearn/iris\",\n        \"name\": \"Iris Classifier\",\n        \"version\": \"v1.2.3\",\n        \"artifactType\": \"UNKNOWN\",\n        \"taskType\": \"classification\",\n        \"tags\": {\n          \"author\": \"Jon\"\n        },\n        \"metrics\": {\n          \"trainingPrecision\": 0.78,\n          \"trainingRecall\": 0.87\n        },\n        \"creationTime\": \"2017-01-15T01:30:15.01Z\",\n        \"predictionSchema\": {\n          \"requests\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"project\": \"project_1\",\n        \"runtimeDefaults\": {\n          \"defaultProtocol\": \"PROTOCOL_UNKNOWN\"\n        }\n      },\n      \"explainer\": true,\n      \"replicas\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67272a79-84fb-4973-b378-4080dab9ab97",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata",
+                    "runtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ModelURI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentStatus",
+                      "value": "Running"
+                    },
+                    {
+                      "key": "PredictorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "NodeName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentType",
+                      "value": "UndefinedDeploymentType"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "594c551f-3ba3-4bae-95b6-865ba1f59ba1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata",
+                    "runtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ModelURI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentStatus",
+                      "value": "Running"
+                    },
+                    {
+                      "key": "PredictorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "NodeName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentType",
+                      "value": "UndefinedDeploymentType"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61f21b9e-0db8-43de-8637-f19b1afed65e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata",
+                    "runtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ModelURI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentStatus",
+                      "value": "Running"
+                    },
+                    {
+                      "key": "PredictorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "NodeName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentType",
+                      "value": "UndefinedDeploymentType"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e12056fa-c6fb-460a-ab12-7d1e1c406d3c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model",
+                    "metadata",
+                    "runtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ModelURI",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentUID",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentNamespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "DeploymentStatus",
+                      "value": "Running"
+                    },
+                    {
+                      "key": "PredictorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "NodeName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "listMask",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deploymentType",
+                      "value": "UndefinedDeploymentType"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7089,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "07aa6bf7-3e8d-4bfd-aa0c-86df4df5415c",
+    "name": "Seldon Deploy AlertingService ModelMetadataService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

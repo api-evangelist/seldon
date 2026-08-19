@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService Internal API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Internal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aggregate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/aggregate",
+            "params": [
+              {
+                "name": "body",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Aggregate2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/aggregate",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "json",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TransformInput4",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/predict",
+            "params": [
+              {
+                "name": "json",
+                "value": "[object Object]",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "TransformInput3",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/predict",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "json",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Route2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/route",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Route",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/route",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "json",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "SendFeedback2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/send-feedback",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "SendFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/send-feedback",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "json",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TransformInput2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/transform-input",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "TransformInput",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/transform-input",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "json",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "TransformOutput2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/transform-output",
+            "params": [
+              {
+                "name": "json",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "TransformOutput",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/transform-output",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "json",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

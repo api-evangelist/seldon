@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService Models API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateModel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/models",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Seldon Model"
+        },
+        {
+          "info": {
+            "name": "ReadModel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/models/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the specified Seldon Model"
+        },
+        {
+          "info": {
+            "name": "UpdateModel",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/models/:name",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the specified Seldon Model"
+        },
+        {
+          "info": {
+            "name": "DeleteModel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/models/:name",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Delete the specified Seldon Model"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService Explain API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Explain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ExplainSeldonPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/explain",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Seldon Pipeline explanation"
+        },
+        {
+          "info": {
+            "name": "ExplainSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/explain",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Seldon Deployment explanation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

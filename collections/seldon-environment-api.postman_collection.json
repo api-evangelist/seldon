@@ -1,0 +1,404 @@
+{
+  "item": [
+    {
+      "id": "523f4903-8dd5-4333-b642-6e92de46d161",
+      "name": "Environment",
+      "description": {
+        "content": "Environment APIs for Seldon Deploy",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "13648de2-a8cb-4c60-becb-63b9e4fdb1a0",
+          "name": "Read Cluster",
+          "request": {
+            "name": "Read Cluster",
+            "description": {
+              "content": "Read the cluster info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cluster"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a064e387-a3fd-45ae-ba8a-80b79d01d70e",
+              "name": "Cluster Info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Namespaces\": [\n    {\n      \"annotations\": {\n        \"key_0\": \"string\"\n      },\n      \"apiVersion\": \"string\",\n      \"creationTimestamp\": \"string\",\n      \"deletionGracePeriodSeconds\": 3324,\n      \"deletionTimestamp\": \"string\",\n      \"finalizers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"generateName\": \"string\",\n      \"generation\": 4874,\n      \"kind\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"managedFields\": [\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"ownerReferences\": [\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": false,\n          \"controller\": false,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": false,\n          \"controller\": true,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        }\n      ],\n      \"resourceVersion\": \"string\",\n      \"selfLink\": \"string\",\n      \"spec\": {\n        \"finalizers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"status\": {\n        \"conditions\": [\n          {\n            \"lastTransitionTime\": \"string\",\n            \"message\": \"string\",\n            \"reason\": \"string\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"lastTransitionTime\": \"string\",\n            \"message\": \"string\",\n            \"reason\": \"string\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"phase\": \"string\"\n      },\n      \"uid\": \"string\"\n    },\n    {\n      \"annotations\": {\n        \"key_0\": \"string\"\n      },\n      \"apiVersion\": \"string\",\n      \"creationTimestamp\": \"string\",\n      \"deletionGracePeriodSeconds\": 2428,\n      \"deletionTimestamp\": \"string\",\n      \"finalizers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"generateName\": \"string\",\n      \"generation\": 8517,\n      \"kind\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"managedFields\": [\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"ownerReferences\": [\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": true,\n          \"controller\": true,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": false,\n          \"controller\": true,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        }\n      ],\n      \"resourceVersion\": \"string\",\n      \"selfLink\": \"string\",\n      \"spec\": {\n        \"finalizers\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"status\": {\n        \"conditions\": [\n          {\n            \"lastTransitionTime\": \"string\",\n            \"message\": \"string\",\n            \"reason\": \"string\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"lastTransitionTime\": \"string\",\n            \"message\": \"string\",\n            \"reason\": \"string\",\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"phase\": \"string\"\n      },\n      \"uid\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2afd906c-00ec-4a62-a1c3-82296eec558a",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cluster"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5620,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f82380e-1392-446a-81b1-6ecda3f993b9",
+          "name": "Read Health Check",
+          "request": {
+            "name": "Read Health Check",
+            "description": {
+              "content": "Read the healthcheck",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "healthcheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76e8bc10-9a83-40ca-960b-b7106fa5e3f3",
+              "name": "Version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthcheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Elastic\": \"string\",\n  \"Prometheus\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b1195b46-f297-465f-b683-3adc3812986c",
+          "name": "Read User",
+          "request": {
+            "name": "Read User",
+            "description": {
+              "content": "Read the request user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41d29faa-587b-41ee-9c78-e9aac7775df0",
+              "name": "User",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Email\": \"string\",\n  \"Groups\": [\n    \"string\",\n    \"string\"\n  ],\n  \"Id\": \"string\",\n  \"Name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03bf9ef0-00a9-4fb7-84d1-9eadc8e694d5",
+          "name": "Read Version",
+          "request": {
+            "name": "Read Version",
+            "description": {
+              "content": "Read the version",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaaf653a-db4e-4574-a094-6484c7d2c83b",
+              "name": "Version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"BuildTime\": \"string\",\n  \"BuildVersion\": \"string\",\n  \"GitBranch\": \"string\",\n  \"GitCommit\": \"string\",\n  \"GitStatus\": \"string\",\n  \"ReleaseType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "75f81b1b-59de-4e18-b365-4198eb87f059",
+    "name": "Seldon Deploy AlertingService Environment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,708 @@
+{
+  "item": [
+    {
+      "id": "e301ef9a-b1a2-48cb-a5c7-7487ca075080",
+      "name": "inference",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "67b57a9a-2e02-46d5-864f-cfd0c40ed1e9",
+          "name": "Model Inference",
+          "request": {
+            "name": "Model Inference",
+            "description": {
+              "content": "An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "models",
+                ":model_name",
+                "versions",
+                ":model_version",
+                "infer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model_name",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model_version",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2707.17019748708,\n        \"key_1\": false\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": true\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 4289,\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a366290d-8b51-4737-9fad-0aed22cd69d0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "versions",
+                    ":model_version",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_version",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"model_name\": \"string\",\n  \"outputs\": [\n    {\n      \"name\": \"string\",\n      \"shape\": [\n        727,\n        1677\n      ],\n      \"datatype\": \"string\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"shape\": [\n        954,\n        1587\n      ],\n      \"datatype\": \"string\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2969.3464489957146\n      }\n    }\n  ],\n  \"model_version\": \"string\",\n  \"id\": \"string\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24c63a6c-57be-4eac-b86d-6f21d6c4c6c6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "versions",
+                    ":model_version",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_version",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffdff8e6-e712-470c-8744-75180bd2804f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "versions",
+                    ":model_version",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_version",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a376dd6d-f181-4c4a-8003-e462d53350b0",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "versions",
+                    ":model_version",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_version",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "059131b7-4304-451e-890b-5cdb18a9d976",
+          "name": "Model Inference",
+          "request": {
+            "name": "Model Inference",
+            "description": {
+              "content": "An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "models",
+                ":model_name",
+                "infer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model_name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": \"string\",\n        \"key_1\": 2310.0059581752776,\n        \"key_2\": 6444,\n        \"key_3\": 4638.576324725485\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": \"string\",\n        \"key_1\": 9595.624197377412,\n        \"key_2\": \"string\",\n        \"key_3\": 9208\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\"\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f453a9c2-f8f8-4f86-a3bd-0dbc33bd7c45",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"model_name\": \"string\",\n  \"outputs\": [\n    {\n      \"name\": \"string\",\n      \"shape\": [\n        5313,\n        9005\n      ],\n      \"datatype\": \"string\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"shape\": [\n        6717,\n        6311\n      ],\n      \"datatype\": \"string\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": false,\n        \"key_1\": 7275,\n        \"key_2\": 8579\n      }\n    }\n  ],\n  \"model_version\": \"string\",\n  \"id\": \"string\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 2985,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b96a272f-a183-4ee4-9c74-f679a1fafbe0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f2cbfc9-7e0b-4988-9a89-83bf48bb258b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "726318b8-f19c-4e1d-aed1-305d817d5e28",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "models",
+                    ":model_name",
+                    "infer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"datatype\": \"<string>\",\n      \"data\": {},\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ],\n  \"id\": \"<string>\",\n  \"parameters\": {\n    \"content_type\": \"<string>\",\n    \"headers\": \"<object>\",\n    \"key_0\": 1823.505214464477\n  },\n  \"outputs\": [\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\",\n        \"key_0\": 2392.0633999883876,\n        \"key_1\": \"string\",\n        \"key_2\": 7334,\n        \"key_3\": 7257.602494729909\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"parameters\": {\n        \"content_type\": \"<string>\",\n        \"headers\": \"<object>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bd965fe5-a9ab-4d42-93de-16e466f8db83",
+    "name": "Seldon Deploy AlertingService inference API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

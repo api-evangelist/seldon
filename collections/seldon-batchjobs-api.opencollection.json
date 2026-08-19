@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService BatchJobs API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BatchJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListPipelineBatchJobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/batchjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit of items returned in one response"
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Requested page"
+              }
+            ]
+          },
+          "docs": "Read the pipeline batch jobs"
+        },
+        {
+          "info": {
+            "name": "CreatePipelineBatchJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/batchjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the pipeline batch jobs"
+        },
+        {
+          "info": {
+            "name": "GetPipelineBatchJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/batchjobs/:jobName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path",
+                "description": "JobName identifies a job name"
+              }
+            ]
+          },
+          "docs": "Get details on the pipeline batch job"
+        },
+        {
+          "info": {
+            "name": "ListSeldonDeploymentBatchJobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/batchjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit of items returned in one response"
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Requested page"
+              }
+            ]
+          },
+          "docs": "Read the seldondeployment's batch jobs"
+        },
+        {
+          "info": {
+            "name": "CreateSeldonDeploymentBatchJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/batchjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the seldondeployment's batch jobs"
+        },
+        {
+          "info": {
+            "name": "GetDeploymentBatchJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/batchjobs/:jobName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path",
+                "description": "JobName identifies a job name"
+              }
+            ]
+          },
+          "docs": "Get details on the seldondeployment's batch job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

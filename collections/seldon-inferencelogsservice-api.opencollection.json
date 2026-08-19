@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService InferenceLogsService API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InferenceLogsService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get inference logs metadata for seldon models.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/inference-logs/models",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "The namespace that this seldon deployment belongs to."
+              },
+              {
+                "name": "pipelineName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the seldon pipeline to get inference logs for."
+              },
+              {
+                "name": "modelName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the seldon model to get inference logs for."
+              }
+            ]
+          },
+          "docs": "Get inference logs metadata for seldon models."
+        },
+        {
+          "info": {
+            "name": "Get inference logs for seldon models.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/inference-logs/namespace/:namespace/pipelines/:pipelineName/models/:modelName",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The namespace that this seldon deployment belongs to."
+              },
+              {
+                "name": "pipelineName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the seldon pipeline to get inference logs for."
+              },
+              {
+                "name": "modelName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the seldon model to get inference logs for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get inference logs for seldon models."
+        },
+        {
+          "info": {
+            "name": "Get inference logs for seldon deployments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/inference-logs/namespace/:namespace/seldondeployments/:deploymentName",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The namespace that this seldon deployment belongs to."
+              },
+              {
+                "name": "deploymentName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the seldon deployment to get inference logs for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get inference logs for seldon deployments."
+        },
+        {
+          "info": {
+            "name": "Get inference logs metadata for seldon deployments.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/inference-logs/seldondeployments",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query",
+                "description": "The namespace that this seldon deployment belongs to."
+              },
+              {
+                "name": "deploymentName",
+                "value": "",
+                "type": "query",
+                "description": "The name of the seldon deployment to get inference logs for."
+              },
+              {
+                "name": "predictorName",
+                "value": "",
+                "type": "query",
+                "description": "The predictor name of the seldon deployment to get inference logs for. e.g. \"default\", \"canary\", \"shadow\""
+              },
+              {
+                "name": "containerName",
+                "value": "",
+                "type": "query",
+                "description": "The container name of the seldon deployment to get inference logs for. e.g. \"my-container\", \"input-transformer\", \"output-transformer\""
+              }
+            ]
+          },
+          "docs": "Get inference logs metadata for seldon deployments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,383 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService GitOps API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GitOps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ReadExperimentGitDiff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/experiments/:name/gitdiff",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git diff for an experiment"
+        },
+        {
+          "info": {
+            "name": "ReadExperimentGitLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/experiments/:name/gitlogs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git commits for an experiment"
+        },
+        {
+          "info": {
+            "name": "ReadGitDiffs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/gitdiffs",
+            "params": [
+              {
+                "name": "hashes",
+                "value": "",
+                "type": "query",
+                "description": "Hashes is an array of git commit hashes to get diffs for"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git diffs from hashes"
+        },
+        {
+          "info": {
+            "name": "ReadGitOpsStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/gitops-status",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the GitOps status"
+        },
+        {
+          "info": {
+            "name": "ReadModelGitDiff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/models/:name/gitdiff",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git diff for a model"
+        },
+        {
+          "info": {
+            "name": "ReadModelGitLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/models/:name/gitlogs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git commits for a model"
+        },
+        {
+          "info": {
+            "name": "ReadPipelineGitDiff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/gitdiff",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git diff for a pipeline"
+        },
+        {
+          "info": {
+            "name": "ReadPipelineGitLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/gitlogs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git commits for a pipeline"
+        },
+        {
+          "info": {
+            "name": "ReadSeldonDeploymentGitDiff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/gitdiff",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git diff for a Seldon deployment"
+        },
+        {
+          "info": {
+            "name": "ReadSeldonDeploymentGitLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/gitlogs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the git commits for a Seldon deployment"
+        },
+        {
+          "info": {
+            "name": "SeldonDeploymentGitRestore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/gitrestore",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Restore the git commit"
+        },
+        {
+          "info": {
+            "name": "SeldonDeploymentGitRevert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/gitrevert",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action"
+              },
+              {
+                "name": "message",
+                "value": "",
+                "type": "query",
+                "description": "Message"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Revert the git commit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

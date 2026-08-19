@@ -1,0 +1,3517 @@
+{
+  "item": [
+    {
+      "id": "6f341e35-6d4e-4add-8367-b750d3b9f385",
+      "name": "Pipelines",
+      "description": {
+        "content": "Seldon Core Pipeline APIs for Seldon Deploy",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14034e3e-1112-43b5-a819-df5c49a567be",
+          "name": "List Pipelines",
+          "request": {
+            "name": "List Pipelines",
+            "description": {
+              "content": "list objects of kind Seldon Pipelines",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15fd299b-86f3-4344-b8b0-f693af9bda65",
+              "name": "Seldon Pipeline List",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"items\": [\n    {\n      \"annotations\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"apiVersion\": \"string\",\n      \"creationTimestamp\": \"string\",\n      \"deletionGracePeriodSeconds\": 6224,\n      \"deletionTimestamp\": \"string\",\n      \"finalizers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"generateName\": \"string\",\n      \"generation\": 3793,\n      \"kind\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"managedFields\": [\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"ownerReferences\": [\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": false,\n          \"controller\": true,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": true,\n          \"controller\": false,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        }\n      ],\n      \"resourceVersion\": \"string\",\n      \"selfLink\": \"string\",\n      \"spec\": {\n        \"output\": {\n          \"joinWindowMs\": 4821,\n          \"steps\": [\n            \"string\",\n            \"string\"\n          ],\n          \"stepsJoin\": \"string\",\n          \"tensorMap\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        \"steps\": [\n          {\n            \"batch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"inputs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"inputsJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"joinWindowMs\": 2349,\n            \"name\": \"string\",\n            \"tensorMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"triggers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"triggersJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"batch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"inputs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"inputsJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"joinWindowMs\": 5082,\n            \"name\": \"string\",\n            \"tensorMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"triggers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"triggersJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"status\": {\n        \"annotations\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"conditions\": {\n          \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n        },\n        \"observedGeneration\": 6418\n      },\n      \"uid\": \"string\"\n    },\n    {\n      \"annotations\": {\n        \"key_0\": \"string\"\n      },\n      \"apiVersion\": \"string\",\n      \"creationTimestamp\": \"string\",\n      \"deletionGracePeriodSeconds\": 3464,\n      \"deletionTimestamp\": \"string\",\n      \"finalizers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"generateName\": \"string\",\n      \"generation\": 5569,\n      \"kind\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"managedFields\": [\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"fieldsType\": \"string\",\n          \"fieldsV1\": {},\n          \"manager\": \"string\",\n          \"operation\": \"string\",\n          \"subresource\": \"string\",\n          \"time\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"namespace\": \"string\",\n      \"ownerReferences\": [\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": false,\n          \"controller\": true,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        },\n        {\n          \"apiVersion\": \"string\",\n          \"blockOwnerDeletion\": false,\n          \"controller\": true,\n          \"kind\": \"string\",\n          \"name\": \"string\",\n          \"uid\": \"string\"\n        }\n      ],\n      \"resourceVersion\": \"string\",\n      \"selfLink\": \"string\",\n      \"spec\": {\n        \"output\": {\n          \"joinWindowMs\": 8296,\n          \"steps\": [\n            \"string\",\n            \"string\"\n          ],\n          \"stepsJoin\": \"string\",\n          \"tensorMap\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        \"steps\": [\n          {\n            \"batch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"inputs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"inputsJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"joinWindowMs\": 69,\n            \"name\": \"string\",\n            \"tensorMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"triggers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"triggersJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"batch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"inputs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"inputsJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"joinWindowMs\": 1933,\n            \"name\": \"string\",\n            \"tensorMap\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"triggers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"triggersJoinType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"status\": {\n        \"annotations\": {\n          \"key_0\": \"string\"\n        },\n        \"conditions\": {\n          \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n        },\n        \"observedGeneration\": 1569\n      },\n      \"uid\": \"string\"\n    }\n  ],\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"continue\": \"string\",\n    \"remainingItemCount\": 5460,\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6efd937c-faf1-4748-bf43-ba40de19bcfe",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9f324e0-fb12-44f5-88b9-16cc477bfa7d",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cd109bf-0964-4ce9-924b-8e5816df1904",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86a30b7f-c272-44b3-af0a-95daaf18d614",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df3a5947-264a-4646-9457-df95efa35feb",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1b275c2-ba84-4dcc-8515-6eaac9054a5a",
+          "name": "Create Pipeline",
+          "request": {
+            "name": "Create Pipeline",
+            "description": {
+              "content": "Create a Seldon Pipeline",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Action"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"annotations\": {\n    \"key_0\": \"<string>\"\n  },\n  \"apiVersion\": \"<string>\",\n  \"creationTimestamp\": \"<string>\",\n  \"deletionGracePeriodSeconds\": \"<long>\",\n  \"deletionTimestamp\": \"<string>\",\n  \"finalizers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"generateName\": \"<string>\",\n  \"generation\": \"<long>\",\n  \"kind\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"managedFields\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"ownerReferences\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    }\n  ],\n  \"resourceVersion\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"spec\": {\n    \"output\": {\n      \"joinWindowMs\": \"<uint32>\",\n      \"steps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stepsJoin\": \"<string>\",\n      \"tensorMap\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      }\n    },\n    \"steps\": [\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      },\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      }\n    ]\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\"\n  },\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5486e4f4-e610-456b-825c-8c7a78789539",
+              "name": "Seldon Pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\",\n      \"key_4\": \"string\"\n    },\n    \"creationTimestamp\": \"string\",\n    \"deletionGracePeriodSeconds\": 8702,\n    \"deletionTimestamp\": \"string\",\n    \"finalizers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"generateName\": \"string\",\n    \"generation\": 6690,\n    \"labels\": {\n      \"key_0\": \"string\"\n    },\n    \"managedFields\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      }\n    ],\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      }\n    ],\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\",\n    \"uid\": \"<string>\"\n  },\n  \"spec\": {\n    \"output\": {\n      \"joinWindowMs\": \"<uint32>\",\n      \"steps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stepsJoin\": \"<string>\",\n      \"tensorMap\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"steps\": [\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      },\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      }\n    ]\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a412c9f-0212-4344-9e17-7ccb99bb2b88",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6df3a363-7636-4a3c-b540-1c25b790fc6b",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "faa19f2c-f341-4df6-bc03-0a799790fb85",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f265cd0-13fb-4073-b412-82a039ae5835",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "733c0f7d-d0ee-41d2-81b5-351801bbe26f",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c6a51fe-46f1-4c87-8c58-b31ce21e7f8f",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d0e81d9-012d-4ffa-af8b-6d62fbe869a8",
+          "name": "Delete Pipeline",
+          "request": {
+            "name": "Delete Pipeline",
+            "description": {
+              "content": "Delete the specified Seldon Pipeline",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Action"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ff2b15f-f7ea-47db-a80b-ca58e3f0adc0",
+              "name": "Generic",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fc6eeb9-361b-4646-8cb8-fd4e113cdf0e",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5722402e-d532-47a8-8e71-3926182dc107",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93fad36b-bcfa-4cb9-a6ec-0af13ed80731",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc730b8f-2023-4e86-94f3-f90bb37ef675",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4f29324-df33-4f7d-936e-e3ec4f018791",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "368bf058-9c7a-4b89-8d09-a65257bc68c2",
+          "name": "Read Pipeline",
+          "request": {
+            "name": "Read Pipeline",
+            "description": {
+              "content": "Read the specified Seldon Pipeline",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d873eb5-06cf-44aa-89a0-62ba335b67c7",
+              "name": "Seldon Pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"creationTimestamp\": \"string\",\n    \"deletionGracePeriodSeconds\": 7938,\n    \"deletionTimestamp\": \"string\",\n    \"finalizers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"generateName\": \"string\",\n    \"generation\": 1653,\n    \"labels\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"managedFields\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      }\n    ],\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      }\n    ],\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\",\n    \"uid\": \"<string>\"\n  },\n  \"spec\": {\n    \"output\": {\n      \"joinWindowMs\": \"<uint32>\",\n      \"steps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stepsJoin\": \"<string>\",\n      \"tensorMap\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"steps\": [\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      },\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      }\n    ]\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9109bd15-a6c9-4d92-991f-b5fe36f65f9c",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f1fafeb-beb7-4fbf-b8cc-3978eff78f89",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04c8cce7-1863-47d9-b292-1381c9174659",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78cd3865-fc75-4387-88de-786162feaa5e",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a10a40f-f3d4-44ff-8a5a-3ef79a081d25",
+          "name": "Update Pipeline",
+          "request": {
+            "name": "Update Pipeline",
+            "description": {
+              "content": "Update the specified Seldon Pipeline",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Action"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"annotations\": {\n    \"key_0\": \"<string>\"\n  },\n  \"apiVersion\": \"<string>\",\n  \"creationTimestamp\": \"<string>\",\n  \"deletionGracePeriodSeconds\": \"<long>\",\n  \"deletionTimestamp\": \"<string>\",\n  \"finalizers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"generateName\": \"<string>\",\n  \"generation\": \"<long>\",\n  \"kind\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"managedFields\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"ownerReferences\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    }\n  ],\n  \"resourceVersion\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"spec\": {\n    \"output\": {\n      \"joinWindowMs\": \"<uint32>\",\n      \"steps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stepsJoin\": \"<string>\",\n      \"tensorMap\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"steps\": [\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      },\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      }\n    ]\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\"\n  },\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b367b58c-e441-461d-b2a3-95be7c9a84d9",
+              "name": "Seldon Pipeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"creationTimestamp\": \"string\",\n    \"deletionGracePeriodSeconds\": 7938,\n    \"deletionTimestamp\": \"string\",\n    \"finalizers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"generateName\": \"string\",\n    \"generation\": 1653,\n    \"labels\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"managedFields\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      }\n    ],\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      }\n    ],\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\",\n    \"uid\": \"<string>\"\n  },\n  \"spec\": {\n    \"output\": {\n      \"joinWindowMs\": \"<uint32>\",\n      \"steps\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"stepsJoin\": \"<string>\",\n      \"tensorMap\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"steps\": [\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      },\n      {\n        \"batch\": {\n          \"rolling\": \"<boolean>\",\n          \"size\": \"<uint32>\",\n          \"windowMs\": \"<uint32>\"\n        },\n        \"inputs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"inputsJoinType\": \"<string>\",\n        \"joinWindowMs\": \"<uint32>\",\n        \"name\": \"<string>\",\n        \"tensorMap\": {\n          \"key_0\": \"<string>\"\n        },\n        \"triggers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"triggersJoinType\": \"<string>\"\n      }\n    ]\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d7aeb43-b61e-4555-b712-4a10ed7e0f9a",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e48361f3-3aab-49e8-93ef-6b4aafb18e00",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "829ca979-4c1d-4b10-a370-75c8bc29cc1c",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c2dd32e-71eb-4161-bf7a-8088001eb96e",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91621d6a-6f3e-498c-b8ad-9d449ef3ec40",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5abebf3-3b1a-48dc-bfaf-09ed47840f9b",
+          "name": "Delete Pipeline Explainer",
+          "request": {
+            "name": "Delete Pipeline Explainer",
+            "description": {
+              "content": "Read the specified Seldon Pipeline Explainer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "explainer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Action"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6238ebcf-46de-43d5-bb3c-48b8b412c35c",
+              "name": "Generic",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85a65993-e7bf-48ff-9a47-db1ff826b9de",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3665a9f1-0176-4fba-ac4b-6732d822ec64",
+          "name": "Read Pipeline Explainer",
+          "request": {
+            "name": "Read Pipeline Explainer",
+            "description": {
+              "content": "Read the specified Seldon Pipeline Explainer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "explainer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a102d01-d9a5-483d-aaa6-066e752d92fa",
+              "name": "Seldon Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"creationTimestamp\": \"string\",\n    \"deletionGracePeriodSeconds\": 22,\n    \"deletionTimestamp\": \"string\",\n    \"finalizers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"generateName\": \"string\",\n    \"generation\": 9450,\n    \"labels\": {\n      \"key_0\": \"string\"\n    },\n    \"managedFields\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      }\n    ],\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      }\n    ],\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\",\n    \"uid\": \"<string>\"\n  },\n  \"spec\": {\n    \"artifactVersion\": 9001,\n    \"dedicated\": false,\n    \"explainer\": {\n      \"modelRef\": \"string\",\n      \"pipelineRef\": \"string\",\n      \"type\": \"string\"\n    },\n    \"logger\": {\n      \"percent\": 2589\n    },\n    \"maxReplicas\": 9047,\n    \"memory\": {},\n    \"minReplicas\": 8390,\n    \"modelType\": \"string\",\n    \"parameters\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"preloaded\": false,\n    \"replicas\": 14,\n    \"requirements\": [\n      \"string\",\n      \"string\"\n    ],\n    \"schemaUri\": \"string\",\n    \"secretName\": \"string\",\n    \"server\": \"string\",\n    \"storageUri\": \"string\"\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": 9426,\n    \"replicas\": 9175\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15727ad9-b17d-47f8-aea6-8904df5a8d0c",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff011923-a5b8-4758-a914-078b20ca3061",
+          "name": "Create Pipeline Explainer",
+          "request": {
+            "name": "Create Pipeline Explainer",
+            "description": {
+              "content": "Read the specified Seldon Pipeline Explainer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "explainer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Action"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"annotations\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"apiVersion\": \"<string>\",\n  \"creationTimestamp\": \"<string>\",\n  \"deletionGracePeriodSeconds\": \"<long>\",\n  \"deletionTimestamp\": \"<string>\",\n  \"finalizers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"generateName\": \"<string>\",\n  \"generation\": \"<long>\",\n  \"kind\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"managedFields\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"ownerReferences\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    }\n  ],\n  \"resourceVersion\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"spec\": {\n    \"artifactVersion\": \"<uint32>\",\n    \"dedicated\": \"<boolean>\",\n    \"explainer\": {\n      \"modelRef\": \"<string>\",\n      \"pipelineRef\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    \"logger\": {\n      \"percent\": \"<uint64>\"\n    },\n    \"maxReplicas\": \"<integer>\",\n    \"memory\": \"<object>\",\n    \"minReplicas\": \"<integer>\",\n    \"modelType\": \"<string>\",\n    \"parameters\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"preloaded\": \"<boolean>\",\n    \"replicas\": \"<integer>\",\n    \"requirements\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"schemaUri\": \"<string>\",\n    \"secretName\": \"<string>\",\n    \"server\": \"<string>\",\n    \"storageUri\": \"<string>\"\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\",\n    \"replicas\": \"<integer>\"\n  },\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df3e4814-6586-4245-a1fa-7e9db45776e2",
+              "name": "Seldon Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"creationTimestamp\": \"string\",\n    \"deletionGracePeriodSeconds\": 7619,\n    \"deletionTimestamp\": \"string\",\n    \"finalizers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"generateName\": \"string\",\n    \"generation\": 107,\n    \"labels\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"managedFields\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      }\n    ],\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      }\n    ],\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\",\n    \"uid\": \"<string>\"\n  },\n  \"spec\": {\n    \"artifactVersion\": \"<uint32>\",\n    \"dedicated\": \"<boolean>\",\n    \"explainer\": {\n      \"modelRef\": \"<string>\",\n      \"pipelineRef\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    \"logger\": {\n      \"percent\": \"<uint64>\"\n    },\n    \"maxReplicas\": \"<integer>\",\n    \"memory\": \"<object>\",\n    \"minReplicas\": \"<integer>\",\n    \"modelType\": \"<string>\",\n    \"parameters\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"preloaded\": \"<boolean>\",\n    \"replicas\": \"<integer>\",\n    \"requirements\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"schemaUri\": \"<string>\",\n    \"secretName\": \"<string>\",\n    \"server\": \"<string>\",\n    \"storageUri\": \"<string>\"\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\",\n    \"replicas\": \"<integer>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3748f93d-c7b7-4285-8a8b-82aeb0b8841a",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f866537c-46af-4174-b48a-2b18c14b0500",
+          "name": "Update Pipeline Explainer",
+          "request": {
+            "name": "Update Pipeline Explainer",
+            "description": {
+              "content": "Update the specified Seldon Pipeline Explainer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "explainer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "Action"
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "Message"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"annotations\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"apiVersion\": \"<string>\",\n  \"creationTimestamp\": \"<string>\",\n  \"deletionGracePeriodSeconds\": \"<long>\",\n  \"deletionTimestamp\": \"<string>\",\n  \"finalizers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"generateName\": \"<string>\",\n  \"generation\": \"<long>\",\n  \"kind\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"managedFields\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"fieldsType\": \"<string>\",\n      \"fieldsV1\": \"<object>\",\n      \"manager\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"subresource\": \"<string>\",\n      \"time\": \"<string>\"\n    }\n  ],\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"ownerReferences\": [\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    },\n    {\n      \"apiVersion\": \"<string>\",\n      \"blockOwnerDeletion\": \"<boolean>\",\n      \"controller\": \"<boolean>\",\n      \"kind\": \"<string>\",\n      \"name\": \"<string>\",\n      \"uid\": \"<string>\"\n    }\n  ],\n  \"resourceVersion\": \"<string>\",\n  \"selfLink\": \"<string>\",\n  \"spec\": {\n    \"artifactVersion\": \"<uint32>\",\n    \"dedicated\": \"<boolean>\",\n    \"explainer\": {\n      \"modelRef\": \"<string>\",\n      \"pipelineRef\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    \"logger\": {\n      \"percent\": \"<uint64>\"\n    },\n    \"maxReplicas\": \"<integer>\",\n    \"memory\": \"<object>\",\n    \"minReplicas\": \"<integer>\",\n    \"modelType\": \"<string>\",\n    \"parameters\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"preloaded\": \"<boolean>\",\n    \"replicas\": \"<integer>\",\n    \"requirements\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"schemaUri\": \"<string>\",\n    \"secretName\": \"<string>\",\n    \"server\": \"<string>\",\n    \"storageUri\": \"<string>\"\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\",\n    \"replicas\": \"<integer>\"\n  },\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb170b7e-4387-4cd9-8add-96d76eefcf9e",
+              "name": "Seldon Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"annotations\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"creationTimestamp\": \"string\",\n    \"deletionGracePeriodSeconds\": 7619,\n    \"deletionTimestamp\": \"string\",\n    \"finalizers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"generateName\": \"string\",\n    \"generation\": 107,\n    \"labels\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"managedFields\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"fieldsType\": \"<string>\",\n        \"fieldsV1\": \"<object>\",\n        \"manager\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"subresource\": \"<string>\",\n        \"time\": \"<string>\"\n      }\n    ],\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      },\n      {\n        \"apiVersion\": \"<string>\",\n        \"blockOwnerDeletion\": \"<boolean>\",\n        \"controller\": \"<boolean>\",\n        \"kind\": \"<string>\",\n        \"name\": \"<string>\",\n        \"uid\": \"<string>\"\n      }\n    ],\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\",\n    \"uid\": \"<string>\"\n  },\n  \"spec\": {\n    \"artifactVersion\": \"<uint32>\",\n    \"dedicated\": \"<boolean>\",\n    \"explainer\": {\n      \"modelRef\": \"<string>\",\n      \"pipelineRef\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    \"logger\": {\n      \"percent\": \"<uint64>\"\n    },\n    \"maxReplicas\": \"<integer>\",\n    \"memory\": \"<object>\",\n    \"minReplicas\": \"<integer>\",\n    \"modelType\": \"<string>\",\n    \"parameters\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"preloaded\": \"<boolean>\",\n    \"replicas\": \"<integer>\",\n    \"requirements\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"schemaUri\": \"<string>\",\n    \"secretName\": \"<string>\",\n    \"server\": \"<string>\",\n    \"storageUri\": \"<string>\"\n  },\n  \"status\": {\n    \"annotations\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"conditions\": {\n      \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n    },\n    \"observedGeneration\": \"<long>\",\n    \"replicas\": \"<integer>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0959503d-f927-43bb-aa11-b0279c8b03a9",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "explainer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fa1e925-6410-4c2d-ac04-c503f552c548",
+          "name": "List Pipeline Models",
+          "request": {
+            "name": "List Pipeline Models",
+            "description": {
+              "content": "List objects of kind Seldon Models within a Pipeline",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79768e42-b633-4c60-9bf3-0fb70e80ef34",
+              "name": "Seldon Model List",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"items\": [\n    {\n      \"annotations\": {\n        \"key_0\": \"<string>\"\n      },\n      \"apiVersion\": \"<string>\",\n      \"creationTimestamp\": \"<string>\",\n      \"deletionGracePeriodSeconds\": \"<long>\",\n      \"deletionTimestamp\": \"<string>\",\n      \"finalizers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"generateName\": \"<string>\",\n      \"generation\": \"<long>\",\n      \"kind\": \"<string>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"managedFields\": [\n        {\n          \"apiVersion\": \"<string>\",\n          \"fieldsType\": \"<string>\",\n          \"fieldsV1\": \"<object>\",\n          \"manager\": \"<string>\",\n          \"operation\": \"<string>\",\n          \"subresource\": \"<string>\",\n          \"time\": \"<string>\"\n        },\n        {\n          \"apiVersion\": \"<string>\",\n          \"fieldsType\": \"<string>\",\n          \"fieldsV1\": \"<object>\",\n          \"manager\": \"<string>\",\n          \"operation\": \"<string>\",\n          \"subresource\": \"<string>\",\n          \"time\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"ownerReferences\": [\n        {\n          \"apiVersion\": \"<string>\",\n          \"blockOwnerDeletion\": \"<boolean>\",\n          \"controller\": \"<boolean>\",\n          \"kind\": \"<string>\",\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\"\n        },\n        {\n          \"apiVersion\": \"<string>\",\n          \"blockOwnerDeletion\": \"<boolean>\",\n          \"controller\": \"<boolean>\",\n          \"kind\": \"<string>\",\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\"\n        }\n      ],\n      \"resourceVersion\": \"<string>\",\n      \"selfLink\": \"<string>\",\n      \"spec\": {\n        \"artifactVersion\": \"<uint32>\",\n        \"dedicated\": \"<boolean>\",\n        \"explainer\": {\n          \"modelRef\": \"<string>\",\n          \"pipelineRef\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        \"logger\": {\n          \"percent\": \"<uint64>\"\n        },\n        \"maxReplicas\": \"<integer>\",\n        \"memory\": \"<object>\",\n        \"minReplicas\": \"<integer>\",\n        \"modelType\": \"<string>\",\n        \"parameters\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"preloaded\": \"<boolean>\",\n        \"replicas\": \"<integer>\",\n        \"requirements\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"schemaUri\": \"<string>\",\n        \"secretName\": \"<string>\",\n        \"server\": \"<string>\",\n        \"storageUri\": \"<string>\"\n      },\n      \"status\": {\n        \"annotations\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"conditions\": {\n          \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n        },\n        \"observedGeneration\": \"<long>\",\n        \"replicas\": \"<integer>\"\n      },\n      \"uid\": \"<string>\"\n    },\n    {\n      \"annotations\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"apiVersion\": \"<string>\",\n      \"creationTimestamp\": \"<string>\",\n      \"deletionGracePeriodSeconds\": \"<long>\",\n      \"deletionTimestamp\": \"<string>\",\n      \"finalizers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"generateName\": \"<string>\",\n      \"generation\": \"<long>\",\n      \"kind\": \"<string>\",\n      \"labels\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"managedFields\": [\n        {\n          \"apiVersion\": \"<string>\",\n          \"fieldsType\": \"<string>\",\n          \"fieldsV1\": \"<object>\",\n          \"manager\": \"<string>\",\n          \"operation\": \"<string>\",\n          \"subresource\": \"<string>\",\n          \"time\": \"<string>\"\n        },\n        {\n          \"apiVersion\": \"<string>\",\n          \"fieldsType\": \"<string>\",\n          \"fieldsV1\": \"<object>\",\n          \"manager\": \"<string>\",\n          \"operation\": \"<string>\",\n          \"subresource\": \"<string>\",\n          \"time\": \"<string>\"\n        }\n      ],\n      \"name\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"ownerReferences\": [\n        {\n          \"apiVersion\": \"<string>\",\n          \"blockOwnerDeletion\": \"<boolean>\",\n          \"controller\": \"<boolean>\",\n          \"kind\": \"<string>\",\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\"\n        },\n        {\n          \"apiVersion\": \"<string>\",\n          \"blockOwnerDeletion\": \"<boolean>\",\n          \"controller\": \"<boolean>\",\n          \"kind\": \"<string>\",\n          \"name\": \"<string>\",\n          \"uid\": \"<string>\"\n        }\n      ],\n      \"resourceVersion\": \"<string>\",\n      \"selfLink\": \"<string>\",\n      \"spec\": {\n        \"artifactVersion\": \"<uint32>\",\n        \"dedicated\": \"<boolean>\",\n        \"explainer\": {\n          \"modelRef\": \"<string>\",\n          \"pipelineRef\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        \"logger\": {\n          \"percent\": \"<uint64>\"\n        },\n        \"maxReplicas\": \"<integer>\",\n        \"memory\": \"<object>\",\n        \"minReplicas\": \"<integer>\",\n        \"modelType\": \"<string>\",\n        \"parameters\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"preloaded\": \"<boolean>\",\n        \"replicas\": \"<integer>\",\n        \"requirements\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"schemaUri\": \"<string>\",\n        \"secretName\": \"<string>\",\n        \"server\": \"<string>\",\n        \"storageUri\": \"<string>\"\n      },\n      \"status\": {\n        \"annotations\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"conditions\": {\n          \"value\": \"<Circular reference to #/components/schemas/Conditions detected>\"\n        },\n        \"observedGeneration\": \"<long>\",\n        \"replicas\": \"<integer>\"\n      },\n      \"uid\": \"<string>\"\n    }\n  ],\n  \"kind\": \"string\",\n  \"metadata\": {\n    \"continue\": \"string\",\n    \"remainingItemCount\": 4979,\n    \"resourceVersion\": \"string\",\n    \"selfLink\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b53b342f-b2e7-4462-b8fb-f6650ce6ae1b",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0f28ad0-cc6a-49aa-a6b0-018d20c7df5b",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e8eac55-d88d-4d6c-aa87-cc1886940865",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d4217df-3821-4aba-b6ac-403761533883",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26539ad6-924d-4df9-9c9c-2ab1cf0c44f9",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7403,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6c1319c8-d59b-4d32-93ca-93a65c036b51",
+    "name": "Seldon Deploy AlertingService Pipelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

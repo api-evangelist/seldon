@@ -1,0 +1,358 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService PermissionManagementService API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PermissionManagementService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/groups"
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups. The caller must have `read` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a group. The caller must have `write` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/groups/:groupName/members",
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the group for which to get members."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all members of a group. The caller must have `read` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/groups/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the group to be deleted."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a group. The caller must have `write` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Create an authorization policy. The user must have `grant` permissions on the resource in the policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/policy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an authorization policy. The user must have `grant` permissions on the resource in the policy."
+        },
+        {
+          "info": {
+            "name": "Delete an authorization policy. The user must have `grant` permissions on the resource in the policy.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/policy",
+            "params": [
+              {
+                "name": "users",
+                "value": "",
+                "type": "query",
+                "description": "The user IDs from which to revoke the given resource/action permission."
+              },
+              {
+                "name": "groups",
+                "value": "",
+                "type": "query",
+                "description": "The groups from which to revoke the given resource/action permission."
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "The action part of the resource/action permission to revoke."
+              },
+              {
+                "name": "resource",
+                "value": "",
+                "type": "query",
+                "description": "The resource part of the resource/action permission to revoke."
+              }
+            ]
+          },
+          "docs": "Delete an authorization policy. The user must have `grant` permissions on the resource in the policy."
+        },
+        {
+          "info": {
+            "name": "List all permissions associated with the given users and groups. A regular user will be able to see only their permissions and the permissions of their groups. A user with `read` permission on `system/iam` can see all permissions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/policy/permissions",
+            "params": [
+              {
+                "name": "users",
+                "value": "",
+                "type": "query",
+                "description": "The user IDs for which to list permission."
+              },
+              {
+                "name": "groups",
+                "value": "",
+                "type": "query",
+                "description": "The groups for which to list permission."
+              },
+              {
+                "name": "callerPermissions",
+                "value": "",
+                "type": "query",
+                "description": "If true will list the permissions of the user making the request. All users have permissions to check their permissions."
+              }
+            ]
+          },
+          "docs": "List all permissions associated with the given users and groups. A regular user will be able to see only their permissions and the permissions of their groups. A user with `read` permission on `system/iam` can see all permissions."
+        },
+        {
+          "info": {
+            "name": "List all users and groups who have access to the given resource/action pair. The user calling this endpoint must have `grant` access to the given resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/policy/targets",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "The action a target should be able to perform on the given resource."
+              },
+              {
+                "name": "resource",
+                "value": "",
+                "type": "query",
+                "description": "The resource a target should have access to."
+              }
+            ]
+          },
+          "docs": "List all users and groups who have access to the given resource/action pair. The user calling this endpoint must have `grant` access to the given resource."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "The username of the user to fetch. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "The email of the user to fetch. It must be a valid email."
+              },
+              {
+                "name": "firstName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lastName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List users. The caller must have `read` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Create a user. The caller must have `write` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user to be deleted."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete a user. The caller must have `write` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users/:username/groups",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The name of the user for who to get groups."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. List all groups of a user. The caller must have `read` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users/:username/groups/:group",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The name of the user to be added to a group."
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path",
+                "description": "The name of the group to which to add a user."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Add user to a group. The caller must have `write` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users/:username/groups/:group",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The name of the user to be removed from a group."
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path",
+                "description": "The name of the group from which to remove a user."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Delete user from a group. The caller must have `write` permission on `system/iam`."
+        },
+        {
+          "info": {
+            "name": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/iam/users/:username/resetPassword",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the user to be deleted."
+              }
+            ]
+          },
+          "docs": "Endpoint is available only when user management is enabled configured - refer to the docs for how to do this. Sends an email to the user with a link to reset their password. The caller must have `write` permission on `system/iam`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

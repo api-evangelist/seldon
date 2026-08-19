@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService LoadtestJobs API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LoadtestJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListLoadtestPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/loadtestjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "List Pipeline load test jobs"
+        },
+        {
+          "info": {
+            "name": "CreateLoadtestPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/loadtestjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "loadFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "connectionsNumber",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "requestsNumber",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "duration",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create Pipeline load test"
+        },
+        {
+          "info": {
+            "name": "DeleteLoadtestPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/loadtestjobs/:jobName",
+            "params": [
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path",
+                "description": "JobName identifies a job name"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Delete Pipeline load test jobs"
+        },
+        {
+          "info": {
+            "name": "ListLoadtestSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/loadtestjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "List Seldon Deployment load test jobs"
+        },
+        {
+          "info": {
+            "name": "CreateLoadtestSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/loadtestjobs",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "loadFile",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "connectionsNumber",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "requestsNumber",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "duration",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create Seldon Deployment load test"
+        },
+        {
+          "info": {
+            "name": "DeleteLoadtestSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/loadtestjobs/:jobName",
+            "params": [
+              {
+                "name": "jobName",
+                "value": "",
+                "type": "path",
+                "description": "JobName identifies a job name"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Delete Seldon Deployment load test jobs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

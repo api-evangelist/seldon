@@ -1,0 +1,319 @@
+{
+  "item": [
+    {
+      "id": "47161162-2d39-4331-a1cb-1b351145a4d8",
+      "name": "External Ambassador API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04f0ecb8-a313-48ce-ba5b-8c16aeb067c1",
+          "name": "Predict",
+          "request": {
+            "name": "Predict",
+            "description": {},
+            "url": {
+              "path": [
+                "seldon",
+                ":namespace",
+                ":deployment",
+                "api",
+                "v1.0",
+                "predictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": {\n    \"code\": \"<integer>\",\n    \"info\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"status\": \"SUCCESS\"\n  },\n  \"meta\": {\n    \"puid\": \"<string>\",\n    \"tags\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"routing\": {\n      \"key_0\": \"<integer>\",\n      \"key_1\": \"<integer>\"\n    },\n    \"requestPath\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\",\n      \"key_4\": \"<string>\"\n    },\n    \"metrics\": [\n      {\n        \"type\": \"COUNTER\",\n        \"key\": \"<string>\",\n        \"value\": \"<float>\"\n      },\n      {\n        \"type\": \"COUNTER\",\n        \"key\": \"<string>\",\n        \"value\": \"<float>\"\n      }\n    ]\n  },\n  \"data\": {\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tensor\": {\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"values\": [\n        \"<double>\",\n        \"<double>\"\n      ]\n    },\n    \"tftensor\": {\n      \"dtype\": \"DT_INVALID\",\n      \"tensor_shape\": {\n        \"dim\": [\n          {\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"unknown_rank\": \"<boolean>\"\n      },\n      \"version_number\": \"<integer>\",\n      \"tensor_content\": \"<byte>\",\n      \"half_val\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"float_val\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"double_val\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"int_val\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"string_val\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"scomplex_val\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"int64_val\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"bool_val\": [\n        \"<boolean>\",\n        \"<boolean>\"\n      ],\n      \"dcomplex_val\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"resource_handle_val\": [\n        {\n          \"device\": \"<string>\",\n          \"container\": \"<string>\",\n          \"name\": \"<string>\",\n          \"hash_code\": \"<uint64>\",\n          \"maybe_type_name\": \"<string>\"\n        },\n        {\n          \"device\": \"<string>\",\n          \"container\": \"<string>\",\n          \"name\": \"<string>\",\n          \"hash_code\": \"<uint64>\",\n          \"maybe_type_name\": \"<string>\"\n        }\n      ],\n      \"variant_val\": [\n        {\n          \"type_name\": \"<string>\",\n          \"metadata\": \"<byte>\",\n          \"tensors\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            }\n          ]\n        },\n        {\n          \"type_name\": \"<string>\",\n          \"metadata\": \"<byte>\",\n          \"tensors\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            }\n          ]\n        }\n      ],\n      \"uint32_val\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"uint64_val\": [\n        \"<uint64>\",\n        \"<uint64>\"\n      ]\n    }\n  },\n  \"binData\": \"<byte>\",\n  \"strData\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85ab3de3-d8c7-4df5-9ebc-47a777b1bf6c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "seldon",
+                    ":namespace",
+                    ":deployment",
+                    "api",
+                    "v1.0",
+                    "predictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"names\": [\n      \"feature1\"\n    ],\n    \"tensor\": {\n      \"shape\": [\n        1,\n        1\n      ],\n      \"values\": [\n        1\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"code\": \"<integer>\",\n    \"info\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"status\": \"SUCCESS\"\n  },\n  \"meta\": {\n    \"puid\": \"<string>\",\n    \"tags\": {\n      \"key_0\": {}\n    },\n    \"routing\": {\n      \"router1\": 1\n    },\n    \"requestPath\": {\n      \"classifier\": \"seldonio/mock_classifier:1.0\"\n    },\n    \"metrics\": [\n      {\n        \"type\": \"COUNTER\",\n        \"key\": \"<string>\",\n        \"value\": \"<float>\"\n      },\n      {\n        \"type\": \"COUNTER\",\n        \"key\": \"<string>\",\n        \"value\": \"<float>\"\n      }\n    ]\n  },\n  \"data\": {\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tensor\": {\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"values\": [\n        \"<double>\",\n        \"<double>\"\n      ]\n    },\n    \"tftensor\": {\n      \"dtype\": \"DT_INVALID\",\n      \"tensor_shape\": {\n        \"dim\": [\n          {\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"unknown_rank\": \"<boolean>\"\n      },\n      \"version_number\": \"<integer>\",\n      \"tensor_content\": \"<byte>\",\n      \"half_val\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"float_val\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"double_val\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"int_val\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"string_val\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"scomplex_val\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"int64_val\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"bool_val\": [\n        \"<boolean>\",\n        \"<boolean>\"\n      ],\n      \"dcomplex_val\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"resource_handle_val\": [\n        {\n          \"device\": \"<string>\",\n          \"container\": \"<string>\",\n          \"name\": \"<string>\",\n          \"hash_code\": \"<uint64>\",\n          \"maybe_type_name\": \"<string>\"\n        },\n        {\n          \"device\": \"<string>\",\n          \"container\": \"<string>\",\n          \"name\": \"<string>\",\n          \"hash_code\": \"<uint64>\",\n          \"maybe_type_name\": \"<string>\"\n        }\n      ],\n      \"variant_val\": [\n        {\n          \"type_name\": \"<string>\",\n          \"metadata\": \"<byte>\",\n          \"tensors\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            }\n          ]\n        },\n        {\n          \"type_name\": \"<string>\",\n          \"metadata\": \"<byte>\",\n          \"tensors\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            }\n          ]\n        }\n      ],\n      \"uint32_val\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"uint64_val\": [\n        \"<uint64>\",\n        \"<uint64>\"\n      ]\n    }\n  },\n  \"binData\": \"<byte>\",\n  \"strData\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf7aafe9-fd9d-4c56-b11b-eecfd96df9b8",
+          "name": "Send Feedback",
+          "request": {
+            "name": "Send Feedback",
+            "description": {},
+            "url": {
+              "path": [
+                "seldon",
+                ":namespace",
+                ":deployment",
+                "api",
+                "v1.0",
+                "feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"request\": {\n    \"status\": {\n      \"code\": \"<integer>\",\n      \"info\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"status\": \"SUCCESS\"\n    },\n    \"meta\": {\n      \"puid\": \"<string>\",\n      \"tags\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"routing\": {\n        \"key_0\": \"<integer>\",\n        \"key_1\": \"<integer>\",\n        \"key_2\": \"<integer>\"\n      },\n      \"requestPath\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"metrics\": [\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        },\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        }\n      ]\n    },\n    \"data\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tensor\": {\n        \"shape\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"values\": [\n          \"<double>\",\n          \"<double>\"\n        ]\n      },\n      \"tftensor\": {\n        \"dtype\": \"DT_INVALID\",\n        \"tensor_shape\": {\n          \"dim\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"unknown_rank\": \"<boolean>\"\n        },\n        \"version_number\": \"<integer>\",\n        \"tensor_content\": \"<byte>\",\n        \"half_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"float_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"double_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"int_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"string_val\": [\n          \"<byte>\",\n          \"<byte>\"\n        ],\n        \"scomplex_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"int64_val\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"bool_val\": [\n          \"<boolean>\",\n          \"<boolean>\"\n        ],\n        \"dcomplex_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"resource_handle_val\": [\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variant_val\": [\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"uint32_val\": [\n          \"<long>\",\n          \"<long>\"\n        ],\n        \"uint64_val\": [\n          \"<uint64>\",\n          \"<uint64>\"\n        ]\n      }\n    },\n    \"binData\": \"<byte>\",\n    \"strData\": \"<string>\"\n  },\n  \"response\": {\n    \"status\": {\n      \"code\": \"<integer>\",\n      \"info\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"status\": \"SUCCESS\"\n    },\n    \"meta\": {\n      \"puid\": \"<string>\",\n      \"tags\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"routing\": {\n        \"key_0\": \"<integer>\",\n        \"key_1\": \"<integer>\",\n        \"key_2\": \"<integer>\",\n        \"key_3\": \"<integer>\"\n      },\n      \"requestPath\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"metrics\": [\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        },\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        }\n      ]\n    },\n    \"data\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tensor\": {\n        \"shape\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"values\": [\n          \"<double>\",\n          \"<double>\"\n        ]\n      },\n      \"tftensor\": {\n        \"dtype\": \"DT_INVALID\",\n        \"tensor_shape\": {\n          \"dim\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"unknown_rank\": \"<boolean>\"\n        },\n        \"version_number\": \"<integer>\",\n        \"tensor_content\": \"<byte>\",\n        \"half_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"float_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"double_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"int_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"string_val\": [\n          \"<byte>\",\n          \"<byte>\"\n        ],\n        \"scomplex_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"int64_val\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"bool_val\": [\n          \"<boolean>\",\n          \"<boolean>\"\n        ],\n        \"dcomplex_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"resource_handle_val\": [\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variant_val\": [\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"uint32_val\": [\n          \"<long>\",\n          \"<long>\"\n        ],\n        \"uint64_val\": [\n          \"<uint64>\",\n          \"<uint64>\"\n        ]\n      }\n    },\n    \"binData\": \"<byte>\",\n    \"strData\": \"<string>\"\n  },\n  \"reward\": \"<float>\",\n  \"truth\": {\n    \"status\": {\n      \"code\": \"<integer>\",\n      \"info\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"status\": \"SUCCESS\"\n    },\n    \"meta\": {\n      \"puid\": \"<string>\",\n      \"tags\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"routing\": {\n        \"key_0\": \"<integer>\",\n        \"key_1\": \"<integer>\",\n        \"key_2\": \"<integer>\"\n      },\n      \"requestPath\": {\n        \"key_0\": \"<string>\"\n      },\n      \"metrics\": [\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        },\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        }\n      ]\n    },\n    \"data\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tensor\": {\n        \"shape\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"values\": [\n          \"<double>\",\n          \"<double>\"\n        ]\n      },\n      \"tftensor\": {\n        \"dtype\": \"DT_INVALID\",\n        \"tensor_shape\": {\n          \"dim\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"unknown_rank\": \"<boolean>\"\n        },\n        \"version_number\": \"<integer>\",\n        \"tensor_content\": \"<byte>\",\n        \"half_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"float_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"double_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"int_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"string_val\": [\n          \"<byte>\",\n          \"<byte>\"\n        ],\n        \"scomplex_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"int64_val\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"bool_val\": [\n          \"<boolean>\",\n          \"<boolean>\"\n        ],\n        \"dcomplex_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"resource_handle_val\": [\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variant_val\": [\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"uint32_val\": [\n          \"<long>\",\n          \"<long>\"\n        ],\n        \"uint64_val\": [\n          \"<uint64>\",\n          \"<uint64>\"\n        ]\n      }\n    },\n    \"binData\": \"<byte>\",\n    \"strData\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74e20fbc-b772-420d-a415-3686124992d5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "seldon",
+                    ":namespace",
+                    ":deployment",
+                    "api",
+                    "v1.0",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"request\": {\n    \"status\": {\n      \"code\": \"<integer>\",\n      \"info\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"status\": \"SUCCESS\"\n    },\n    \"meta\": {\n      \"puid\": \"<string>\",\n      \"tags\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"routing\": {\n        \"router1\": 1\n      },\n      \"requestPath\": {\n        \"classifier\": \"seldonio/mock_classifier:1.0\"\n      },\n      \"metrics\": [\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        },\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        }\n      ]\n    },\n    \"data\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tensor\": {\n        \"shape\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"values\": [\n          \"<double>\",\n          \"<double>\"\n        ]\n      },\n      \"tftensor\": {\n        \"dtype\": \"DT_INVALID\",\n        \"tensor_shape\": {\n          \"dim\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"unknown_rank\": \"<boolean>\"\n        },\n        \"version_number\": \"<integer>\",\n        \"tensor_content\": \"<byte>\",\n        \"half_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"float_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"double_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"int_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"string_val\": [\n          \"<byte>\",\n          \"<byte>\"\n        ],\n        \"scomplex_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"int64_val\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"bool_val\": [\n          \"<boolean>\",\n          \"<boolean>\"\n        ],\n        \"dcomplex_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"resource_handle_val\": [\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variant_val\": [\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"uint32_val\": [\n          \"<long>\",\n          \"<long>\"\n        ],\n        \"uint64_val\": [\n          \"<uint64>\",\n          \"<uint64>\"\n        ]\n      }\n    },\n    \"binData\": \"<byte>\",\n    \"strData\": \"<string>\"\n  },\n  \"response\": {\n    \"status\": {\n      \"code\": \"<integer>\",\n      \"info\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"status\": \"SUCCESS\"\n    },\n    \"meta\": {\n      \"puid\": \"<string>\",\n      \"tags\": {\n        \"key_0\": {}\n      },\n      \"routing\": {\n        \"router1\": 1\n      },\n      \"requestPath\": {\n        \"classifier\": \"seldonio/mock_classifier:1.0\"\n      },\n      \"metrics\": [\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        },\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        }\n      ]\n    },\n    \"data\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tensor\": {\n        \"shape\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"values\": [\n          \"<double>\",\n          \"<double>\"\n        ]\n      },\n      \"tftensor\": {\n        \"dtype\": \"DT_INVALID\",\n        \"tensor_shape\": {\n          \"dim\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"unknown_rank\": \"<boolean>\"\n        },\n        \"version_number\": \"<integer>\",\n        \"tensor_content\": \"<byte>\",\n        \"half_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"float_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"double_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"int_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"string_val\": [\n          \"<byte>\",\n          \"<byte>\"\n        ],\n        \"scomplex_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"int64_val\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"bool_val\": [\n          \"<boolean>\",\n          \"<boolean>\"\n        ],\n        \"dcomplex_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"resource_handle_val\": [\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variant_val\": [\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"uint32_val\": [\n          \"<long>\",\n          \"<long>\"\n        ],\n        \"uint64_val\": [\n          \"<uint64>\",\n          \"<uint64>\"\n        ]\n      }\n    },\n    \"binData\": \"<byte>\",\n    \"strData\": \"<string>\"\n  },\n  \"reward\": \"<float>\",\n  \"truth\": {\n    \"status\": {\n      \"code\": \"<integer>\",\n      \"info\": \"<string>\",\n      \"reason\": \"<string>\",\n      \"status\": \"SUCCESS\"\n    },\n    \"meta\": {\n      \"puid\": \"<string>\",\n      \"tags\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"routing\": {\n        \"router1\": 1\n      },\n      \"requestPath\": {\n        \"classifier\": \"seldonio/mock_classifier:1.0\"\n      },\n      \"metrics\": [\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        },\n        {\n          \"type\": \"COUNTER\",\n          \"key\": \"<string>\",\n          \"value\": \"<float>\"\n        }\n      ]\n    },\n    \"data\": {\n      \"names\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tensor\": {\n        \"shape\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"values\": [\n          \"<double>\",\n          \"<double>\"\n        ]\n      },\n      \"tftensor\": {\n        \"dtype\": \"DT_INVALID\",\n        \"tensor_shape\": {\n          \"dim\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"unknown_rank\": \"<boolean>\"\n        },\n        \"version_number\": \"<integer>\",\n        \"tensor_content\": \"<byte>\",\n        \"half_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"float_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"double_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"int_val\": [\n          \"<integer>\",\n          \"<integer>\"\n        ],\n        \"string_val\": [\n          \"<byte>\",\n          \"<byte>\"\n        ],\n        \"scomplex_val\": [\n          \"<float>\",\n          \"<float>\"\n        ],\n        \"int64_val\": [\n          \"<int64>\",\n          \"<int64>\"\n        ],\n        \"bool_val\": [\n          \"<boolean>\",\n          \"<boolean>\"\n        ],\n        \"dcomplex_val\": [\n          \"<double>\",\n          \"<double>\"\n        ],\n        \"resource_handle_val\": [\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"device\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"container\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"hash_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"maybe_type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"variant_val\": [\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tensors\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"uint32_val\": [\n          \"<long>\",\n          \"<long>\"\n        ],\n        \"uint64_val\": [\n          \"<uint64>\",\n          \"<uint64>\"\n        ]\n      }\n    },\n    \"binData\": \"<byte>\",\n    \"strData\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"code\": \"<integer>\",\n    \"info\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"status\": \"SUCCESS\"\n  },\n  \"meta\": {\n    \"puid\": \"<string>\",\n    \"tags\": {\n      \"key_0\": {}\n    },\n    \"routing\": {\n      \"router1\": 1\n    },\n    \"requestPath\": {\n      \"classifier\": \"seldonio/mock_classifier:1.0\"\n    },\n    \"metrics\": [\n      {\n        \"type\": \"COUNTER\",\n        \"key\": \"<string>\",\n        \"value\": \"<float>\"\n      },\n      {\n        \"type\": \"COUNTER\",\n        \"key\": \"<string>\",\n        \"value\": \"<float>\"\n      }\n    ]\n  },\n  \"data\": {\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tensor\": {\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"values\": [\n        \"<double>\",\n        \"<double>\"\n      ]\n    },\n    \"tftensor\": {\n      \"dtype\": \"DT_INVALID\",\n      \"tensor_shape\": {\n        \"dim\": [\n          {\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"size\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"unknown_rank\": \"<boolean>\"\n      },\n      \"version_number\": \"<integer>\",\n      \"tensor_content\": \"<byte>\",\n      \"half_val\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"float_val\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"double_val\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"int_val\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"string_val\": [\n        \"<byte>\",\n        \"<byte>\"\n      ],\n      \"scomplex_val\": [\n        \"<float>\",\n        \"<float>\"\n      ],\n      \"int64_val\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"bool_val\": [\n        \"<boolean>\",\n        \"<boolean>\"\n      ],\n      \"dcomplex_val\": [\n        \"<double>\",\n        \"<double>\"\n      ],\n      \"resource_handle_val\": [\n        {\n          \"device\": \"<string>\",\n          \"container\": \"<string>\",\n          \"name\": \"<string>\",\n          \"hash_code\": \"<uint64>\",\n          \"maybe_type_name\": \"<string>\"\n        },\n        {\n          \"device\": \"<string>\",\n          \"container\": \"<string>\",\n          \"name\": \"<string>\",\n          \"hash_code\": \"<uint64>\",\n          \"maybe_type_name\": \"<string>\"\n        }\n      ],\n      \"variant_val\": [\n        {\n          \"type_name\": \"<string>\",\n          \"metadata\": \"<byte>\",\n          \"tensors\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            }\n          ]\n        },\n        {\n          \"type_name\": \"<string>\",\n          \"metadata\": \"<byte>\",\n          \"tensors\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/TensorflowTensorProto detected>\"\n            }\n          ]\n        }\n      ],\n      \"uint32_val\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"uint64_val\": [\n        \"<uint64>\",\n        \"<uint64>\"\n      ]\n    }\n  },\n  \"binData\": \"<byte>\",\n  \"strData\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "57b32bd2-aa71-4ca6-b443-581c6299b50a",
+    "name": "Seldon Deploy AlertingService External Ambassador API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}

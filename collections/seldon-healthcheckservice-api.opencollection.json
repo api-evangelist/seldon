@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService HealthcheckService API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HealthcheckService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the current health of a specific Seldon Deploy dependency or all of them",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/healthcheck/:dependency",
+            "params": [
+              {
+                "name": "dependency",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List the current health of a specific Seldon Deploy dependency or all of them"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

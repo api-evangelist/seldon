@@ -1,0 +1,261 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seldon Deploy AlertingService OutlierDetector API",
+    "version": "v1alpha1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "resource_owner_password_credentials",
+      "accessTokenUrl": "https://Y.Y.Y.Y",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OutlierDetector",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListOutlierDetectorSeldonPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/monitor/outlier-detector",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "List the specified Seldon Pipeline Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "CreateOutlierDetectorSeldonPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/monitor/outlier-detector",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the specified Seldon Pipeline Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "ReadOutlierDetectorSeldonPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/monitor/outlier-detector/:detectorName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "detectorName",
+                "value": "",
+                "type": "path",
+                "description": "Detector Name"
+              }
+            ]
+          },
+          "docs": "Read the specified Seldon Pipeline Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "DeleteOutlierDetectorSeldonPipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/pipelines/:name/monitor/outlier-detector/:detectorName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "detectorName",
+                "value": "",
+                "type": "path",
+                "description": "Detector Name"
+              }
+            ]
+          },
+          "docs": "Read the specified Seldon Pipeline Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "ListOutlierDetectorSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/monitor/outlier-detector",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ]
+          },
+          "docs": "Read the specified Seldon Deployment Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "CreateOutlierDetectorSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/monitor/outlier-detector",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the specified Seldon Deployment Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "ReadOutlierDetectorSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/monitor/outlier-detector/:detectorName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "detectorName",
+                "value": "",
+                "type": "path",
+                "description": "Detector Name"
+              }
+            ]
+          },
+          "docs": "Read the specified Seldon Deployment Outlier Detector"
+        },
+        {
+          "info": {
+            "name": "DeleteOutlierDetectorSeldonDeployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://X.X.X.X/seldon-deploy/api/v1alpha1/namespaces/:namespace/seldondeployments/:name/monitor/outlier-detector/:detectorName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name identifies a resource"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "Namespace provides a logical grouping of resources"
+              },
+              {
+                "name": "detectorName",
+                "value": "",
+                "type": "path",
+                "description": "Detector Name"
+              }
+            ]
+          },
+          "docs": "Read the specified Seldon Deployment Outlier Detector"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

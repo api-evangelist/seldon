@@ -1,0 +1,1077 @@
+{
+  "item": [
+    {
+      "id": "708c8734-85fd-47fb-b6c2-1d4b4d8b89dc",
+      "name": "Monitor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47909a22-9ef7-4ad6-b28f-f452aa787fab",
+          "name": "Seldon Pipeline Feature Distributions",
+          "request": {
+            "name": "Seldon Pipeline Feature Distributions",
+            "description": {
+              "content": "Get the specified Seldon Deployment predictions feature distribution",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "monitor",
+                "featuredistributions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aggregate_over_time\": \"<boolean>\",\n  \"deployment_endpoint\": \"<string>\",\n  \"deployment_kind\": \"<string>\",\n  \"deployment_name\": \"<string>\",\n  \"deployment_namespace\": \"<string>\",\n  \"deployment_node\": \"<string>\",\n  \"feature\": \"<string>\",\n  \"filters\": [\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"interaction\": \"<string>\",\n  \"parameters\": {\n    \"histogram_interval\": \"<double>\",\n    \"minimum_bucket_count\": \"<long>\",\n    \"number_of_time_buckets\": \"<long>\"\n  },\n  \"reference_data\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c62451f-34ff-436b-9cab-c8ca8693ab90",
+              "name": "Feature Distribution Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "featuredistributions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"distribution\": {\n    \"buckets\": [\n      {\n        \"count\": 7385.150143289198,\n        \"distribution\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureDistribution detected>\"\n        },\n        \"key\": \"string\"\n      },\n      {\n        \"count\": 3453.509162608539,\n        \"distribution\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureDistribution detected>\"\n        },\n        \"key\": \"string\"\n      }\n    ]\n  },\n  \"feature\": \"string\",\n  \"interaction\": \"<string>\",\n  \"total_instances\": 6584,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d59d9eda-852e-4d42-9dcc-744f79c85c95",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "featuredistributions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a19eacc3-8cf9-451a-b168-41e85cf566d5",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "featuredistributions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e278f577-de9e-4b19-b7d2-3dc9e269a21b",
+          "name": "Seldon Pipeline Feature Statistics",
+          "request": {
+            "name": "Seldon Pipeline Feature Statistics",
+            "description": {
+              "content": "Get the specified Seldon Deployment predictions feature statistics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "pipelines",
+                ":name",
+                "monitor",
+                "featurestatistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aggregate_over_time\": \"<boolean>\",\n  \"deployment_endpoint\": \"<string>\",\n  \"deployment_kind\": \"<string>\",\n  \"deployment_name\": \"<string>\",\n  \"deployment_namespace\": \"<string>\",\n  \"deployment_node\": \"<string>\",\n  \"feature\": \"<string>\",\n  \"filters\": [\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"interaction\": \"<string>\",\n  \"parameters\": {\n    \"histogram_interval\": \"<double>\",\n    \"minimum_bucket_count\": \"<long>\",\n    \"number_of_time_buckets\": \"<long>\"\n  },\n  \"reference_data\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3329d09-64f4-4824-9990-e77147564999",
+              "name": "Feature Statistics Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "featurestatistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feature\": \"string\",\n  \"interaction\": \"<string>\",\n  \"stats\": {\n    \"avg\": 6375.591547895627,\n    \"buckets\": [\n      {\n        \"key\": \"string\",\n        \"stats\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureStats detected>\"\n        }\n      },\n      {\n        \"key\": \"string\",\n        \"stats\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureStats detected>\"\n        }\n      }\n    ],\n    \"count\": 5020,\n    \"max\": 4881.044112359619,\n    \"min\": 3873.082401813328,\n    \"most_frequent_category\": \"string\",\n    \"most_frequent_category_count\": 4357.49088972107\n  },\n  \"total_instances\": 2748,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d30a5f8-add4-48bb-bfb9-c10b6e608243",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "featurestatistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4123e9c9-85a0-422c-b7f6-cff3c5903ae5",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "pipelines",
+                    ":name",
+                    "monitor",
+                    "featurestatistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9ae683e-82b9-4d0a-8b22-5740f65a8f72",
+          "name": "Seldon Deployment Feature Distributions",
+          "request": {
+            "name": "Seldon Deployment Feature Distributions",
+            "description": {
+              "content": "Get the specified Seldon Deployment predictions feature distribution",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "featuredistributions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aggregate_over_time\": \"<boolean>\",\n  \"deployment_endpoint\": \"<string>\",\n  \"deployment_kind\": \"<string>\",\n  \"deployment_name\": \"<string>\",\n  \"deployment_namespace\": \"<string>\",\n  \"deployment_node\": \"<string>\",\n  \"feature\": \"<string>\",\n  \"filters\": [\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"interaction\": \"<string>\",\n  \"parameters\": {\n    \"histogram_interval\": \"<double>\",\n    \"minimum_bucket_count\": \"<long>\",\n    \"number_of_time_buckets\": \"<long>\"\n  },\n  \"reference_data\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a582e209-33e9-4722-8a43-9c03c53b0e4f",
+              "name": "Feature Distribution Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "featuredistributions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"distribution\": {\n    \"buckets\": [\n      {\n        \"count\": 3734.248098277887,\n        \"distribution\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureDistribution detected>\"\n        },\n        \"key\": \"string\"\n      },\n      {\n        \"count\": 931.0980217266607,\n        \"distribution\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureDistribution detected>\"\n        },\n        \"key\": \"string\"\n      }\n    ]\n  },\n  \"feature\": \"string\",\n  \"interaction\": \"<string>\",\n  \"total_instances\": 4193,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "724b982d-49b4-4ca6-980a-3297c985b770",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "featuredistributions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e55d592c-e3db-4b00-b008-815b0ab13ed8",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "featuredistributions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3203cb59-9a2f-40c9-8b0a-3755e95c3dae",
+          "name": "Seldon Deployment Feature Statistics",
+          "request": {
+            "name": "Seldon Deployment Feature Statistics",
+            "description": {
+              "content": "Get the specified Seldon Deployment predictions feature statistics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "namespaces",
+                ":namespace",
+                "seldondeployments",
+                ":name",
+                "monitor",
+                "featurestatistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name identifies a resource"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) Namespace provides a logical grouping of resources"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aggregate_over_time\": \"<boolean>\",\n  \"deployment_endpoint\": \"<string>\",\n  \"deployment_kind\": \"<string>\",\n  \"deployment_name\": \"<string>\",\n  \"deployment_namespace\": \"<string>\",\n  \"deployment_node\": \"<string>\",\n  \"feature\": \"<string>\",\n  \"filters\": [\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"category_name\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"gt\": \"<string>\",\n      \"gte\": \"<string>\",\n      \"interaction\": \"<string>\",\n      \"is_outlier\": \"<boolean>\",\n      \"is_timestamp\": \"<boolean>\",\n      \"lt\": \"<string>\",\n      \"lte\": \"<string>\",\n      \"terms\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"interaction\": \"<string>\",\n  \"parameters\": {\n    \"histogram_interval\": \"<double>\",\n    \"minimum_bucket_count\": \"<long>\",\n    \"number_of_time_buckets\": \"<long>\"\n  },\n  \"reference_data\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85bfa401-039a-48e9-b02e-0410264921dc",
+              "name": "Feature Statistics Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "featurestatistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feature\": \"string\",\n  \"interaction\": \"<string>\",\n  \"stats\": {\n    \"avg\": 2597.5272957956695,\n    \"buckets\": [\n      {\n        \"key\": \"string\",\n        \"stats\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureStats detected>\"\n        }\n      },\n      {\n        \"key\": \"string\",\n        \"stats\": {\n          \"value\": \"<Circular reference to #/components/schemas/FeatureStats detected>\"\n        }\n      }\n    ],\n    \"count\": 5507,\n    \"max\": 1912.6175186604232,\n    \"min\": 4993.780776206311,\n    \"most_frequent_category\": \"string\",\n    \"most_frequent_category_count\": 7725.030369042644\n  },\n  \"total_instances\": 4782,\n  \"type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcf66965-aa14-4713-bae2-9725b0c5aeb8",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "featurestatistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7a6724d-ce37-4f32-a2aa-0ce0e9ed4b09",
+              "name": "ErrorDefault Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "namespaces",
+                    ":namespace",
+                    "seldondeployments",
+                    ":name",
+                    "monitor",
+                    "featurestatistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name identifies a resource"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) Namespace provides a logical grouping of resources"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3364,\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://X.X.X.X/seldon-deploy/api/v1alpha1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "email groups openid profile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://Y.Y.Y.Y"
+      },
+      {
+        "key": "grant_type",
+        "value": "password_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "15ab4d90-0328-46f8-9384-8a4ff819c97e",
+    "name": "Seldon Deploy AlertingService Monitor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to interact and manage the lifecycle of your machine learning models\ndeployed through Seldon Deploy.",
+      "type": "text/plain"
+    }
+  }
+}
