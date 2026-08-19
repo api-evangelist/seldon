@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/seldon.png
 url: https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: "0.19"
+specificationVersion: '0.23'
 description: >
   Seldon is a Kubernetes-native MLOps platform that enables enterprises to deploy, monitor,
   manage, and explain machine learning models at scale. The platform provides REST and gRPC
