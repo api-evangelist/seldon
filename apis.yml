@@ -32,6 +32,18 @@ description: >
   OIDC and session-based authentication workflows.
 tags:
   - MLOps
+  - Machine-Learning
+  - Model Serving
+  - Inference
+  - Kubernetes
+  - AI Operations
+  - Drift Detection
+  - Explainability
+  - Canary Deployment
+  - A/B Testing
+  - LLMOps
+tags_raw:
+  - MLOps
   - Machine Learning
   - Model Serving
   - Inference
@@ -128,6 +140,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Application Logs
+  tags_raw:
   - ApplicationLogs
   properties:
   - type: OpenAPI
@@ -140,6 +154,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Batch Jobs
+  tags_raw:
   - BatchJobs
   properties:
   - type: OpenAPI
@@ -225,6 +241,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Health
+  tags_raw:
   - health
   properties:
   - type: OpenAPI
@@ -237,6 +255,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Health Check Service
+  tags_raw:
   - HealthcheckService
   properties:
   - type: OpenAPI
@@ -297,6 +317,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Metadata
+  tags_raw:
   - metadata
   properties:
   - type: OpenAPI
@@ -321,6 +343,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Model
+  tags_raw:
   - model
   properties:
   - type: OpenAPI
@@ -357,6 +381,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Monitors
+  tags_raw:
   - Monitor
   properties:
   - type: OpenAPI
@@ -442,6 +468,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - Server
+  tags_raw:
   - server
   properties:
   - type: OpenAPI
