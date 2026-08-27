@@ -81,12 +81,6 @@ apis:
   - type: OpenAPI
     url: >-
       https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-openapi.yml
-  - type: OpenAPI
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-inference-api-v2-openapi.yml
-  - type: OpenAPI
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/seldon/refs/heads/main/openapi/seldon-wrapper-api-openapi.yml
 - aid: seldon:seldon-drift-detection-api
   name: Seldon Drift Detection API
   description: >
