@@ -1,6 +1,18 @@
 aid: seldon
 name: Seldon
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -204,19 +216,6 @@ apis:
     url: openapi/seldon-explain-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-external-ambassador-api-api
-  name: Seldon External Ambassador API API
-  description: >-
-    The External Ambassador API API from Seldon — 2 operation(s) for external ambassador api.
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - External Ambassador API
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-external-ambassador-api-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-gitops-api
   name: Seldon GitOps API
   description: GitOps APIs for Seldon Deploy
@@ -331,20 +330,6 @@ apis:
     url: openapi/seldon-metricsserver-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-model-api
-  name: Seldon model API
-  description: The model API from Seldon — 6 operation(s) for model.
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - Model
-  tags_raw:
-  - model
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-model-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-modelmetadataservice-api
   name: Seldon ModelMetadataService API
   description: The ModelMetadataService API from Seldon — 2 operation(s) for modelmetadataservice.
@@ -454,20 +439,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/seldon-seldondeployments-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-server-api
-  name: Seldon server API
-  description: The server API from Seldon — 3 operation(s) for server.
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - Server
-  tags_raw:
-  - server
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-server-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 common:
