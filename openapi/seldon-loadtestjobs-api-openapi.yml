@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService LoadtestJobs API
+  title: Seldon Deploy Loadtest Jobs API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -224,18 +224,18 @@ components:
           type: string
       type: object
   responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     MessageResponse:
       description: GenericMessage Message
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Message'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

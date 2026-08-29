@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService BatchJobs API
+  title: Seldon Deploy Batch Jobs API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -203,56 +203,6 @@ paths:
       - BatchJobs
 components:
   schemas:
-    BatchJobPostResponse:
-      description: 'BatchJobPostResponse represents the name and uid of the batch job
-
-        created after a post request'
-      properties:
-        workflowName:
-          description: 'Name of created Argo Workflow
-
-            in: body'
-          type: string
-        workflowUID:
-          $ref: '#/components/schemas/UID'
-      type: object
-    BatchJobDescription:
-      description: BatchJobDescription describes the workflow of the batch job
-      properties:
-        FinishedAt:
-          description: Time when job finished
-          type: string
-        StartedAt:
-          description: Time when job started
-          type: string
-        workflowName:
-          description: Name of related Argo Workflow
-          type: string
-        workflowStatus:
-          $ref: '#/components/schemas/WorkflowPhase'
-        workflowUID:
-          $ref: '#/components/schemas/UID'
-      type: object
-    BatchJobGetResponse:
-      description: 'BatchJobGetResponse represents the full description and definition of a
-
-        retrieved batch job'
-      properties:
-        Definition:
-          $ref: '#/components/schemas/BatchJobDefinition'
-        Description:
-          $ref: '#/components/schemas/BatchJobDescription'
-      type: object
-    UID:
-      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
-
-        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
-
-        intent and helps make sure that UIDs and names do not get conflated.'
-      type: string
-    WorkflowPhase:
-      description: the workflow's phase
-      type: string
     Error:
       description: Error Error
       properties:
@@ -267,11 +217,6 @@ components:
           description: RequestId
           type: string
       type: object
-    BatchJobDescriptionList:
-      description: BatchJobDescriptionList is a list of BatchJobDescription
-      items:
-        $ref: '#/components/schemas/BatchJobDescription'
-      type: array
     BatchJobDefinition:
       description: BatchJobDefinition is a common interface for BatchJob v1 and v2 which specifies necessary arguments
       properties:
@@ -328,6 +273,61 @@ components:
           description: 'Container Resources for running batch jobs: requests: Memory'
           type: string
       type: object
+    UID:
+      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
+
+        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
+
+        intent and helps make sure that UIDs and names do not get conflated.'
+      type: string
+    BatchJobGetResponse:
+      description: 'BatchJobGetResponse represents the full description and definition of a
+
+        retrieved batch job'
+      properties:
+        Definition:
+          $ref: '#/components/schemas/BatchJobDefinition'
+        Description:
+          $ref: '#/components/schemas/BatchJobDescription'
+      type: object
+    BatchJobPostResponse:
+      description: 'BatchJobPostResponse represents the name and uid of the batch job
+
+        created after a post request'
+      properties:
+        workflowName:
+          description: 'Name of created Argo Workflow
+
+            in: body'
+          type: string
+        workflowUID:
+          $ref: '#/components/schemas/UID'
+      type: object
+    BatchJobDescriptionList:
+      description: BatchJobDescriptionList is a list of BatchJobDescription
+      items:
+        $ref: '#/components/schemas/BatchJobDescription'
+      type: array
+    BatchJobDescription:
+      description: BatchJobDescription describes the workflow of the batch job
+      properties:
+        FinishedAt:
+          description: Time when job finished
+          type: string
+        StartedAt:
+          description: Time when job started
+          type: string
+        workflowName:
+          description: Name of related Argo Workflow
+          type: string
+        workflowStatus:
+          $ref: '#/components/schemas/WorkflowPhase'
+        workflowUID:
+          $ref: '#/components/schemas/UID'
+      type: object
+    WorkflowPhase:
+      description: the workflow's phase
+      type: string
     BatchJobsListResponse:
       description: 'BatchJobsListResponse represents the list of batch descriptions and their
 
@@ -355,30 +355,30 @@ components:
           type: integer
       type: object
   responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BatchJobGetResponse:
-      description: Batch Job Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BatchJobGetResponse'
-    BatchJobPostResponse:
-      description: Batch Job Post Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BatchJobPostResponse'
     BatchJobsListResponse:
       description: Batch Jobs List Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/BatchJobsListResponse'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BatchJobPostResponse:
+      description: Batch Job Post Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobPostResponse'
+    BatchJobGetResponse:
+      description: Batch Job Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobGetResponse'
   requestBodies:
     BatchJobDefinition:
       content:

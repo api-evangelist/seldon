@@ -1,16 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: 'API to interact and manage the lifecycle of your machine learning models
-
-    deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService health API
-  version: v1alpha1
-servers:
-- url: http://X.X.X.X/seldon-deploy/api/v1alpha1
-- url: https://X.X.X.X/seldon-deploy/api/v1alpha1
-security:
-- OAuth2:
-  - '[]'
+  title: Data Plane Health API
+  version: '2.0'
+  contact:
+    name: Seldon Technologies Ltd.
+    url: https://www.seldon.io/
+    email: hello@seldon.io
+  description: REST protocol to interact with inference servers.
+  license:
+    name: Business Source License 1.1
+servers: []
 tags:
 - name: health
 paths:
@@ -71,15 +70,3 @@ paths:
           description: OK
       operationId: model-ready
       description: The “model ready” health API indicates if a specific model is ready for inferencing. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies.
-components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        password:
-          tokenUrl: https://Y.Y.Y.Y
-          scopes:
-            email: ''
-            groups: ''
-            openid: ''
-            profile: ''

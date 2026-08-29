@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService Monitor API
+  title: Seldon Deploy Monitor API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -127,60 +127,15 @@ paths:
       tags:
       - Monitor
 components:
-  responses:
-    FeatureDistResponse:
-      description: Feature Distribution Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FeatureDistributionResponse'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    FeatureStatResponse:
-      description: Feature Statistics Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FeatureStatisticsResponse'
   schemas:
-    FeatureFilter:
-      description: FeatureFilter represents a feature distribution filter
+    FeatureStatsBucket:
+      description: FeatureDistribution represents feature level statistics bucket
       properties:
-        category_name:
-          description: CategoryName refers to name of the feature category relevant to PROBA and ONE_HOT features
+        key:
+          description: Bucket Key in a feature statistics
           type: string
-        feature:
-          description: FeatureName refers to the name of feature as per the model predictions schema
-          type: string
-        gt:
-          description: GreaterThan refers to numerical value of the feature filter relevant for timestamps or REAL features
-          type: string
-        gte:
-          description: GreaterThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
-          type: string
-        interaction:
-          $ref: '#/components/schemas/FeatureInteraction'
-        is_outlier:
-          description: IsOutlier refers to boolean for outlier filters
-          type: boolean
-        is_timestamp:
-          description: IsTimestamp refers to boolean for timestamp filters
-          type: boolean
-        lt:
-          description: LessThan refers to numerical value of the feature filter relevant for timestamps or REAL features
-          type: string
-        lte:
-          description: LessThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
-          type: string
-        terms:
-          description: Terms refers to set of feature categories to filter relevant to CATEGORICAL features
-          items:
-            type: string
-          type: array
+        stats:
+          $ref: '#/components/schemas/FeatureStats'
       type: object
     Error:
       description: Error Error
@@ -214,18 +169,6 @@ components:
           description: FeatureType refers to the type of feature as per the model predictions schema
           type: string
       type: object
-    FeatureDistribution:
-      description: FeatureDistribution represents feature level distribution
-      properties:
-        buckets:
-          description: Buckets in a feature distribution
-          items:
-            $ref: '#/components/schemas/FeatureDistributionBucket'
-          type: array
-      type: object
-    FeatureInteraction:
-      description: Feature Prediction Interaction
-      type: string
     FeatureDistributionParameters:
       description: FeatureDistributionParameters represents user defined feature distribution parameters
       properties:
@@ -241,28 +184,6 @@ components:
           description: NumberOfTimeBuckets refers to the number of time bins in a non time-aggregated feature distribution or statistics queries
           format: int64
           type: integer
-      type: object
-    FeatureStatsBucket:
-      description: FeatureDistribution represents feature level statistics bucket
-      properties:
-        key:
-          description: Bucket Key in a feature statistics
-          type: string
-        stats:
-          $ref: '#/components/schemas/FeatureStats'
-      type: object
-    FeatureDistributionBucket:
-      description: FeatureDistribution represents feature level distribution bucket
-      properties:
-        count:
-          description: Bucket Count in a feature distribution
-          format: double
-          type: number
-        distribution:
-          $ref: '#/components/schemas/FeatureDistribution'
-        key:
-          description: Bucket Key in a feature distribution
-          type: string
       type: object
     DeploymentFeatureData:
       description: DeploymentFeatureData represents a deployment level feature data
@@ -301,6 +222,84 @@ components:
           description: ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)
           type: boolean
       type: object
+    FeatureInteraction:
+      description: Feature Prediction Interaction
+      type: string
+    FeatureFilter:
+      description: FeatureFilter represents a feature distribution filter
+      properties:
+        category_name:
+          description: CategoryName refers to name of the feature category relevant to PROBA and ONE_HOT features
+          type: string
+        feature:
+          description: FeatureName refers to the name of feature as per the model predictions schema
+          type: string
+        gt:
+          description: GreaterThan refers to numerical value of the feature filter relevant for timestamps or REAL features
+          type: string
+        gte:
+          description: GreaterThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
+          type: string
+        interaction:
+          $ref: '#/components/schemas/FeatureInteraction'
+        is_outlier:
+          description: IsOutlier refers to boolean for outlier filters
+          type: boolean
+        is_timestamp:
+          description: IsTimestamp refers to boolean for timestamp filters
+          type: boolean
+        lt:
+          description: LessThan refers to numerical value of the feature filter relevant for timestamps or REAL features
+          type: string
+        lte:
+          description: LessThanOrEqual refers to numerical value of the feature filter relevant for timestamps or REAL features
+          type: string
+        terms:
+          description: Terms refers to set of feature categories to filter relevant to CATEGORICAL features
+          items:
+            type: string
+          type: array
+      type: object
+    FeatureDistributionBucket:
+      description: FeatureDistribution represents feature level distribution bucket
+      properties:
+        count:
+          description: Bucket Count in a feature distribution
+          format: double
+          type: number
+        distribution:
+          $ref: '#/components/schemas/FeatureDistribution'
+        key:
+          description: Bucket Key in a feature distribution
+          type: string
+      type: object
+    FeatureDistribution:
+      description: FeatureDistribution represents feature level distribution
+      properties:
+        buckets:
+          description: Buckets in a feature distribution
+          items:
+            $ref: '#/components/schemas/FeatureDistributionBucket'
+          type: array
+      type: object
+    FeatureStatisticsResponse:
+      description: FeatureStatisticsResponse represents a feature statistics response
+      properties:
+        feature:
+          description: FeatureName refers to the name of feature as per the model predictions schema
+          type: string
+        interaction:
+          $ref: '#/components/schemas/FeatureInteraction'
+        stats:
+          $ref: '#/components/schemas/FeatureStats'
+        total_instances:
+          description: TotalInstances represents the total prediction over which the distribution is computed
+          format: int64
+          type: integer
+        type:
+          description: FeatureType refers to the type of feature as per the model predictions schema
+          type: string
+      type: object
     FeatureStats:
       description: FeatureStats represents feature level statistics
       properties:
@@ -333,24 +332,6 @@ components:
           format: double
           type: number
       type: object
-    FeatureStatisticsResponse:
-      description: FeatureStatisticsResponse represents a feature statistics response
-      properties:
-        feature:
-          description: FeatureName refers to the name of feature as per the model predictions schema
-          type: string
-        interaction:
-          $ref: '#/components/schemas/FeatureInteraction'
-        stats:
-          $ref: '#/components/schemas/FeatureStats'
-        total_instances:
-          description: TotalInstances represents the total prediction over which the distribution is computed
-          format: int64
-          type: integer
-        type:
-          description: FeatureType refers to the type of feature as per the model predictions schema
-          type: string
-      type: object
   requestBodies:
     DeploymentFeatureData:
       content:
@@ -359,6 +340,25 @@ components:
             $ref: '#/components/schemas/DeploymentFeatureData'
       description: Deployment Feature Data
       required: true
+  responses:
+    FeatureDistResponse:
+      description: Feature Distribution Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FeatureDistributionResponse'
+    FeatureStatResponse:
+      description: Feature Statistics Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FeatureStatisticsResponse'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

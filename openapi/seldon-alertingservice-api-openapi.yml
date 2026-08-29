@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService API
+  title: Seldon Deploy Alerting Service API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -73,21 +73,6 @@ paths:
       - AlertingService
 components:
   schemas:
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    v1TriggerTestAlertResponse:
-      type: object
-    v1ListAlertsResponse:
-      type: object
-      properties:
-        firingAlerts:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FiringAlert'
     v1FiringAlert:
       type: object
       properties:
@@ -102,6 +87,14 @@ components:
         activeAt:
           type: string
           format: date-time
+    v1TriggerTestAlertResponse:
+      type: object
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
     rpcStatus:
       type: object
       properties:
@@ -114,6 +107,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
+    v1ListAlertsResponse:
+      type: object
+      properties:
+        firingAlerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FiringAlert'
   securitySchemes:
     OAuth2:
       type: oauth2

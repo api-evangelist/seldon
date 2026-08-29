@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService model API
+  title: Seldon Deploy AlertingService Model API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -256,6 +256,60 @@ components:
             $ref: '#/components/schemas/RequestOutput'
       required:
       - inputs
+    InferenceErrorResponse:
+      title: InferenceErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+    MetadataModelResponse:
+      title: MetadataModelResponse
+      type: object
+      properties:
+        name:
+          type: string
+        versions:
+          type: array
+          items:
+            type: string
+        platform:
+          type: string
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTensor'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTensor'
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - platform
+    RequestInput:
+      title: RequestInput
+      type: object
+      properties:
+        name:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        datatype:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        data:
+          $ref: '#/components/schemas/TensorData'
+      required:
+      - name
+      - shape
+      - datatype
+      - data
+    TensorData:
+      title: TensorData
     Parameters:
       type: object
       title: Parameters
@@ -266,6 +320,51 @@ components:
           type: string
         headers:
           type: object
+    InferenceResponse:
+      title: InferenceResponse
+      type: object
+      properties:
+        model_name:
+          type: string
+        model_version:
+          type: string
+        id:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseOutput'
+      required:
+      - model_name
+      - outputs
+    MetadataTensor:
+      title: MetadataTensor
+      type: object
+      properties:
+        name:
+          type: string
+        datatype:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - datatype
+      - shape
+    MetadataModelErrorResponse:
+      title: MetadataModelErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     ResponseOutput:
       title: ResponseOutput
       type: object
@@ -297,105 +396,6 @@ components:
           $ref: '#/components/schemas/Parameters'
       required:
       - name
-    InferenceErrorResponse:
-      title: InferenceErrorResponse
-      type: object
-      properties:
-        error:
-          type: string
-    RequestInput:
-      title: RequestInput
-      type: object
-      properties:
-        name:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        datatype:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        data:
-          $ref: '#/components/schemas/TensorData'
-      required:
-      - name
-      - shape
-      - datatype
-      - data
-    MetadataTensor:
-      title: MetadataTensor
-      type: object
-      properties:
-        name:
-          type: string
-        datatype:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-      - datatype
-      - shape
-    MetadataModelErrorResponse:
-      title: MetadataModelErrorResponse
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
-    MetadataModelResponse:
-      title: MetadataModelResponse
-      type: object
-      properties:
-        name:
-          type: string
-        versions:
-          type: array
-          items:
-            type: string
-        platform:
-          type: string
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataTensor'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataTensor'
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-      - platform
-    InferenceResponse:
-      title: InferenceResponse
-      type: object
-      properties:
-        model_name:
-          type: string
-        model_version:
-          type: string
-        id:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResponseOutput'
-      required:
-      - model_name
-      - outputs
-    TensorData:
-      title: TensorData
   securitySchemes:
     OAuth2:
       type: oauth2

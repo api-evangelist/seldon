@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService ModelMetadataService API
+  title: Seldon Deploy Model Metadata Service API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -361,27 +361,14 @@ paths:
       tags:
       - ModelMetadataService
 components:
+  requestBodies:
+    v1Model:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/v1Model'
+      required: true
   schemas:
-    v1DataType:
-      type: string
-      enum:
-      - FLOAT
-      - INT
-      - BOOL
-      - STRING
-      - BYTES
-      default: FLOAT
-    v1FeatureType:
-      type: string
-      enum:
-      - REAL
-      - CATEGORICAL
-      - PROBA
-      - ONE_HOT
-      - TEXT
-      - TENSOR
-      default: REAL
-      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
     v1PredictionSchema:
       type: object
       properties:
@@ -404,6 +391,60 @@ components:
       - SeldonModel
       - KnativeDetector
       default: UndefinedDeploymentType
+    v1FeatureType:
+      type: string
+      enum:
+      - REAL
+      - CATEGORICAL
+      - PROBA
+      - ONE_HOT
+      - TEXT
+      - TENSOR
+      default: REAL
+      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
+    v1ModelMetadataUpdateResponse:
+      type: object
+    v1FeatureCategorySchema:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/v1DataType'
+      required:
+      - name
+    v1DefaultProtocol:
+      type: string
+      enum:
+      - PROTOCOL_UNKNOWN
+      - PROTOCOL_SELDON
+      - PROTOCOL_TENSORFLOW
+      - PROTOCOL_V2
+      default: PROTOCOL_UNKNOWN
+      description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
+    v1DataType:
+      type: string
+      enum:
+      - FLOAT
+      - INT
+      - BOOL
+      - STRING
+      - BYTES
+      default: FLOAT
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1ModelMetadataDeleteResponse:
+      type: object
     v1ArtifactType:
       type: string
       enum:
@@ -433,50 +474,6 @@ components:
       properties:
         defaultProtocol:
           $ref: '#/components/schemas/v1DefaultProtocol'
-    v1FeatureCategorySchema:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          $ref: '#/components/schemas/v1DataType'
-      required:
-      - name
-    v1DeploymentStatus:
-      type: string
-      enum:
-      - Running
-      - Stopped
-      - Unknown
-      default: Running
-    v1FeatureSchema:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/v1FeatureType'
-        dataType:
-          $ref: '#/components/schemas/v1DataType'
-        nCategories:
-          type: string
-          format: int64
-        categoryMap:
-          type: object
-          additionalProperties:
-            type: string
-        schema:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FeatureCategorySchema'
-        shape:
-          type: array
-          items:
-            type: string
-            format: int64
-      required:
-      - name
-      - type
     v1Model:
       type: object
       properties:
@@ -530,32 +527,43 @@ components:
           $ref: '#/components/schemas/v1RuntimeDefaults'
       required:
       - URI
+    v1FeatureSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/v1FeatureType'
+        dataType:
+          $ref: '#/components/schemas/v1DataType'
+        nCategories:
+          type: string
+          format: int64
+        categoryMap:
+          type: object
+          additionalProperties:
+            type: string
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureCategorySchema'
+        shape:
+          type: array
+          items:
+            type: string
+            format: int64
+      required:
+      - name
+      - type
+    v1DeploymentStatus:
+      type: string
+      enum:
+      - Running
+      - Stopped
+      - Unknown
+      default: Running
     v1ModelMetadataCreateResponse:
       type: object
-    v1RuntimeMetadataListResponse:
-      type: object
-      properties:
-        runtimeMetadata:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1RuntimeMetadata'
-        nextPageToken:
-          type: string
-          description: 'A pagination token returned from a previous call to `List`
-
-            that indicates from where listing should continue.'
-    v1ModelMetadataListResponse:
-      type: object
-      properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1Model'
-        nextPageToken:
-          type: string
-          description: 'A pagination token returned from a previous call to `List`
-
-            that indicates from where listing should continue.'
     v1RuntimeMetadata:
       type: object
       properties:
@@ -608,38 +616,30 @@ components:
           type: string
           format: int64
           description: The number of replicas for this model.
-    v1DefaultProtocol:
-      type: string
-      enum:
-      - PROTOCOL_UNKNOWN
-      - PROTOCOL_SELDON
-      - PROTOCOL_TENSORFLOW
-      - PROTOCOL_V2
-      default: PROTOCOL_UNKNOWN
-      description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
-    rpcStatus:
+    v1ModelMetadataListResponse:
       type: object
       properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
+        models:
           type: array
           items:
-            $ref: '#/components/schemas/protobufAny'
-    v1ModelMetadataUpdateResponse:
-      type: object
-    v1ModelMetadataDeleteResponse:
-      type: object
-  requestBodies:
-    v1Model:
-      content:
-        application/json:
-          schema:
             $ref: '#/components/schemas/v1Model'
-      required: true
+        nextPageToken:
+          type: string
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
+    v1RuntimeMetadataListResponse:
+      type: object
+      properties:
+        runtimeMetadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1RuntimeMetadata'
+        nextPageToken:
+          type: string
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
   securitySchemes:
     OAuth2:
       type: oauth2

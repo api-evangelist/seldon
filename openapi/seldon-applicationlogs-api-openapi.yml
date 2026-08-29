@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService ApplicationLogs API
+  title: Seldon Deploy Application Logs API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -37,35 +37,6 @@ paths:
       - ApplicationLogs
 components:
   schemas:
-    ApplicationLogsResponse:
-      description: 'ApplicationLogsResponse represents the collection of application logs
-
-        and their total size after being parsed from their raw forms
-
-        e.g. from json strings or map[string]any types.'
-      properties:
-        logs:
-          items:
-            $ref: '#/components/schemas/ApplicationLog'
-          type: array
-        total:
-          format: int64
-          type: integer
-      type: object
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
-      type: object
     ApplicationLogsParams:
       description: 'ApplicationLogsParams describes a set of parameters that can be
 
@@ -90,6 +61,35 @@ components:
           format: int64
           type: integer
       type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    ApplicationLogsResponse:
+      description: 'ApplicationLogsResponse represents the collection of application logs
+
+        and their total size after being parsed from their raw forms
+
+        e.g. from json strings or map[string]any types.'
+      properties:
+        logs:
+          items:
+            $ref: '#/components/schemas/ApplicationLog'
+          type: array
+        total:
+          format: int64
+          type: integer
+      type: object
     ApplicationLog:
       description: 'ApplicationLog represents the message and timestamp of a single
 
@@ -102,18 +102,18 @@ components:
           type: string
       type: object
   responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     ApplicationLogsResponse:
       description: Application Logs
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ApplicationLogsResponse'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

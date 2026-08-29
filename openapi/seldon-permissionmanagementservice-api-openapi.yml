@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: 'API to interact and manage the lifecycle of your machine learning models
 
     deployed through Seldon Deploy.'
-  title: Seldon Deploy AlertingService PermissionManagementService API
+  title: Seldon Deploy Permission Management Service API
   version: v1alpha1
 servers:
 - url: http://X.X.X.X/seldon-deploy/api/v1alpha1
@@ -618,15 +618,6 @@ paths:
       - PermissionManagementService
 components:
   schemas:
-    v1CreateGroupResponse:
-      type: object
-    v1ResourceActionPair:
-      type: object
-      properties:
-        action:
-          type: string
-        resource:
-          type: string
     v1Policy:
       type: object
       properties:
@@ -638,37 +629,33 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1GroupPolicy'
+    v1DeleteGroupResponse:
+      type: object
+    v1ResetUserPasswordResponse:
+      type: object
+    v1CreateUserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          description: The username of the user. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters. It can be used for login and be part of policies.
+        email:
+          type: string
+          description: The email of the user. It must be a valid email. The user will receive instructions for setting credentials on this email.
+        firstName:
+          type: string
+        lastName:
+          type: string
+      required:
+      - username
+      - email
+    v1AddUserToGroupResponse:
+      type: object
     v1Group:
       type: object
       properties:
         name:
           type: string
-    v1GetPermissionsResponse:
-      type: object
-      properties:
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1ResourceActionPair'
-    v1DeleteGroupResponse:
-      type: object
-    v1CreateUserResponse:
-      type: object
-    v1DeletePolicyResponse:
-      type: object
-    v1GroupPolicy:
-      type: object
-      properties:
-        group:
-          type: string
-        permission:
-          $ref: '#/components/schemas/v1ResourceActionPair'
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
     v1UserPolicy:
       type: object
       properties:
@@ -676,30 +663,6 @@ components:
           type: string
         permission:
           $ref: '#/components/schemas/v1ResourceActionPair'
-    v1CreatePolicyResponse:
-      type: object
-    v1AddUserToGroupResponse:
-      type: object
-    v1DeleteUserFromGroupResponse:
-      type: object
-    v1GetUsersResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1User'
-    v1GetPolicyTargetsResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            type: string
-        groups:
-          type: array
-          items:
-            type: string
     v1GetGroupMembersResponse:
       type: object
       properties:
@@ -707,25 +670,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1User'
-    v1DeleteUserResponse:
-      type: object
-    v1GetUserGroupsResponse:
+    v1GroupPolicy:
       type: object
       properties:
-        groups:
+        group:
+          type: string
+        permission:
+          $ref: '#/components/schemas/v1ResourceActionPair'
+    v1GetPermissionsResponse:
+      type: object
+      properties:
+        permissions:
           type: array
           items:
-            $ref: '#/components/schemas/v1Group'
-    v1ResetUserPasswordResponse:
-      type: object
-    v1CreateGroupRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the group to be created.
-      required:
-      - name
+            $ref: '#/components/schemas/v1ResourceActionPair'
     v1User:
       type: object
       properties:
@@ -744,13 +702,6 @@ components:
         creationTime:
           type: string
           format: date-time
-    v1GetGroupsResponse:
-      type: object
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1Group'
     rpcStatus:
       type: object
       properties:
@@ -763,22 +714,71 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    v1CreateUserRequest:
+    v1CreatePolicyResponse:
+      type: object
+    v1GetPolicyTargetsResponse:
       type: object
       properties:
-        username:
+        users:
+          type: array
+          items:
+            type: string
+        groups:
+          type: array
+          items:
+            type: string
+    v1CreateUserResponse:
+      type: object
+    v1GetUserGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Group'
+    v1DeleteUserFromGroupResponse:
+      type: object
+    v1DeleteUserResponse:
+      type: object
+    protobufAny:
+      type: object
+      properties:
+        '@type':
           type: string
-          description: The username of the user. It must consist of only letters, numbers, underscores, and dashes, and be at most 30 characters. It can be used for login and be part of policies.
-        email:
+      additionalProperties: {}
+    v1CreateGroupRequest:
+      type: object
+      properties:
+        name:
           type: string
-          description: The email of the user. It must be a valid email. The user will receive instructions for setting credentials on this email.
-        firstName:
-          type: string
-        lastName:
-          type: string
+          description: The name of the group to be created.
       required:
-      - username
-      - email
+      - name
+    v1ResourceActionPair:
+      type: object
+      properties:
+        action:
+          type: string
+        resource:
+          type: string
+    v1DeletePolicyResponse:
+      type: object
+    v1GetUsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1User'
+    v1GetGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Group'
+    v1CreateGroupResponse:
+      type: object
   securitySchemes:
     OAuth2:
       type: oauth2
