@@ -146,7 +146,7 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
-  - ApplicationLogs
+  - Application Logs
   tags_raw:
   - ApplicationLogs
   properties:
@@ -248,7 +248,7 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
-  - HealthcheckService
+  - Health Check Service
   tags_raw:
   - HealthcheckService
   properties:
