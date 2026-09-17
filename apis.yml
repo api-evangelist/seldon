@@ -140,34 +140,6 @@ apis:
     url: openapi/seldon-alertingservice-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-applicationlogs-api
-  name: Seldon ApplicationLogs API
-  description: ApplicationLogs APIs for Seldon Deploy
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - Application Logs
-  tags_raw:
-  - ApplicationLogs
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-applicationlogs-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-batchjobs-api
-  name: Seldon BatchJobs API
-  description: Batch Jobs APIs for Seldon Deploy
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - Batch Jobs
-  tags_raw:
-  - BatchJobs
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-batchjobs-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-driftdetector-api
   name: Seldon DriftDetector API
   description: Drift Detector APIs for Seldon Deploy
@@ -216,18 +188,6 @@ apis:
     url: openapi/seldon-explain-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-gitops-api
-  name: Seldon GitOps API
-  description: GitOps APIs for Seldon Deploy
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - GitOps
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-gitops-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-health-api
   name: Seldon health API
   description: The health API from Seldon — 4 operation(s) for health.
@@ -240,20 +200,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/seldon-health-api-openapi.yml
-  - type: Documentation
-    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
-- aid: seldon:seldon-healthcheckservice-api
-  name: Seldon HealthcheckService API
-  description: The HealthcheckService API from Seldon — 1 operation(s) for healthcheckservice.
-  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
-  baseURL: https://docs.seldon.ai
-  tags:
-  - Health Check Service
-  tags_raw:
-  - HealthcheckService
-  properties:
-  - type: OpenAPI
-    url: openapi/seldon-healthcheckservice-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-inferencelogsservice-api
@@ -439,6 +385,54 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/seldon-seldondeployments-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-application-logs-api
+  name: Seldon Application Logs API
+  description: ApplicationLogs APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Application Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-application-logs-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-batch-jobs-api
+  name: Seldon Batch Jobs API
+  description: Batch Jobs APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Batch Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-batch-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-git-ops-api
+  name: Seldon Git Ops API
+  description: GitOps APIs for Seldon Deploy
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Git Ops
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-git-ops-api-openapi.yml
+  - type: Documentation
+    url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
+- aid: seldon:seldon-health-check-service-api
+  name: Seldon Health Check Service API
+  description: The Health Check Service API from Seldon — 1 operation(s) for health check service.
+  humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
+  baseURL: https://docs.seldon.ai
+  tags:
+  - Health Check Service
+  properties:
+  - type: OpenAPI
+    url: openapi/seldon-health-check-service-api-openapi.yml
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 common:
