@@ -417,6 +417,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - GitOps
+  tags_raw:
   - Git Ops
   properties:
   - type: OpenAPI
