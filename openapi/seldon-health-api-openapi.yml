@@ -11,7 +11,7 @@ info:
     name: Business Source License 1.1
 servers: []
 tags:
-- name: health
+- name: Health
 paths:
   /v2/health/live:
     get:
@@ -22,12 +22,12 @@ paths:
       operationId: server-live
       description: The “server live” API indicates if the inference server is able to receive and respond to metadata and inference requests. The “server live” API can be used directly to implement the Kubernetes `livenessProbe`.
       tags:
-      - health
+      - Health
   /v2/health/ready:
     get:
       summary: Server Ready
       tags:
-      - health
+      - Health
       responses:
         '200':
           description: OK
@@ -48,7 +48,7 @@ paths:
     get:
       summary: Model Ready
       tags:
-      - health
+      - Health
       responses:
         '200':
           description: OK
@@ -64,7 +64,7 @@ paths:
     get:
       summary: Model Ready
       tags:
-      - health
+      - Health
       responses:
         '200':
           description: OK

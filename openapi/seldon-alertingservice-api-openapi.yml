@@ -16,7 +16,7 @@ tags:
 paths:
   /alerting/alerts:
     get:
-      summary: List currently firing alerts.
+      summary: List currently firing alerts
       operationId: AlertingService_ListAlerts
       responses:
         '200':
@@ -40,7 +40,7 @@ paths:
       - AlertingService
   /alerting/test:
     post:
-      summary: Triggers a test alert to check alerting workflow.
+      summary: Triggers a test alert to check alerting workflow
       operationId: AlertingService_TriggerTestAlert
       responses:
         '200':
@@ -87,14 +87,6 @@ components:
         activeAt:
           type: string
           format: date-time
-    v1TriggerTestAlertResponse:
-      type: object
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
     rpcStatus:
       type: object
       properties:
@@ -114,6 +106,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1FiringAlert'
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1TriggerTestAlertResponse:
+      type: object
   securitySchemes:
     OAuth2:
       type: oauth2

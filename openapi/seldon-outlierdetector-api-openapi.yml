@@ -39,6 +39,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: List outlier detector seldon pipeline
+      x-summary-source: derived
     post:
       description: Create the specified Seldon Pipeline Outlier Detector
       operationId: CreateOutlierDetectorSeldonPipeline
@@ -64,6 +66,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: Create outlier detector seldon pipeline
+      x-summary-source: derived
   /namespaces/{namespace}/pipelines/{name}/monitor/outlier-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Pipeline Outlier Detector
@@ -94,6 +98,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: Delete outlier detector seldon pipeline
+      x-summary-source: derived
     get:
       description: Read the specified Seldon Pipeline Outlier Detector
       operationId: ReadOutlierDetectorSeldonPipeline
@@ -123,6 +129,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: Read outlier detector seldon pipeline
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector:
     get:
       description: Read the specified Seldon Deployment Outlier Detector
@@ -147,6 +155,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: List outlier detector seldon deployment
+      x-summary-source: derived
     post:
       description: Create the specified Seldon Deployment Outlier Detector
       operationId: CreateOutlierDetectorSeldonDeployment
@@ -174,6 +184,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: Create outlier detector seldon deployment
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/monitor/outlier-detector/{detectorName}:
     delete:
       description: Read the specified Seldon Deployment Outlier Detector
@@ -204,6 +216,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: Delete outlier detector seldon deployment
+      x-summary-source: derived
     get:
       description: Read the specified Seldon Deployment Outlier Detector
       operationId: ReadOutlierDetectorSeldonDeployment
@@ -233,31 +247,37 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - OutlierDetector
+      summary: Read outlier detector seldon deployment
+      x-summary-source: derived
 components:
+  responses:
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DetectorResponse:
+      description: Detector configuration data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DetectorData'
+    DetectorListResponse:
+      description: Detector configuration data list
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/DetectorData'
+            type: array
   schemas:
-    DetectorStatus:
-      type: string
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
-      type: object
-    DetectorConfiguration:
-      properties:
-        basic:
-          $ref: '#/components/schemas/BasicDetectorConfiguration'
-        deployment:
-          $ref: '#/components/schemas/DetectorDeploymentConfiguration'
-      type: object
     DetectorDeploymentConfiguration:
       properties:
         event_source:
@@ -281,37 +301,6 @@ components:
           format: int64
           type: integer
       type: object
-    Message:
-      description: Message Message
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-      type: object
-    BasicDetectorConfiguration:
-      properties:
-        drift_batch_size:
-          type: string
-        drift_type_feature:
-          type: boolean
-        env_secret_ref:
-          type: string
-        project:
-          type: string
-        storage_uri:
-          type: string
-      type: object
-    DetectorConfigData:
-      properties:
-        config:
-          $ref: '#/components/schemas/DetectorConfiguration'
-        name:
-          type: string
-      type: object
     DetectorData:
       properties:
         config:
@@ -329,33 +318,60 @@ components:
         status:
           $ref: '#/components/schemas/DetectorStatus'
       type: object
-  responses:
-    DetectorListResponse:
-      description: Detector configuration data list
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/DetectorData'
-            type: array
-    MessageResponse:
-      description: GenericMessage Message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Message'
-    DetectorResponse:
-      description: Detector configuration data
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/DetectorData'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    BasicDetectorConfiguration:
+      properties:
+        drift_batch_size:
+          type: string
+        drift_type_feature:
+          type: boolean
+        env_secret_ref:
+          type: string
+        project:
+          type: string
+        storage_uri:
+          type: string
+      type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    DetectorStatus:
+      type: string
+    Message:
+      description: Message Message
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+      type: object
+    DetectorConfigData:
+      properties:
+        config:
+          $ref: '#/components/schemas/DetectorConfiguration'
+        name:
+          type: string
+      type: object
+    DetectorConfiguration:
+      properties:
+        basic:
+          $ref: '#/components/schemas/BasicDetectorConfiguration'
+        deployment:
+          $ref: '#/components/schemas/DetectorDeploymentConfiguration'
+      type: object
   requestBodies:
     DetectorConfigData:
       content:

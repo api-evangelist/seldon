@@ -13,7 +13,7 @@ security:
   - '[]'
 tags:
 - description: GitOps APIs for Seldon Deploy
-  name: GitOps
+  name: Git Ops
 paths:
   /namespaces/{namespace}/experiments/{name}/gitdiff:
     get:
@@ -43,7 +43,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read experiment git diff
+      x-summary-source: derived
   /namespaces/{namespace}/experiments/{name}/gitlogs:
     get:
       description: Read the git commits for an experiment
@@ -67,7 +69,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read experiment git logs
+      x-summary-source: derived
   /namespaces/{namespace}/gitdiffs:
     get:
       description: Read the git diffs from hashes
@@ -95,7 +99,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read git diffs
+      x-summary-source: derived
   /namespaces/{namespace}/gitops-status:
     get:
       description: Read the GitOps status
@@ -111,7 +117,9 @@ paths:
         '200':
           $ref: '#/components/responses/GenericResponse'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read git ops status
+      x-summary-source: derived
   /namespaces/{namespace}/models/{name}/gitdiff:
     get:
       description: Read the git diff for a model
@@ -140,7 +148,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read model git diff
+      x-summary-source: derived
   /namespaces/{namespace}/models/{name}/gitlogs:
     get:
       description: Read the git commits for a model
@@ -164,7 +174,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read model git logs
+      x-summary-source: derived
   /namespaces/{namespace}/pipelines/{name}/gitdiff:
     get:
       description: Read the git diff for a pipeline
@@ -193,7 +205,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read pipeline git diff
+      x-summary-source: derived
   /namespaces/{namespace}/pipelines/{name}/gitlogs:
     get:
       description: Read the git commits for a pipeline
@@ -217,7 +231,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read pipeline git logs
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/gitdiff:
     get:
       description: Read the git diff for a Seldon deployment
@@ -246,7 +262,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read seldon deployment git diff
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/gitlogs:
     get:
       description: Read the git commits for a Seldon deployment
@@ -270,7 +288,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Read seldon deployment git logs
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/gitrestore:
     post:
       description: Restore the git commit
@@ -309,7 +329,9 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Seldon deployment git restore
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/gitrevert:
     post:
       description: Revert the git commit
@@ -348,9 +370,65 @@ paths:
         '500':
           $ref: '#/components/responses/ErrorDefault'
       tags:
-      - GitOps
+      - Git Ops
+      summary: Seldon deployment git revert
+      x-summary-source: derived
 components:
+  responses:
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    GitDiffsResponse:
+      description: Git Diffs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/FileDiff'
+            type: array
+    GitDiffResponse:
+      description: Git Diff
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileDiff'
+    GitLogsResponse:
+      description: Git Logs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AuditLog'
+            type: array
   schemas:
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
     AuditLog:
       properties:
         AuthorName:
@@ -364,20 +442,6 @@ components:
           format: date-time
           type: string
         Hash:
-          type: string
-      type: object
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
           type: string
       type: object
     FileDiff:
@@ -415,46 +479,6 @@ components:
           description: Message
           type: string
       type: object
-  responses:
-    GitDiffResponse:
-      description: Git Diff
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FileDiff'
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
-    GitDiffsResponse:
-      description: Git Diffs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/FileDiff'
-            type: array
-    MessageResponse:
-      description: GenericMessage Message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Message'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    GitLogsResponse:
-      description: Git Logs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/AuditLog'
-            type: array
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -41,6 +41,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Explain
+      summary: Explain seldon pipeline
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/explain:
     post:
       description: Create Seldon Deployment explanation
@@ -67,6 +69,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Explain
+      summary: Explain seldon deployment
+      x-summary-source: derived
 components:
   schemas:
     Error:

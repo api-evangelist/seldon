@@ -12,7 +12,7 @@ security:
 - OAuth2:
   - '[]'
 tags:
-- name: HealthcheckService
+- name: Health Check Service
 paths:
   /healthcheck/{dependency}:
     get:
@@ -60,7 +60,7 @@ paths:
           - MINIO
           - FLUENTD
       tags:
-      - HealthcheckService
+      - Health Check Service
 components:
   schemas:
     v1DeployDependencyHealth:
@@ -105,12 +105,14 @@ components:
       - MINIO
       - FLUENTD
       default: ALL
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
+    v1DeployDependencyStatus:
+      type: string
+      enum:
+      - UNSPECIFIED
+      - DISABLED
+      - ENABLED_AND_UNREACHABLE
+      - ENABLED_AND_REACHABLE
+      default: UNSPECIFIED
     rpcStatus:
       type: object
       properties:
@@ -123,14 +125,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    v1DeployDependencyStatus:
-      type: string
-      enum:
-      - UNSPECIFIED
-      - DISABLED
-      - ENABLED_AND_UNREACHABLE
-      - ENABLED_AND_REACHABLE
-      default: UNSPECIFIED
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
   securitySchemes:
     OAuth2:
       type: oauth2

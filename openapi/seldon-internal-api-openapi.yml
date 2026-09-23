@@ -42,6 +42,8 @@ paths:
               json:
                 contentType: application/json
         required: true
+      summary: Aggregate2
+      x-summary-source: derived
     get:
       operationId: Aggregate
       responses:
@@ -59,6 +61,8 @@ paths:
           $ref: '#/components/schemas/SeldonMessageList'
       tags:
       - Internal
+      summary: Aggregate
+      x-summary-source: derived
   /predict:
     get:
       operationId: TransformInput4
@@ -79,6 +83,8 @@ paths:
           json: '{"data":{"names" : ["feature1"],"tensor" : {"shape": [1,1],"values": [1]}}}'
       tags:
       - Internal
+      summary: Transform input4
+      x-summary-source: derived
     post:
       operationId: TransformInput3
       responses:
@@ -102,6 +108,8 @@ paths:
               json:
                 contentType: application/json
         required: true
+      summary: Transform input3
+      x-summary-source: derived
   /route:
     get:
       operationId: Route2
@@ -120,6 +128,8 @@ paths:
           $ref: '#/components/schemas/SeldonMessage'
       tags:
       - Internal
+      summary: Route2
+      x-summary-source: derived
     post:
       operationId: Route
       responses:
@@ -143,6 +153,8 @@ paths:
               json:
                 contentType: application/json
         required: true
+      summary: Route
+      x-summary-source: derived
   /send-feedback:
     get:
       operationId: SendFeedback2
@@ -161,6 +173,8 @@ paths:
           $ref: '#/components/schemas/Feedback'
       tags:
       - Internal
+      summary: Send feedback2
+      x-summary-source: derived
     post:
       operationId: SendFeedback
       responses:
@@ -184,6 +198,8 @@ paths:
               json:
                 contentType: application/json
         required: true
+      summary: Send feedback
+      x-summary-source: derived
   /transform-input:
     get:
       operationId: TransformInput2
@@ -202,6 +218,8 @@ paths:
           $ref: '#/components/schemas/SeldonMessage'
       tags:
       - Internal
+      summary: Transform input2
+      x-summary-source: derived
     post:
       operationId: TransformInput
       responses:
@@ -225,6 +243,8 @@ paths:
               json:
                 contentType: application/json
         required: true
+      summary: Transform input
+      x-summary-source: derived
   /transform-output:
     get:
       operationId: TransformOutput2
@@ -243,6 +263,8 @@ paths:
           $ref: '#/components/schemas/SeldonMessage'
       tags:
       - Internal
+      summary: Transform output2
+      x-summary-source: derived
     post:
       operationId: TransformOutput
       responses:
@@ -266,47 +288,36 @@ paths:
               json:
                 contentType: application/json
         required: true
+      summary: Transform output
+      x-summary-source: derived
 components:
   schemas:
-    Tensor:
+    Metric:
       type: object
       properties:
-        shape:
-          type: array
-          items:
-            type: integer
-            format: int32
-        values:
-          type: array
-          items:
-            type: number
-            format: double
-    TensorShapeProtoDim:
+        type:
+          $ref: '#/components/schemas/MetricType'
+        key:
+          type: string
+        value:
+          type: number
+          format: float
+    TensorflowVariantTensorDataProto:
       type: object
       properties:
-        size:
+        type_name:
           type: string
-          format: int64
-          description: 'Size of the tensor in that dimension.
-
-            This value must be >= -1, but values of -1 are reserved for "unknown"
-
-            shapes (values of -1 mean "unknown" dimension).  Certain wrappers
-
-            that work with TensorShapeProto may fail at runtime when deserializing
-
-            a TensorShapeProto containing a dim value of -1.'
-        name:
+          description: Name of the type of objects being serialized.
+        metadata:
           type: string
-          description: Optional name of the tensor dimension.
-      description: One dimension of the tensor.
-    MetricType:
-      type: string
-      enum:
-      - COUNTER
-      - GAUGE
-      - TIMER
-      default: COUNTER
+          format: byte
+          description: Portions of the object that are not Tensors.
+        tensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/TensorflowTensorProto'
+          description: Tensors contained within objects being serialized.
+      description: Protocol buffer representing the serialization format of DT_VARIANT tensors.
     TensorflowResourceHandleProto:
       type: object
       properties:
@@ -335,86 +346,15 @@ components:
         not valid across executions, but can be serialized back and forth from within
 
         a single run.'
-    TensorflowTensorShapeProto:
-      type: object
-      properties:
-        dim:
-          type: array
-          items:
-            $ref: '#/components/schemas/TensorShapeProtoDim'
-          description: 'Dimensions of the tensor, such as {"input", 30}, {"output", 40}
-
-            for a 30 x 40 2D tensor.  If an entry has size -1, this
-
-            corresponds to a dimension of unknown size. The names are
-
-            optional.
-
-
-            The order of entries in "dim" matters: It indicates the layout of the
-
-            values in the tensor in-memory representation.
-
-
-            The first entry in "dim" is the outermost dimension used to layout the
-
-            values, the last entry is the innermost dimension.  This matches the
-
-            in-memory layout of RowMajor Eigen tensors.
-
-
-            If "dim.size()" > 0, "unknown_rank" must be false.'
-        unknown_rank:
-          type: boolean
-          format: boolean
-          description: 'If true, the number of dimensions in the shape is unknown.
-
-
-            If true, "dim.size()" must be 0.'
-      description: Dimensions of a tensor.
-    Feedback:
-      type: object
-      properties:
-        request:
-          $ref: '#/components/schemas/SeldonMessage'
-        response:
-          $ref: '#/components/schemas/SeldonMessage'
-        reward:
-          type: number
-          format: float
-        truth:
-          $ref: '#/components/schemas/SeldonMessage'
-    Metric:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MetricType'
-        key:
-          type: string
-        value:
-          type: number
-          format: float
-    SeldonMessage:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        meta:
-          $ref: '#/components/schemas/Meta'
-        data:
-          $ref: '#/components/schemas/DefaultData'
-        binData:
-          type: string
-          format: byte
-        strData:
-          type: string
-    SeldonMessageList:
-      type: object
-      properties:
-        seldonMessages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SeldonMessage'
+    MetricType:
+      type: string
+      enum:
+      - COUNTER
+      - GAUGE
+      - TIMER
+      default: COUNTER
+    AnyValue:
+      description: 'Can be anything: string, number, array, object, etc.'
     Status:
       type: object
       properties:
@@ -427,108 +367,6 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/StatusStatusFlag'
-    TensorflowDataType:
-      type: string
-      enum:
-      - DT_INVALID
-      - DT_FLOAT
-      - DT_DOUBLE
-      - DT_INT32
-      - DT_UINT8
-      - DT_INT16
-      - DT_INT8
-      - DT_STRING
-      - DT_COMPLEX64
-      - DT_INT64
-      - DT_BOOL
-      - DT_QINT8
-      - DT_QUINT8
-      - DT_QINT32
-      - DT_BFLOAT16
-      - DT_QINT16
-      - DT_QUINT16
-      - DT_UINT16
-      - DT_COMPLEX128
-      - DT_HALF
-      - DT_RESOURCE
-      - DT_VARIANT
-      - DT_UINT32
-      - DT_UINT64
-      - DT_FLOAT_REF
-      - DT_DOUBLE_REF
-      - DT_INT32_REF
-      - DT_UINT8_REF
-      - DT_INT16_REF
-      - DT_INT8_REF
-      - DT_STRING_REF
-      - DT_COMPLEX64_REF
-      - DT_INT64_REF
-      - DT_BOOL_REF
-      - DT_QINT8_REF
-      - DT_QUINT8_REF
-      - DT_QINT32_REF
-      - DT_BFLOAT16_REF
-      - DT_QINT16_REF
-      - DT_QUINT16_REF
-      - DT_UINT16_REF
-      - DT_COMPLEX128_REF
-      - DT_HALF_REF
-      - DT_RESOURCE_REF
-      - DT_VARIANT_REF
-      - DT_UINT32_REF
-      - DT_UINT64_REF
-      default: DT_INVALID
-      description: "- DT_INVALID: Not a legal value for DataType.  Used to indicate a DataType field\nhas not been set.\n - DT_FLOAT: Data types that all computation devices are expected to be\ncapable to support.\n - DT_FLOAT_REF: Do not use!  These are only for parameters.  Every enum above\nshould have a corresponding value below (verified by types_test)."
-      title: LINT.IfChange
-    DefaultData:
-      type: object
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-        tensor:
-          $ref: '#/components/schemas/Tensor'
-        ndarry:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyValue'
-        tftensor:
-          $ref: '#/components/schemas/TensorflowTensorProto'
-    StatusStatusFlag:
-      type: string
-      enum:
-      - SUCCESS
-      - FAILURE
-      default: SUCCESS
-    Meta:
-      type: object
-      properties:
-        puid:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/AnyValue'
-          example:
-            mytag: myvalue
-        routing:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int32
-          example:
-            router1: 1
-        requestPath:
-          type: object
-          additionalProperties:
-            type: string
-          example:
-            classifier: seldonio/mock_classifier:1.0
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Metric'
     TensorflowTensorProto:
       type: object
       properties:
@@ -643,24 +481,210 @@ components:
             format: uint64
           title: DT_UINT64
       description: Protocol buffer representing a tensor.
-    TensorflowVariantTensorDataProto:
+    StatusStatusFlag:
+      type: string
+      enum:
+      - SUCCESS
+      - FAILURE
+      default: SUCCESS
+    SeldonMessage:
       type: object
       properties:
-        type_name:
-          type: string
-          description: Name of the type of objects being serialized.
-        metadata:
+        status:
+          $ref: '#/components/schemas/Status'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        data:
+          $ref: '#/components/schemas/DefaultData'
+        binData:
           type: string
           format: byte
-          description: Portions of the object that are not Tensors.
-        tensors:
+        strData:
+          type: string
+    Meta:
+      type: object
+      properties:
+        puid:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/AnyValue'
+          example:
+            mytag: myvalue
+        routing:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+          example:
+            router1: 1
+        requestPath:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            classifier: seldonio/mock_classifier:1.0
+        metrics:
           type: array
           items:
-            $ref: '#/components/schemas/TensorflowTensorProto'
-          description: Tensors contained within objects being serialized.
-      description: Protocol buffer representing the serialization format of DT_VARIANT tensors.
-    AnyValue:
-      description: 'Can be anything: string, number, array, object, etc.'
+            $ref: '#/components/schemas/Metric'
+    TensorflowTensorShapeProto:
+      type: object
+      properties:
+        dim:
+          type: array
+          items:
+            $ref: '#/components/schemas/TensorShapeProtoDim'
+          description: 'Dimensions of the tensor, such as {"input", 30}, {"output", 40}
+
+            for a 30 x 40 2D tensor.  If an entry has size -1, this
+
+            corresponds to a dimension of unknown size. The names are
+
+            optional.
+
+
+            The order of entries in "dim" matters: It indicates the layout of the
+
+            values in the tensor in-memory representation.
+
+
+            The first entry in "dim" is the outermost dimension used to layout the
+
+            values, the last entry is the innermost dimension.  This matches the
+
+            in-memory layout of RowMajor Eigen tensors.
+
+
+            If "dim.size()" > 0, "unknown_rank" must be false.'
+        unknown_rank:
+          type: boolean
+          format: boolean
+          description: 'If true, the number of dimensions in the shape is unknown.
+
+
+            If true, "dim.size()" must be 0.'
+      description: Dimensions of a tensor.
+    DefaultData:
+      type: object
+      properties:
+        names:
+          type: array
+          items:
+            type: string
+        tensor:
+          $ref: '#/components/schemas/Tensor'
+        ndarry:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnyValue'
+        tftensor:
+          $ref: '#/components/schemas/TensorflowTensorProto'
+    Tensor:
+      type: object
+      properties:
+        shape:
+          type: array
+          items:
+            type: integer
+            format: int32
+        values:
+          type: array
+          items:
+            type: number
+            format: double
+    TensorShapeProtoDim:
+      type: object
+      properties:
+        size:
+          type: string
+          format: int64
+          description: 'Size of the tensor in that dimension.
+
+            This value must be >= -1, but values of -1 are reserved for "unknown"
+
+            shapes (values of -1 mean "unknown" dimension).  Certain wrappers
+
+            that work with TensorShapeProto may fail at runtime when deserializing
+
+            a TensorShapeProto containing a dim value of -1.'
+        name:
+          type: string
+          description: Optional name of the tensor dimension.
+      description: One dimension of the tensor.
+    TensorflowDataType:
+      type: string
+      enum:
+      - DT_INVALID
+      - DT_FLOAT
+      - DT_DOUBLE
+      - DT_INT32
+      - DT_UINT8
+      - DT_INT16
+      - DT_INT8
+      - DT_STRING
+      - DT_COMPLEX64
+      - DT_INT64
+      - DT_BOOL
+      - DT_QINT8
+      - DT_QUINT8
+      - DT_QINT32
+      - DT_BFLOAT16
+      - DT_QINT16
+      - DT_QUINT16
+      - DT_UINT16
+      - DT_COMPLEX128
+      - DT_HALF
+      - DT_RESOURCE
+      - DT_VARIANT
+      - DT_UINT32
+      - DT_UINT64
+      - DT_FLOAT_REF
+      - DT_DOUBLE_REF
+      - DT_INT32_REF
+      - DT_UINT8_REF
+      - DT_INT16_REF
+      - DT_INT8_REF
+      - DT_STRING_REF
+      - DT_COMPLEX64_REF
+      - DT_INT64_REF
+      - DT_BOOL_REF
+      - DT_QINT8_REF
+      - DT_QUINT8_REF
+      - DT_QINT32_REF
+      - DT_BFLOAT16_REF
+      - DT_QINT16_REF
+      - DT_QUINT16_REF
+      - DT_UINT16_REF
+      - DT_COMPLEX128_REF
+      - DT_HALF_REF
+      - DT_RESOURCE_REF
+      - DT_VARIANT_REF
+      - DT_UINT32_REF
+      - DT_UINT64_REF
+      default: DT_INVALID
+      description: "- DT_INVALID: Not a legal value for DataType.  Used to indicate a DataType field\nhas not been set.\n - DT_FLOAT: Data types that all computation devices are expected to be\ncapable to support.\n - DT_FLOAT_REF: Do not use!  These are only for parameters.  Every enum above\nshould have a corresponding value below (verified by types_test)."
+      title: LINT.IfChange
+    SeldonMessageList:
+      type: object
+      properties:
+        seldonMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeldonMessage'
+    Feedback:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/SeldonMessage'
+        response:
+          $ref: '#/components/schemas/SeldonMessage'
+        reward:
+          type: number
+          format: float
+        truth:
+          $ref: '#/components/schemas/SeldonMessage'
 externalDocs:
   description: Seldon Core Documentation
   url: https://github.com/SeldonIO/seldon-core

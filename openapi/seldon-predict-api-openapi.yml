@@ -41,6 +41,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Predict
+      summary: Read predict curl seldon pipeline
+      x-summary-source: derived
   /namespaces/{namespace}/pipelines/{name}/predictfile:
     post:
       description: Create Seldon Pipeline prediction
@@ -67,6 +69,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Predict
+      summary: Predict file seldon pipeline
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/predict:
     post:
       description: Create Seldon Deployment prediction
@@ -93,6 +97,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Predict
+      summary: Predict seldon deployment
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/predictcurl:
     put:
       description: Read the specified Seldon Deployment predict curl
@@ -119,6 +125,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Predict
+      summary: Read predict curl seldon deployment
+      x-summary-source: derived
   /namespaces/{namespace}/seldondeployments/{name}/predictfile:
     post:
       description: Create Seldon Deployment prediction
@@ -145,7 +153,21 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Predict
+      summary: Predict file seldon deployment
+      x-summary-source: derived
 components:
+  responses:
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       description: Error Error
@@ -181,18 +203,6 @@ components:
           schema: {}
       description: Prediction
       required: true
-  responses:
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

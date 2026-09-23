@@ -33,7 +33,9 @@
     "seldon-metadata-api-openapi.yml",
     "seldon-internal-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 4 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -49,20 +51,21 @@
     "seldon-inference-api-v2-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "seldon-inference-api-v2-openapi.yml: multi-axis tagging (5 tags, 3 first tags, 2.00x duplication over 9 operations) \u2014 split on first tag, 9 operations narrowed",
     "seldon-wrapper-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "seldon-wrapper-api-openapi.yml: declared missing tag: Internal"
+    "seldon-wrapper-api-openapi.yml: declared missing tag: Internal",
+    "superseded outputs removed: seldon-application-logs-api-openapi.yml, seldon-batch-jobs-api-openapi.yml, seldon-git-ops-api-openapi.yml, seldon-health-check-service-api-openapi.yml",
+    "apis.yml register: written (+4 apis, 28 total)"
   ],
   "skipped": [
     "seldon-alertingservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-applicationlogs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-batchjobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "seldon-application-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "seldon-batch-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-driftdetector-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-environment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-experiments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-explain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-external-ambassador-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-gitops-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "seldon-git-ops-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-healthcheckservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "seldon-health-check-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-inference-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-inferencelogsservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-internal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -70,7 +73,6 @@
     "seldon-loadtestjobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-metricsserver-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-model-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-modelmetadataservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-monitor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -79,7 +81,6 @@
     "seldon-pipelines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-predict-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "seldon-secretsservice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-seldondeployments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "seldon-server-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "seldon-seldondeployments-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

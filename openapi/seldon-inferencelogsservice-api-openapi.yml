@@ -16,7 +16,7 @@ tags:
 paths:
   /inference-logs/models:
     get:
-      summary: Get inference logs metadata for seldon models.
+      summary: Get inference logs metadata for seldon models
       operationId: InferenceLogsService_ListModelInferenceLogs
       responses:
         '200':
@@ -69,7 +69,7 @@ paths:
       - InferenceLogsService
   /inference-logs/namespace/{namespace}/pipelines/{pipelineName}/models/{modelName}:
     post:
-      summary: Get inference logs for seldon models.
+      summary: Get inference logs for seldon models
       operationId: InferenceLogsService_GetModelInferenceLogs
       responses:
         '200':
@@ -148,7 +148,7 @@ paths:
       - InferenceLogsService
   /inference-logs/namespace/{namespace}/seldondeployments/{deploymentName}:
     post:
-      summary: Get inference logs for seldon deployments.
+      summary: Get inference logs for seldon deployments
       operationId: InferenceLogsService_GetDeploymentInferenceLogs
       responses:
         '200':
@@ -232,7 +232,7 @@ paths:
       - InferenceLogsService
   /inference-logs/seldondeployments:
     get:
-      summary: Get inference logs metadata for seldon deployments.
+      summary: Get inference logs metadata for seldon deployments
       operationId: InferenceLogsService_ListDeploymentInferenceLogs
       responses:
         '200':
@@ -291,6 +291,16 @@ paths:
       - InferenceLogsService
 components:
   schemas:
+    v1InferenceLogsRawPayload:
+      type: object
+      properties:
+        requestId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        request: {}
+        response: {}
     v1ListModelInferenceLogsResponse:
       type: object
       properties:
@@ -298,6 +308,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1InferenceLogsModelItem'
+    v1ListDeploymentInferenceLogsResponse:
+      type: object
+      properties:
+        inferenceLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
     v1InferenceLogsModelItem:
       type: object
       properties:
@@ -316,42 +333,6 @@ components:
         endTime:
           type: string
           format: date-time
-    v1InferenceLogsDeploymentItem:
-      type: object
-      properties:
-        namespace:
-          type: string
-        name:
-          type: string
-        predictor:
-          type: string
-        container:
-          type: string
-        count:
-          type: integer
-          format: int32
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-    v1InferenceLogsRawPayload:
-      type: object
-      properties:
-        requestId:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        request: {}
-        response: {}
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
     rpcStatus:
       type: object
       properties:
@@ -364,24 +345,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    v1GetModelInferenceLogsResponse:
-      type: object
-      properties:
-        namespace:
-          type: string
-        pipelineName:
-          type: string
-        modelName:
-          type: string
-        payloads:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
-        nextPageToken:
-          type: string
-        totalCount:
-          type: integer
-          format: int32
     v1GetDeploymentInferenceLogsResponse:
       type: object
       properties:
@@ -402,13 +365,50 @@ components:
         totalCount:
           type: integer
           format: int32
-    v1ListDeploymentInferenceLogsResponse:
+    protobufAny:
       type: object
       properties:
-        inferenceLogs:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1GetModelInferenceLogsResponse:
+      type: object
+      properties:
+        namespace:
+          type: string
+        pipelineName:
+          type: string
+        modelName:
+          type: string
+        payloads:
           type: array
           items:
-            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
+            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
+        nextPageToken:
+          type: string
+        totalCount:
+          type: integer
+          format: int32
+    v1InferenceLogsDeploymentItem:
+      type: object
+      properties:
+        namespace:
+          type: string
+        name:
+          type: string
+        predictor:
+          type: string
+        container:
+          type: string
+        count:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
   securitySchemes:
     OAuth2:
       type: oauth2

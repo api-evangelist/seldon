@@ -55,6 +55,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Models
+      summary: Create model
+      x-summary-source: derived
   /namespaces/{namespace}/models/{name}:
     delete:
       description: Delete the specified Seldon Model
@@ -97,6 +99,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Models
+      summary: Delete model
+      x-summary-source: derived
     get:
       description: Read the specified Seldon Model
       operationId: ReadModel
@@ -126,6 +130,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Models
+      summary: Read model
+      x-summary-source: derived
     put:
       description: Update the specified Seldon Model
       operationId: UpdateModel
@@ -169,328 +175,39 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Models
+      summary: Update model
+      x-summary-source: derived
 components:
   schemas:
-    Quantity:
-      description: 'The serialization format is:
-
-
-        ```
-
-        <quantity>        ::= <signedNumber><suffix>
-
-
-        (Note that <suffix> may be empty, from the "" case in <decimalSI>.)
-
-
-        <digit>           ::= 0 | 1 | ... | 9
-
-        <digits>          ::= <digit> | <digit><digits>
-
-        <number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits>
-
-        <sign>            ::= "+" | "-"
-
-        <signedNumber>    ::= <number> | <sign><number>
-
-        <suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI>
-
-        <binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei
-
-
-        (International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)
-
-
-        <decimalSI>       ::= m | "" | k | M | G | T | P | E
-
-
-        (Note that 1024 = 1Ki but 1000 = 1k; I didn''t choose the capitalization.)
-
-
-        <decimalExponent> ::= "e" <signedNumber> | "E" <signedNumber>
-
-        ```
-
-
-        No matter which of the three exponent forms is used, no quantity may represent
-
-        a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal
-
-        places. Numbers larger or more precise will be capped or rounded up.
-
-        (E.g.: 0.1m will rounded up to 1m.)
-
-        This may be extended in the future if we require larger or smaller quantities.
-
-
-        When a Quantity is parsed from a string, it will remember the type of suffix
-
-        it had, and will use the same type again when it is serialized.
-
-
-        Before serializing, Quantity will be put in "canonical form".
-
-        This means that Exponent/suffix will be adjusted up or down (with a
-
-        corresponding increase or decrease in Mantissa) such that:
-
-
-        No precision is lost
-
-        No fractional digits will be emitted
-
-        The exponent (or suffix) is as large as possible.
-
-
-        The sign will be omitted unless the number is negative.
-
-
-        Examples:
-
-
-        1.5 will be serialized as "1500m"
-
-        1.5Gi will be serialized as "1536Mi"
-
-
-        Note that the quantity will NEVER be internally represented by a
-
-        floating point number. That is the whole point of this exercise.
-
-
-        Non-canonical values will still parse as long as they are well formed,
-
-        but will be re-emitted in their canonical form. (So always use canonical
-
-        form, or don''t diff.)
-
-
-        This format is intended to make it difficult to use these numbers without
-
-        writing some sort of special handling code in the hopes that that will
-
-        cause implementors to also use a fixed point implementation.
-
-
-        +protobuf=true
-
-        +protobuf.embed=string
-
-        +protobuf.options.marshal=false
-
-        +protobuf.options.(gogoproto.goproto_stringer)=false
-
-        +k8s:deepcopy-gen=true
-
-        +k8s:openapi-gen=true'
-      title: 'Quantity is a fixed-point representation of a number.
-
-        It provides convenient marshaling/unmarshaling in JSON and YAML,
-
-        in addition to String() and AsInt64() accessors.'
-      type: object
-    Error:
-      description: Error Error
+    ModelStatus:
+      description: ModelStatus defines the observed state of Model
       properties:
-        code:
-          description: Code
+        annotations:
+          additionalProperties:
+            type: string
+          description: 'Annotations is additional Status fields for the Resource to save some
+
+            additional State as well as convey more information to the user. This is
+
+            roughly akin to Annotations on any k8s resource, just the reconciler conveying
+
+            richer information outwards.'
+          type: object
+        conditions:
+          $ref: '#/components/schemas/Conditions'
+        observedGeneration:
+          description: 'ObservedGeneration is the ''Generation'' of the Service that
+
+            was last processed by the controller.
+
+            +optional'
           format: int64
           type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
-      type: object
-    ExplainerSpec:
-      description: Either ModelRef or PipelineRef is required
-      properties:
-        modelRef:
-          description: 'one of the following need to be set for blackbox explainers
-
-            Reference to Model
-
-            +optional'
-          type: string
-        pipelineRef:
-          description: 'Reference to Pipeline
-
-            +optional'
-          type: string
-        type:
-          description: type of explainer
-          type: string
-      type: object
-    SeldonModel:
-      properties:
-        apiVersion:
-          type: string
-        kind:
-          type: string
-        metadata:
-          $ref: '#/components/schemas/ObjectMeta'
-        spec:
-          $ref: '#/components/schemas/ModelSpec'
-        status:
-          $ref: '#/components/schemas/ModelStatus'
-      type: object
-    FieldsV1:
-      description: 'Each key is either a ''.'' representing the field itself, and will always map to an empty set,
-
-        or a string representing a sub-field or item. The string will follow one of these four formats:
-
-        ''f:<name>'', where <name> is the name of a field in a struct, or key in a map
-
-        ''v:<value>'', where <value> is the exact json formatted value of a list item
-
-        ''i:<index>'', where <index> is position of a item in a list
-
-        ''k:<keys>'', where <keys> is a map of  a list item''s key fields to their unique values
-
-        If a key maps to an empty Fields value, the field that key represents is part of the set.
-
-
-        The exact format is defined in sigs.k8s.io/structured-merge-diff
-
-        +protobuf.options.(gogoproto.goproto_stringer)=false'
-      title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
-      type: object
-    ManagedFieldsEntry:
-      description: 'ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource
-
-        that the fieldset applies to.'
-      properties:
-        apiVersion:
-          description: 'APIVersion defines the version of this resource that this field set
-
-            applies to. The format is "group/version" just like the top-level
-
-            APIVersion field. It is necessary to track the version of a field
-
-            set because it cannot be automatically converted.'
-          type: string
-        fieldsType:
-          description: 'FieldsType is the discriminator for the different fields format and version.
-
-            There is currently only one possible value: "FieldsV1"'
-          type: string
-        fieldsV1:
-          $ref: '#/components/schemas/FieldsV1'
-        manager:
-          description: Manager is an identifier of the workflow managing these fields.
-          type: string
-        operation:
-          $ref: '#/components/schemas/ManagedFieldsOperationType'
-        subresource:
-          description: 'Subresource is the name of the subresource used to update that object, or
-
-            empty string if the object was updated through the main resource. The
-
-            value of this field is used to distinguish between managers, even if they
-
-            share the same name. For example, a status update will be distinct from a
-
-            regular update using the same manager name.
-
-            Note that the APIVersion field is not related to the Subresource field and
-
-            it always corresponds to the version of the main resource.'
-          type: string
-        time:
-          description: 'Time is the timestamp of when the ManagedFields entry was added. The
-
-            timestamp will also be updated if a field is added, the manager
-
-            changes any of the owned fields value or removes a field. The
-
-            timestamp does not update when a field is removed from the entry
-
-            because another manager took it over.
-
-            +optional'
-          type: string
-      type: object
-    ModelSpec:
-      description: ModelSpec defines the desired state of Model
-      properties:
-        artifactVersion:
-          description: 'Artifact Version
-
-            A v2 version folder to select from storage bucket
-
-            +optional'
-          format: uint32
-          type: integer
-        dedicated:
-          description: 'Dedicated server exclusive to this model
-
-            Default false'
-          type: boolean
-        explainer:
-          $ref: '#/components/schemas/ExplainerSpec'
-        logger:
-          $ref: '#/components/schemas/LoggingSpec'
-        maxReplicas:
-          description: Max number of replicas - default equal to 0
-          format: int32
-          type: integer
-        memory:
-          $ref: '#/components/schemas/Quantity'
-        minReplicas:
-          description: Min number of replicas - default equal to 0
-          format: int32
-          type: integer
-        modelType:
-          description: 'Model type
-
-            +optional'
-          type: string
-        parameters:
-          description: Parameters to load with model
-          items:
-            $ref: '#/components/schemas/ParameterSpec'
-          type: array
-        preloaded:
-          description: 'Model already loaded on a server. Don''t schedule.
-
-            Default false'
-          type: boolean
         replicas:
-          description: Number of replicas - default 1
+          description: Total number of replicas targeted by this model
           format: int32
           type: integer
-        requirements:
-          description: List of extra requirements for this model to be loaded on a compatible server
-          items:
-            type: string
-          type: array
-        schemaUri:
-          description: 'Schema URI
-
-            +optional'
-          type: string
-        secretName:
-          description: 'Secret name
-
-            +optional'
-          type: string
-        server:
-          description: 'Name of the Server to deploy this artifact
-
-            +optional'
-          type: string
-        storageUri:
-          description: Storage URI for the model repository
-          type: string
       type: object
-    UID:
-      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
-
-        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
-
-        intent and helps make sure that UIDs and names do not get conflated.'
-      type: string
     ObjectMeta:
       description: 'ObjectMeta is metadata that all persisted resources must have, which includes all objects
 
@@ -756,54 +473,74 @@ components:
         uid:
           $ref: '#/components/schemas/UID'
       type: object
-    OwnerReference:
-      description: 'OwnerReference contains enough information to let you identify an owning
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    ManagedFieldsEntry:
+      description: 'ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource
 
-        object. An owning object must be in the same namespace as the dependent, or
-
-        be cluster-scoped, so there is no namespace field.
-
-        +structType=atomic'
+        that the fieldset applies to.'
       properties:
         apiVersion:
-          description: API version of the referent.
+          description: 'APIVersion defines the version of this resource that this field set
+
+            applies to. The format is "group/version" just like the top-level
+
+            APIVersion field. It is necessary to track the version of a field
+
+            set because it cannot be automatically converted.'
           type: string
-        blockOwnerDeletion:
-          description: 'If true, AND if the owner has the "foregroundDeletion" finalizer, then
+        fieldsType:
+          description: 'FieldsType is the discriminator for the different fields format and version.
 
-            the owner cannot be deleted from the key-value store until this
+            There is currently only one possible value: "FieldsV1"'
+          type: string
+        fieldsV1:
+          $ref: '#/components/schemas/FieldsV1'
+        manager:
+          description: Manager is an identifier of the workflow managing these fields.
+          type: string
+        operation:
+          $ref: '#/components/schemas/ManagedFieldsOperationType'
+        subresource:
+          description: 'Subresource is the name of the subresource used to update that object, or
 
-            reference is removed.
+            empty string if the object was updated through the main resource. The
 
-            See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion
+            value of this field is used to distinguish between managers, even if they
 
-            for how the garbage collector interacts with this field and enforces the foreground deletion.
+            share the same name. For example, a status update will be distinct from a
 
-            Defaults to false.
+            regular update using the same manager name.
 
-            To set this field, a user needs "delete" permission of the owner,
+            Note that the APIVersion field is not related to the Subresource field and
 
-            otherwise 422 (Unprocessable Entity) will be returned.
+            it always corresponds to the version of the main resource.'
+          type: string
+        time:
+          description: 'Time is the timestamp of when the ManagedFields entry was added. The
+
+            timestamp will also be updated if a field is added, the manager
+
+            changes any of the owned fields value or removes a field. The
+
+            timestamp does not update when a field is removed from the entry
+
+            because another manager took it over.
 
             +optional'
-          type: boolean
-        controller:
-          description: 'If true, this reference points to the managing controller.
-
-            +optional'
-          type: boolean
-        kind:
-          description: 'Kind of the referent.
-
-            More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
           type: string
-        name:
-          description: 'Name of the referent.
-
-            More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names'
-          type: string
-        uid:
-          $ref: '#/components/schemas/UID'
       type: object
     ParameterSpec:
       properties:
@@ -812,37 +549,99 @@ components:
         value:
           type: string
       type: object
-    ManagedFieldsOperationType:
-      title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry being created.
-      type: string
-    ModelStatus:
-      description: ModelStatus defines the observed state of Model
+    ModelSpec:
+      description: ModelSpec defines the desired state of Model
       properties:
-        annotations:
-          additionalProperties:
-            type: string
-          description: 'Annotations is additional Status fields for the Resource to save some
+        artifactVersion:
+          description: 'Artifact Version
 
-            additional State as well as convey more information to the user. This is
-
-            roughly akin to Annotations on any k8s resource, just the reconciler conveying
-
-            richer information outwards.'
-          type: object
-        conditions:
-          $ref: '#/components/schemas/Conditions'
-        observedGeneration:
-          description: 'ObservedGeneration is the ''Generation'' of the Service that
-
-            was last processed by the controller.
+            A v2 version folder to select from storage bucket
 
             +optional'
-          format: int64
+          format: uint32
           type: integer
-        replicas:
-          description: Total number of replicas targeted by this model
+        dedicated:
+          description: 'Dedicated server exclusive to this model
+
+            Default false'
+          type: boolean
+        explainer:
+          $ref: '#/components/schemas/ExplainerSpec'
+        logger:
+          $ref: '#/components/schemas/LoggingSpec'
+        maxReplicas:
+          description: Max number of replicas - default equal to 0
           format: int32
           type: integer
+        memory:
+          $ref: '#/components/schemas/Quantity'
+        minReplicas:
+          description: Min number of replicas - default equal to 0
+          format: int32
+          type: integer
+        modelType:
+          description: 'Model type
+
+            +optional'
+          type: string
+        parameters:
+          description: Parameters to load with model
+          items:
+            $ref: '#/components/schemas/ParameterSpec'
+          type: array
+        preloaded:
+          description: 'Model already loaded on a server. Don''t schedule.
+
+            Default false'
+          type: boolean
+        replicas:
+          description: Number of replicas - default 1
+          format: int32
+          type: integer
+        requirements:
+          description: List of extra requirements for this model to be loaded on a compatible server
+          items:
+            type: string
+          type: array
+        schemaUri:
+          description: 'Schema URI
+
+            +optional'
+          type: string
+        secretName:
+          description: 'Secret name
+
+            +optional'
+          type: string
+        server:
+          description: 'Name of the Server to deploy this artifact
+
+            +optional'
+          type: string
+        storageUri:
+          description: Storage URI for the model repository
+          type: string
+      type: object
+    FieldsV1:
+      description: 'Each key is either a ''.'' representing the field itself, and will always map to an empty set,
+
+        or a string representing a sub-field or item. The string will follow one of these four formats:
+
+        ''f:<name>'', where <name> is the name of a field in a struct, or key in a map
+
+        ''v:<value>'', where <value> is the exact json formatted value of a list item
+
+        ''i:<index>'', where <index> is position of a item in a list
+
+        ''k:<keys>'', where <keys> is a map of  a list item''s key fields to their unique values
+
+        If a key maps to an empty Fields value, the field that key represents is part of the set.
+
+
+        The exact format is defined in sigs.k8s.io/structured-merge-diff
+
+        +protobuf.options.(gogoproto.goproto_stringer)=false'
+      title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
       type: object
     Model:
       description: Model is the Schema for the models API
@@ -1135,6 +934,217 @@ components:
         uid:
           $ref: '#/components/schemas/UID'
       type: object
+    SeldonModel:
+      properties:
+        apiVersion:
+          type: string
+        kind:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/ObjectMeta'
+        spec:
+          $ref: '#/components/schemas/ModelSpec'
+        status:
+          $ref: '#/components/schemas/ModelStatus'
+      type: object
+    Quantity:
+      description: 'The serialization format is:
+
+
+        ```
+
+        <quantity>        ::= <signedNumber><suffix>
+
+
+        (Note that <suffix> may be empty, from the "" case in <decimalSI>.)
+
+
+        <digit>           ::= 0 | 1 | ... | 9
+
+        <digits>          ::= <digit> | <digit><digits>
+
+        <number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits>
+
+        <sign>            ::= "+" | "-"
+
+        <signedNumber>    ::= <number> | <sign><number>
+
+        <suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI>
+
+        <binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei
+
+
+        (International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)
+
+
+        <decimalSI>       ::= m | "" | k | M | G | T | P | E
+
+
+        (Note that 1024 = 1Ki but 1000 = 1k; I didn''t choose the capitalization.)
+
+
+        <decimalExponent> ::= "e" <signedNumber> | "E" <signedNumber>
+
+        ```
+
+
+        No matter which of the three exponent forms is used, no quantity may represent
+
+        a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal
+
+        places. Numbers larger or more precise will be capped or rounded up.
+
+        (E.g.: 0.1m will rounded up to 1m.)
+
+        This may be extended in the future if we require larger or smaller quantities.
+
+
+        When a Quantity is parsed from a string, it will remember the type of suffix
+
+        it had, and will use the same type again when it is serialized.
+
+
+        Before serializing, Quantity will be put in "canonical form".
+
+        This means that Exponent/suffix will be adjusted up or down (with a
+
+        corresponding increase or decrease in Mantissa) such that:
+
+
+        No precision is lost
+
+        No fractional digits will be emitted
+
+        The exponent (or suffix) is as large as possible.
+
+
+        The sign will be omitted unless the number is negative.
+
+
+        Examples:
+
+
+        1.5 will be serialized as "1500m"
+
+        1.5Gi will be serialized as "1536Mi"
+
+
+        Note that the quantity will NEVER be internally represented by a
+
+        floating point number. That is the whole point of this exercise.
+
+
+        Non-canonical values will still parse as long as they are well formed,
+
+        but will be re-emitted in their canonical form. (So always use canonical
+
+        form, or don''t diff.)
+
+
+        This format is intended to make it difficult to use these numbers without
+
+        writing some sort of special handling code in the hopes that that will
+
+        cause implementors to also use a fixed point implementation.
+
+
+        +protobuf=true
+
+        +protobuf.embed=string
+
+        +protobuf.options.marshal=false
+
+        +protobuf.options.(gogoproto.goproto_stringer)=false
+
+        +k8s:deepcopy-gen=true
+
+        +k8s:openapi-gen=true'
+      title: 'Quantity is a fixed-point representation of a number.
+
+        It provides convenient marshaling/unmarshaling in JSON and YAML,
+
+        in addition to String() and AsInt64() accessors.'
+      type: object
+    OwnerReference:
+      description: 'OwnerReference contains enough information to let you identify an owning
+
+        object. An owning object must be in the same namespace as the dependent, or
+
+        be cluster-scoped, so there is no namespace field.
+
+        +structType=atomic'
+      properties:
+        apiVersion:
+          description: API version of the referent.
+          type: string
+        blockOwnerDeletion:
+          description: 'If true, AND if the owner has the "foregroundDeletion" finalizer, then
+
+            the owner cannot be deleted from the key-value store until this
+
+            reference is removed.
+
+            See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion
+
+            for how the garbage collector interacts with this field and enforces the foreground deletion.
+
+            Defaults to false.
+
+            To set this field, a user needs "delete" permission of the owner,
+
+            otherwise 422 (Unprocessable Entity) will be returned.
+
+            +optional'
+          type: boolean
+        controller:
+          description: 'If true, this reference points to the managing controller.
+
+            +optional'
+          type: boolean
+        kind:
+          description: 'Kind of the referent.
+
+            More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        name:
+          description: 'Name of the referent.
+
+            More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names'
+          type: string
+        uid:
+          $ref: '#/components/schemas/UID'
+      type: object
+    ManagedFieldsOperationType:
+      title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry being created.
+      type: string
+    Conditions:
+      $ref: '#/components/schemas/Conditions'
+    UID:
+      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
+
+        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
+
+        intent and helps make sure that UIDs and names do not get conflated.'
+      type: string
+    ExplainerSpec:
+      description: Either ModelRef or PipelineRef is required
+      properties:
+        modelRef:
+          description: 'one of the following need to be set for blackbox explainers
+
+            Reference to Model
+
+            +optional'
+          type: string
+        pipelineRef:
+          description: 'Reference to Pipeline
+
+            +optional'
+          type: string
+        type:
+          description: type of explainer
+          type: string
+      type: object
     LoggingSpec:
       properties:
         percent:
@@ -1142,8 +1152,14 @@ components:
           format: uint64
           type: integer
       type: object
-    Conditions:
-      $ref: '#/components/schemas/Conditions'
+  requestBodies:
+    Model:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Model'
+      description: Seldon Model
+      required: true
   responses:
     GenericResponse:
       description: Generic
@@ -1162,14 +1178,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/SeldonModel'
-  requestBodies:
-    Model:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Model'
-      description: Seldon Model
-      required: true
   securitySchemes:
     OAuth2:
       type: oauth2

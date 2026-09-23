@@ -11,13 +11,13 @@ info:
     name: Business Source License 1.1
 servers: []
 tags:
-- name: metadata
+- name: Metadata
 paths:
   /v2:
     get:
       summary: Server Metadata
       tags:
-      - metadata
+      - Metadata
       responses:
         '200':
           description: OK
@@ -48,7 +48,7 @@ paths:
     get:
       summary: Model Metadata
       tags:
-      - metadata
+      - Metadata
       responses:
         '200':
           description: OK
@@ -74,7 +74,7 @@ paths:
     get:
       summary: Model Metadata
       tags:
-      - metadata
+      - Metadata
       responses:
         '200':
           description: OK
@@ -92,34 +92,6 @@ paths:
       description: The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
 components:
   schemas:
-    MetadataTensor:
-      title: MetadataTensor
-      type: object
-      properties:
-        name:
-          type: string
-        datatype:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-      - datatype
-      - shape
-    Parameters:
-      type: object
-      title: Parameters
-      x-examples: {}
-      additionalProperties: true
-      properties:
-        content_type:
-          type: string
-        headers:
-          type: object
     MetadataModelErrorResponse:
       title: MetadataModelErrorResponse
       type: object
@@ -153,6 +125,42 @@ components:
       required:
       - name
       - platform
+    MetadataTensor:
+      title: MetadataTensor
+      type: object
+      properties:
+        name:
+          type: string
+        datatype:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - datatype
+      - shape
+    Parameters:
+      type: object
+      title: Parameters
+      x-examples: {}
+      additionalProperties: true
+      properties:
+        content_type:
+          type: string
+        headers:
+          type: object
+    MetadataServerErrorResponse:
+      title: MetadataServerErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     MetadataServerResponse:
       title: MetadataServerResponse
       type: object
@@ -171,11 +179,3 @@ components:
       - name
       - version
       - extensions
-    MetadataServerErrorResponse:
-      title: MetadataServerErrorResponse
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error

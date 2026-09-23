@@ -13,7 +13,7 @@ security:
   - '[]'
 tags:
 - description: ApplicationLogs APIs for Seldon Deploy
-  name: ApplicationLogs
+  name: Application Logs
 paths:
   /applicationlogs:
     post:
@@ -32,11 +32,38 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
         '500':
           $ref: '#/components/responses/ErrorDefault'
-      summary: Read application container logs from elastic search.
+      summary: Read application container logs from elastic search
       tags:
-      - ApplicationLogs
+      - Application Logs
 components:
+  responses:
+    ApplicationLogsResponse:
+      description: Application Logs
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApplicationLogsResponse'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
     ApplicationLogsParams:
       description: 'ApplicationLogsParams describes a set of parameters that can be
 
@@ -60,20 +87,6 @@ components:
         size:
           format: int64
           type: integer
-      type: object
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
       type: object
     ApplicationLogsResponse:
       description: 'ApplicationLogsResponse represents the collection of application logs
@@ -101,19 +114,6 @@ components:
           format: date-time
           type: string
       type: object
-  responses:
-    ApplicationLogsResponse:
-      description: Application Logs
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApplicationLogsResponse'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

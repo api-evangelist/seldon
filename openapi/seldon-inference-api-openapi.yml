@@ -11,7 +11,7 @@ info:
     name: Business Source License 1.1
 servers: []
 tags:
-- name: inference
+- name: Inference
 paths:
   /v2/models/{model_name}/versions/{model_version}/infer:
     parameters:
@@ -60,7 +60,7 @@ paths:
               $ref: '#/components/schemas/InferenceRequest'
       description: An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
       tags:
-      - inference
+      - Inference
   /v2/models/{model_name}/infer:
     parameters:
     - schema:
@@ -103,11 +103,11 @@ paths:
               $ref: '#/components/schemas/InferenceRequest'
       description: An inference request is made with an HTTP POST to an inference endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
       tags:
-      - inference
+      - Inference
 components:
   schemas:
-    ResponseOutput:
-      title: ResponseOutput
+    RequestInput:
+      title: RequestInput
       type: object
       properties:
         name:
@@ -137,22 +137,6 @@ components:
           $ref: '#/components/schemas/Parameters'
       required:
       - name
-    Parameters:
-      type: object
-      title: Parameters
-      x-examples: {}
-      additionalProperties: true
-      properties:
-        content_type:
-          type: string
-        headers:
-          type: object
-    InferenceErrorResponse:
-      title: InferenceErrorResponse
-      type: object
-      properties:
-        error:
-          type: string
     InferenceRequest:
       title: InferenceRequest
       type: object
@@ -208,27 +192,8 @@ components:
             $ref: '#/components/schemas/RequestOutput'
       required:
       - inputs
-    InferenceResponse:
-      title: InferenceResponse
-      type: object
-      properties:
-        model_name:
-          type: string
-        model_version:
-          type: string
-        id:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResponseOutput'
-      required:
-      - model_name
-      - outputs
-    RequestInput:
-      title: RequestInput
+    ResponseOutput:
+      title: ResponseOutput
       type: object
       properties:
         name:
@@ -248,5 +213,40 @@ components:
       - shape
       - datatype
       - data
+    InferenceResponse:
+      title: InferenceResponse
+      type: object
+      properties:
+        model_name:
+          type: string
+        model_version:
+          type: string
+        id:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseOutput'
+      required:
+      - model_name
+      - outputs
+    InferenceErrorResponse:
+      title: InferenceErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+    Parameters:
+      type: object
+      title: Parameters
+      x-examples: {}
+      additionalProperties: true
+      properties:
+        content_type:
+          type: string
+        headers:
+          type: object
     TensorData:
       title: TensorData

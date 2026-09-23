@@ -26,6 +26,8 @@ paths:
           $ref: '#/components/responses/ErrorDefault'
       tags:
       - Environment
+      summary: Read cluster
+      x-summary-source: derived
   /healthcheck:
     get:
       description: Read the healthcheck
@@ -35,6 +37,8 @@ paths:
           $ref: '#/components/responses/HealthCheckResponse'
       tags:
       - Environment
+      summary: Read health check
+      x-summary-source: derived
   /user:
     get:
       description: Read the request user
@@ -44,6 +48,8 @@ paths:
           $ref: '#/components/responses/UserResponse'
       tags:
       - Environment
+      summary: Read user
+      x-summary-source: derived
   /version:
     get:
       description: Read the version
@@ -53,7 +59,40 @@ paths:
           $ref: '#/components/responses/VersionResponse'
       tags:
       - Environment
+      summary: Read version
+      x-summary-source: derived
 components:
+  responses:
+    HealthCheckResponse:
+      description: Version
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HealthCheckInfo'
+    VersionResponse:
+      description: Version
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VersionInfo'
+    UserResponse:
+      description: User
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserInfo'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ClusterInfoResponse:
+      description: Cluster Info
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ClusterInfo'
   schemas:
     Error:
       description: Error Error
@@ -68,27 +107,6 @@ components:
         requestId:
           description: RequestId
           type: string
-      type: object
-    FieldsV1:
-      description: 'Each key is either a ''.'' representing the field itself, and will always map to an empty set,
-
-        or a string representing a sub-field or item. The string will follow one of these four formats:
-
-        ''f:<name>'', where <name> is the name of a field in a struct, or key in a map
-
-        ''v:<value>'', where <value> is the exact json formatted value of a list item
-
-        ''i:<index>'', where <index> is position of a item in a list
-
-        ''k:<keys>'', where <keys> is a map of  a list item''s key fields to their unique values
-
-        If a key maps to an empty Fields value, the field that key represents is part of the set.
-
-
-        The exact format is defined in sigs.k8s.io/structured-merge-diff
-
-        +protobuf.options.(gogoproto.goproto_stringer)=false'
-      title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
       type: object
     ManagedFieldsEntry:
       description: 'ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource
@@ -145,12 +163,48 @@ components:
             +optional'
           type: string
       type: object
-    UID:
-      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
+    NamespaceSpec:
+      properties:
+        finalizers:
+          description: 'Finalizers is an opaque list of values that must be empty to permanently remove object from storage.
 
-        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
+            More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
 
-        intent and helps make sure that UIDs and names do not get conflated.'
+            +optional'
+          items:
+            $ref: '#/components/schemas/FinalizerName'
+          type: array
+      title: NamespaceSpec describes the attributes on a Namespace.
+      type: object
+    ConditionStatus:
+      type: string
+    HealthCheckInfo:
+      description: for checking health of dependencies
+      properties:
+        Elastic:
+          type: string
+        Prometheus:
+          type: string
+      type: object
+    NamespaceConditionType:
+      type: string
+    VersionInfo:
+      properties:
+        BuildTime:
+          type: string
+        BuildVersion:
+          type: string
+        GitBranch:
+          type: string
+        GitCommit:
+          type: string
+        GitStatus:
+          type: string
+        ReleaseType:
+          type: string
+      type: object
+    NamespacePhase:
+      description: +enum
       type: string
     Namespace:
       description: Use of multiple namespaces is optional.
@@ -444,21 +498,56 @@ components:
           $ref: '#/components/schemas/UID'
       title: Namespace provides a scope for Names.
       type: object
-    FinalizerName:
-      title: FinalizerName is the name identifying a finalizer during namespace lifecycle.
-      type: string
-    NamespaceSpec:
+    NamespaceCondition:
       properties:
-        finalizers:
-          description: 'Finalizers is an opaque list of values that must be empty to permanently remove object from storage.
+        lastTransitionTime:
+          description: +optional
+          type: string
+        message:
+          description: +optional
+          type: string
+        reason:
+          description: +optional
+          type: string
+        status:
+          $ref: '#/components/schemas/ConditionStatus'
+        type:
+          $ref: '#/components/schemas/NamespaceConditionType'
+      title: NamespaceCondition contains details about state of namespace.
+      type: object
+    FieldsV1:
+      description: 'Each key is either a ''.'' representing the field itself, and will always map to an empty set,
 
-            More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+        or a string representing a sub-field or item. The string will follow one of these four formats:
 
-            +optional'
+        ''f:<name>'', where <name> is the name of a field in a struct, or key in a map
+
+        ''v:<value>'', where <value> is the exact json formatted value of a list item
+
+        ''i:<index>'', where <index> is position of a item in a list
+
+        ''k:<keys>'', where <keys> is a map of  a list item''s key fields to their unique values
+
+        If a key maps to an empty Fields value, the field that key represents is part of the set.
+
+
+        The exact format is defined in sigs.k8s.io/structured-merge-diff
+
+        +protobuf.options.(gogoproto.goproto_stringer)=false'
+      title: FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
+      type: object
+    UserInfo:
+      properties:
+        Email:
+          type: string
+        Groups:
           items:
-            $ref: '#/components/schemas/FinalizerName'
+            type: string
           type: array
-      title: NamespaceSpec describes the attributes on a Namespace.
+        Id:
+          type: string
+        Name:
+          type: string
       type: object
     OwnerReference:
       description: 'OwnerReference contains enough information to let you identify an owning
@@ -529,65 +618,15 @@ components:
     ManagedFieldsOperationType:
       title: ManagedFieldsOperationType is the type of operation which lead to a ManagedFieldsEntry being created.
       type: string
-    ConditionStatus:
+    FinalizerName:
+      title: FinalizerName is the name identifying a finalizer during namespace lifecycle.
       type: string
-    VersionInfo:
-      properties:
-        BuildTime:
-          type: string
-        BuildVersion:
-          type: string
-        GitBranch:
-          type: string
-        GitCommit:
-          type: string
-        GitStatus:
-          type: string
-        ReleaseType:
-          type: string
-      type: object
-    NamespaceCondition:
-      properties:
-        lastTransitionTime:
-          description: +optional
-          type: string
-        message:
-          description: +optional
-          type: string
-        reason:
-          description: +optional
-          type: string
-        status:
-          $ref: '#/components/schemas/ConditionStatus'
-        type:
-          $ref: '#/components/schemas/NamespaceConditionType'
-      title: NamespaceCondition contains details about state of namespace.
-      type: object
-    NamespaceConditionType:
-      type: string
-    UserInfo:
-      properties:
-        Email:
-          type: string
-        Groups:
-          items:
-            type: string
-          type: array
-        Id:
-          type: string
-        Name:
-          type: string
-      type: object
-    HealthCheckInfo:
-      description: for checking health of dependencies
-      properties:
-        Elastic:
-          type: string
-        Prometheus:
-          type: string
-      type: object
-    NamespacePhase:
-      description: +enum
+    UID:
+      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
+
+        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
+
+        intent and helps make sure that UIDs and names do not get conflated.'
       type: string
     ClusterInfo:
       properties:
@@ -596,37 +635,6 @@ components:
             $ref: '#/components/schemas/Namespace'
           type: array
       type: object
-  responses:
-    VersionResponse:
-      description: Version
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/VersionInfo'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    HealthCheckResponse:
-      description: Version
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/HealthCheckInfo'
-    UserResponse:
-      description: User
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UserInfo'
-    ClusterInfoResponse:
-      description: Cluster Info
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ClusterInfo'
   securitySchemes:
     OAuth2:
       type: oauth2
