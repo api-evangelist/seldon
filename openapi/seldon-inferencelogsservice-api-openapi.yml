@@ -291,30 +291,6 @@ paths:
       - InferenceLogsService
 components:
   schemas:
-    v1InferenceLogsRawPayload:
-      type: object
-      properties:
-        requestId:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        request: {}
-        response: {}
-    v1ListModelInferenceLogsResponse:
-      type: object
-      properties:
-        inferenceLogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1InferenceLogsModelItem'
-    v1ListDeploymentInferenceLogsResponse:
-      type: object
-      properties:
-        inferenceLogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
     v1InferenceLogsModelItem:
       type: object
       properties:
@@ -333,44 +309,6 @@ components:
         endTime:
           type: string
           format: date-time
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    v1GetDeploymentInferenceLogsResponse:
-      type: object
-      properties:
-        namespace:
-          type: string
-        deploymentName:
-          type: string
-        predictorName:
-          type: string
-        containerName:
-          type: string
-        payloads:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
-        nextPageToken:
-          type: string
-        totalCount:
-          type: integer
-          format: int32
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
     v1GetModelInferenceLogsResponse:
       type: object
       properties:
@@ -389,6 +327,41 @@ components:
         totalCount:
           type: integer
           format: int32
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1ListDeploymentInferenceLogsResponse:
+      type: object
+      properties:
+        inferenceLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1InferenceLogsRawPayload:
+      type: object
+      properties:
+        requestId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        request: {}
+        response: {}
     v1InferenceLogsDeploymentItem:
       type: object
       properties:
@@ -409,6 +382,33 @@ components:
         endTime:
           type: string
           format: date-time
+    v1ListModelInferenceLogsResponse:
+      type: object
+      properties:
+        inferenceLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsModelItem'
+    v1GetDeploymentInferenceLogsResponse:
+      type: object
+      properties:
+        namespace:
+          type: string
+        deploymentName:
+          type: string
+        predictorName:
+          type: string
+        containerName:
+          type: string
+        payloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
+        nextPageToken:
+          type: string
+        totalCount:
+          type: integer
+          format: int32
   securitySchemes:
     OAuth2:
       type: oauth2

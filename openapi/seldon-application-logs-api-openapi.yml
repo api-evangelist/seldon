@@ -36,19 +36,6 @@ paths:
       tags:
       - Application Logs
 components:
-  responses:
-    ApplicationLogsResponse:
-      description: Application Logs
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ApplicationLogsResponse'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       description: Error Error
@@ -114,6 +101,19 @@ components:
           format: date-time
           type: string
       type: object
+  responses:
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ApplicationLogsResponse:
+      description: Application Logs
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApplicationLogsResponse'
   securitySchemes:
     OAuth2:
       type: oauth2

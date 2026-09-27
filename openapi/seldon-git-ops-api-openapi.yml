@@ -374,46 +374,6 @@ paths:
       summary: Seldon deployment git revert
       x-summary-source: derived
 components:
-  responses:
-    MessageResponse:
-      description: GenericMessage Message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Message'
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    GitDiffsResponse:
-      description: Git Diffs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/FileDiff'
-            type: array
-    GitDiffResponse:
-      description: Git Diff
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FileDiff'
-    GitLogsResponse:
-      description: Git Logs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/AuditLog'
-            type: array
   schemas:
     Error:
       description: Error Error
@@ -427,21 +387,6 @@ components:
           type: string
         requestId:
           description: RequestId
-          type: string
-      type: object
-    AuditLog:
-      properties:
-        AuthorName:
-          type: string
-        AuthorWhen:
-          format: date-time
-          type: string
-        CommitterName:
-          type: string
-        CommitterWhen:
-          format: date-time
-          type: string
-        Hash:
           type: string
       type: object
     FileDiff:
@@ -479,6 +424,61 @@ components:
           description: Message
           type: string
       type: object
+    AuditLog:
+      properties:
+        AuthorName:
+          type: string
+        AuthorWhen:
+          format: date-time
+          type: string
+        CommitterName:
+          type: string
+        CommitterWhen:
+          format: date-time
+          type: string
+        Hash:
+          type: string
+      type: object
+  responses:
+    GitDiffsResponse:
+      description: Git Diffs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/FileDiff'
+            type: array
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    GitLogsResponse:
+      description: Git Logs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AuditLog'
+            type: array
+    GitDiffResponse:
+      description: Git Diff
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileDiff'
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
   securitySchemes:
     OAuth2:
       type: oauth2

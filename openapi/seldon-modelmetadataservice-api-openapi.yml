@@ -362,34 +362,58 @@ paths:
       - ModelMetadataService
 components:
   schemas:
-    v1RuntimeMetadataListResponse:
+    v1RuntimeMetadata:
       type: object
       properties:
-        runtimeMetadata:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1RuntimeMetadata'
-        nextPageToken:
+        modelUri:
           type: string
-          description: 'A pagination token returned from a previous call to `List`
-
-            that indicates from where listing should continue.'
-    v1PredictionSchema:
-      type: object
-      properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FeatureSchema'
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FeatureSchema'
-      required:
-      - requests
-      - responses
-    v1ModelMetadataCreateResponse:
-      type: object
+          example: gs://seldon-models/sklearn/iris
+          description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
+        deploymentName:
+          type: string
+          example: iris
+          description: The name of the Kubernetes deployment that is associated with a model.
+        deploymentNamespace:
+          type: string
+          example: seldon
+          description: The Kubernetes namespace in which this deployment is running in.
+        deploymentKubernetesUid:
+          type: string
+          example: 2c60bdb0-8a8e-46bf-a3c5-627ad507f76b
+          description: The Kubernetes UID of the deployment associated with a model. See https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids for details
+        predictorName:
+          type: string
+          example: default
+          description: The name of the predictor inside the deployment that contains the referenced model.
+        nodeName:
+          type: string
+          example: default-node
+          description: The name of the node inside the predictor that contains the referenced model. This is relevant and populated only for SeldonDeployment deployment types.
+        deploymentStatus:
+          $ref: '#/components/schemas/v1DeploymentStatus'
+        deploymentType:
+          $ref: '#/components/schemas/v1DeploymentType'
+        traffic:
+          type: string
+          format: int64
+          description: The amount of traffic server by this model in the deployment.
+        shadow:
+          type: boolean
+          description: True if this model is a shadow in the deployment.
+        creationTime:
+          type: string
+          format: date-time
+          example: '2017-01-15T01:30:15.01Z'
+          description: The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
+        model:
+          $ref: '#/components/schemas/v1Model'
+        explainer:
+          type: boolean
+          description: True if this model is a explainer in the deployment.
+        replicas:
+          type: string
+          format: int64
+          description: The number of replicas for this model.
     v1ModelMetadataListResponse:
       type: object
       properties:
@@ -402,28 +426,26 @@ components:
           description: 'A pagination token returned from a previous call to `List`
 
             that indicates from where listing should continue.'
-    v1ModelMetadataUpdateResponse:
-      type: object
-    v1ModelMetadataDeleteResponse:
-      type: object
-    v1RuntimeDefaults:
-      type: object
-      properties:
-        defaultProtocol:
-          $ref: '#/components/schemas/v1DefaultProtocol'
-    v1DeploymentStatus:
+    v1DeploymentType:
       type: string
       enum:
-      - Running
-      - Stopped
-      - Unknown
-      default: Running
-    protobufAny:
+      - UndefinedDeploymentType
+      - SeldonDeployment
+      - SeldonModel
+      - KnativeDetector
+      default: UndefinedDeploymentType
+    v1RuntimeMetadataListResponse:
       type: object
       properties:
-        '@type':
+        runtimeMetadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1RuntimeMetadata'
+        nextPageToken:
           type: string
-      additionalProperties: {}
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
     v1DataType:
       type: string
       enum:
@@ -433,62 +455,20 @@ components:
       - STRING
       - BYTES
       default: FLOAT
-    v1DeploymentType:
+    v1ModelMetadataDeleteResponse:
+      type: object
+    v1DeploymentStatus:
       type: string
       enum:
-      - UndefinedDeploymentType
-      - SeldonDeployment
-      - SeldonModel
-      - KnativeDetector
-      default: UndefinedDeploymentType
-    v1DefaultProtocol:
-      type: string
-      enum:
-      - PROTOCOL_UNKNOWN
-      - PROTOCOL_SELDON
-      - PROTOCOL_TENSORFLOW
-      - PROTOCOL_V2
-      default: PROTOCOL_UNKNOWN
-      description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
-    rpcStatus:
+      - Running
+      - Stopped
+      - Unknown
+      default: Running
+    v1RuntimeDefaults:
       type: object
       properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    v1FeatureCategorySchema:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          $ref: '#/components/schemas/v1DataType'
-      required:
-      - name
-    v1ArtifactType:
-      type: string
-      enum:
-      - UNKNOWN
-      - CUSTOM
-      - TENSORFLOW
-      - SKLEARN
-      - XGBOOST
-      - MLFLOW
-      - PYTORCH
-      - ONNX
-      - TENSORRT
-      - ALIBI_EXPLAIN
-      - ALIBI_DETECT
-      - HUGGINGFACE
-      - MLSERVER_PYTHON
-      - TRITON_PYTHON
-      default: UNKNOWN
+        defaultProtocol:
+          $ref: '#/components/schemas/v1DefaultProtocol'
     v1Model:
       type: object
       properties:
@@ -542,69 +522,33 @@ components:
           $ref: '#/components/schemas/v1RuntimeDefaults'
       required:
       - URI
-    v1RuntimeMetadata:
-      type: object
-      properties:
-        modelUri:
-          type: string
-          example: gs://seldon-models/sklearn/iris
-          description: The URI for the storage bucket containing the model, or the URI to the docker image for custom models.
-        deploymentName:
-          type: string
-          example: iris
-          description: The name of the Kubernetes deployment that is associated with a model.
-        deploymentNamespace:
-          type: string
-          example: seldon
-          description: The Kubernetes namespace in which this deployment is running in.
-        deploymentKubernetesUid:
-          type: string
-          example: 2c60bdb0-8a8e-46bf-a3c5-627ad507f76b
-          description: The Kubernetes UID of the deployment associated with a model. See https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids for details
-        predictorName:
-          type: string
-          example: default
-          description: The name of the predictor inside the deployment that contains the referenced model.
-        nodeName:
-          type: string
-          example: default-node
-          description: The name of the node inside the predictor that contains the referenced model. This is relevant and populated only for SeldonDeployment deployment types.
-        deploymentStatus:
-          $ref: '#/components/schemas/v1DeploymentStatus'
-        deploymentType:
-          $ref: '#/components/schemas/v1DeploymentType'
-        traffic:
-          type: string
-          format: int64
-          description: The amount of traffic server by this model in the deployment.
-        shadow:
-          type: boolean
-          description: True if this model is a shadow in the deployment.
-        creationTime:
-          type: string
-          format: date-time
-          example: '2017-01-15T01:30:15.01Z'
-          description: The creation timestamp for the runtime model metadata entry. It is automatically created by the Metadata service and cannot be modified. The timestamp is using the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format/
-        model:
-          $ref: '#/components/schemas/v1Model'
-        explainer:
-          type: boolean
-          description: True if this model is a explainer in the deployment.
-        replicas:
-          type: string
-          format: int64
-          description: The number of replicas for this model.
-    v1FeatureType:
+    v1DefaultProtocol:
       type: string
       enum:
-      - REAL
-      - CATEGORICAL
-      - PROBA
-      - ONE_HOT
-      - TEXT
-      - TENSOR
-      default: REAL
-      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
+      - PROTOCOL_UNKNOWN
+      - PROTOCOL_SELDON
+      - PROTOCOL_TENSORFLOW
+      - PROTOCOL_V2
+      default: PROTOCOL_UNKNOWN
+      description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
+    v1ArtifactType:
+      type: string
+      enum:
+      - UNKNOWN
+      - CUSTOM
+      - TENSORFLOW
+      - SKLEARN
+      - XGBOOST
+      - MLFLOW
+      - PYTORCH
+      - ONNX
+      - TENSORRT
+      - ALIBI_EXPLAIN
+      - ALIBI_DETECT
+      - HUGGINGFACE
+      - MLSERVER_PYTHON
+      - TRITON_PYTHON
+      default: UNKNOWN
     v1FeatureSchema:
       type: object
       properties:
@@ -633,6 +577,62 @@ components:
       required:
       - name
       - type
+    v1FeatureType:
+      type: string
+      enum:
+      - REAL
+      - CATEGORICAL
+      - PROBA
+      - ONE_HOT
+      - TEXT
+      - TENSOR
+      default: REAL
+      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
+    v1ModelMetadataUpdateResponse:
+      type: object
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1ModelMetadataCreateResponse:
+      type: object
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    v1FeatureCategorySchema:
+      type: object
+      properties:
+        name:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/v1DataType'
+      required:
+      - name
+    v1PredictionSchema:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureSchema'
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureSchema'
+      required:
+      - requests
+      - responses
   requestBodies:
     v1Model:
       content:

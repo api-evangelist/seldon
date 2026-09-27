@@ -156,18 +156,6 @@ paths:
       summary: Predict file seldon deployment
       x-summary-source: derived
 components:
-  responses:
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       description: Error Error
@@ -203,6 +191,18 @@ components:
           schema: {}
       description: Prediction
       required: true
+  responses:
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
   securitySchemes:
     OAuth2:
       type: oauth2

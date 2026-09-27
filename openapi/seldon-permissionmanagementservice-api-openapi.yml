@@ -618,58 +618,24 @@ paths:
       - PermissionManagementService
 components:
   schemas:
-    v1CreateGroupResponse:
-      type: object
-    v1GetGroupsResponse:
+    v1UserPolicy:
       type: object
       properties:
-        groups:
+        user:
+          type: string
+        permission:
+          $ref: '#/components/schemas/v1ResourceActionPair'
+    v1DeleteGroupResponse:
+      type: object
+    v1DeletePolicyResponse:
+      type: object
+    v1GetGroupMembersResponse:
+      type: object
+      properties:
+        members:
           type: array
           items:
-            $ref: '#/components/schemas/v1Group'
-    v1Policy:
-      type: object
-      properties:
-        userGrants:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1UserPolicy'
-        groupGrants:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1GroupPolicy'
-    v1ResourceActionPair:
-      type: object
-      properties:
-        action:
-          type: string
-        resource:
-          type: string
-    v1CreateUserResponse:
-      type: object
-    v1CreateGroupRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the group to be created.
-      required:
-      - name
-    v1CreatePolicyResponse:
-      type: object
-    v1Group:
-      type: object
-      properties:
-        name:
-          type: string
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    v1AddUserToGroupResponse:
-      type: object
+            $ref: '#/components/schemas/v1User'
     v1GetUsersResponse:
       type: object
       properties:
@@ -677,6 +643,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1User'
+    v1GetPermissionsResponse:
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1ResourceActionPair'
+    v1CreatePolicyResponse:
+      type: object
     v1CreateUserRequest:
       type: object
       properties:
@@ -693,6 +668,50 @@ components:
       required:
       - username
       - email
+    v1Group:
+      type: object
+      properties:
+        name:
+          type: string
+    v1ResourceActionPair:
+      type: object
+      properties:
+        action:
+          type: string
+        resource:
+          type: string
+    v1ResetUserPasswordResponse:
+      type: object
+    v1CreateGroupResponse:
+      type: object
+    v1CreateGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the group to be created.
+      required:
+      - name
+    v1Policy:
+      type: object
+      properties:
+        userGrants:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1UserPolicy'
+        groupGrants:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1GroupPolicy'
+    v1AddUserToGroupResponse:
+      type: object
+    v1GetGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Group'
     v1GroupPolicy:
       type: object
       properties:
@@ -700,6 +719,34 @@ components:
           type: string
         permission:
           $ref: '#/components/schemas/v1ResourceActionPair'
+    v1GetPolicyTargetsResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: string
+        groups:
+          type: array
+          items:
+            type: string
+    v1CreateUserResponse:
+      type: object
+    v1DeleteUserResponse:
+      type: object
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1GetUserGroupsResponse:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Group'
     rpcStatus:
       type: object
       properties:
@@ -712,42 +759,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    v1GetUserGroupsResponse:
-      type: object
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1Group'
-    v1GetGroupMembersResponse:
-      type: object
-      properties:
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1User'
-    v1DeletePolicyResponse:
-      type: object
-    v1GetPolicyTargetsResponse:
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            type: string
-        groups:
-          type: array
-          items:
-            type: string
-    v1GetPermissionsResponse:
-      type: object
-      properties:
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1ResourceActionPair'
-    v1ResetUserPasswordResponse:
-      type: object
     v1DeleteUserFromGroupResponse:
       type: object
     v1User:
@@ -768,17 +779,6 @@ components:
         creationTime:
           type: string
           format: date-time
-    v1DeleteUserResponse:
-      type: object
-    v1UserPolicy:
-      type: object
-      properties:
-        user:
-          type: string
-        permission:
-          $ref: '#/components/schemas/v1ResourceActionPair'
-    v1DeleteGroupResponse:
-      type: object
   securitySchemes:
     OAuth2:
       type: oauth2

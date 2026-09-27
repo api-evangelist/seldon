@@ -44,7 +44,7 @@ description: >
   OIDC and session-based authentication workflows.
 tags:
   - MLOps
-  - Machine-Learning
+  - Machine Learning
   - Model Serving
   - Inference
   - Kubernetes
@@ -66,6 +66,7 @@ tags_raw:
   - Canary Deployment
   - A/B Testing
   - LLMOps
+  - Machine-Learning
 
 apis:
 - aid: seldon:seldon-inference-api
@@ -189,7 +190,7 @@ apis:
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-health-api
-  name: Seldon health API
+  name: Seldon Health API
   description: The health API from Seldon — 4 operation(s) for health.
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
@@ -251,7 +252,7 @@ apis:
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 - aid: seldon:seldon-metadata-api
-  name: Seldon metadata API
+  name: Seldon Metadata API
   description: The metadata API from Seldon — 3 operation(s) for metadata.
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
@@ -417,8 +418,6 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
-  - GitOps
-  tags_raw:
   - Git Ops
   properties:
   - type: OpenAPI

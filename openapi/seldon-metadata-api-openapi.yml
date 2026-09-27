@@ -92,6 +92,24 @@ paths:
       description: The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
 components:
   schemas:
+    MetadataServerResponse:
+      title: MetadataServerResponse
+      type: object
+      description: ''
+      x-examples: {}
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        extensions:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - version
+      - extensions
     MetadataModelErrorResponse:
       title: MetadataModelErrorResponse
       type: object
@@ -125,24 +143,6 @@ components:
       required:
       - name
       - platform
-    MetadataTensor:
-      title: MetadataTensor
-      type: object
-      properties:
-        name:
-          type: string
-        datatype:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-      - datatype
-      - shape
     Parameters:
       type: object
       title: Parameters
@@ -161,21 +161,21 @@ components:
           type: string
       required:
       - error
-    MetadataServerResponse:
-      title: MetadataServerResponse
+    MetadataTensor:
+      title: MetadataTensor
       type: object
-      description: ''
-      x-examples: {}
       properties:
         name:
           type: string
-        version:
+        datatype:
           type: string
-        extensions:
+        shape:
           type: array
           items:
-            type: string
+            type: integer
+        parameters:
+          $ref: '#/components/schemas/Parameters'
       required:
       - name
-      - version
-      - extensions
+      - datatype
+      - shape

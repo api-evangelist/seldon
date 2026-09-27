@@ -73,6 +73,8 @@ paths:
       - AlertingService
 components:
   schemas:
+    v1TriggerTestAlertResponse:
+      type: object
     v1FiringAlert:
       type: object
       properties:
@@ -87,6 +89,12 @@ components:
         activeAt:
           type: string
           format: date-time
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
     rpcStatus:
       type: object
       properties:
@@ -106,14 +114,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1FiringAlert'
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    v1TriggerTestAlertResponse:
-      type: object
   securitySchemes:
     OAuth2:
       type: oauth2

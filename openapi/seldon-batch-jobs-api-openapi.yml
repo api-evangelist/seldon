@@ -214,42 +214,7 @@ paths:
       summary: Get deployment batch job
       x-summary-source: derived
 components:
-  responses:
-    BatchJobPostResponse:
-      description: Batch Job Post Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BatchJobPostResponse'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BatchJobsListResponse:
-      description: Batch Jobs List Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BatchJobsListResponse'
-    BatchJobGetResponse:
-      description: Batch Job Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BatchJobGetResponse'
   schemas:
-    BatchJobGetResponse:
-      description: 'BatchJobGetResponse represents the full description and definition of a
-
-        retrieved batch job'
-      properties:
-        Definition:
-          $ref: '#/components/schemas/BatchJobDefinition'
-        Description:
-          $ref: '#/components/schemas/BatchJobDescription'
-      type: object
     Error:
       description: Error Error
       properties:
@@ -264,34 +229,49 @@ components:
           description: RequestId
           type: string
       type: object
-    BatchJobPostResponse:
-      description: 'BatchJobPostResponse represents the name and uid of the batch job
+    BatchJobsListResponse:
+      description: 'BatchJobsListResponse represents the list of batch descriptions and their
 
-        created after a post request'
+        limit, page, and page counts.'
       properties:
-        workflowName:
-          description: 'Name of created Argo Workflow
+        batchJobs:
+          $ref: '#/components/schemas/BatchJobDescriptionList'
+        limit:
+          description: 'Limit of the request
 
             in: body'
+          format: int64
+          type: integer
+        page:
+          description: 'Returned Page (counting from 0)
+
+            in: body'
+          format: int64
+          type: integer
+        pagesCount:
+          description: 'Number of available pages (Page = 0, ..., PagesCount - 1)
+
+            in: body'
+          format: int64
+          type: integer
+      type: object
+    BatchJobDescription:
+      description: BatchJobDescription describes the workflow of the batch job
+      properties:
+        FinishedAt:
+          description: Time when job finished
           type: string
+        StartedAt:
+          description: Time when job started
+          type: string
+        workflowName:
+          description: Name of related Argo Workflow
+          type: string
+        workflowStatus:
+          $ref: '#/components/schemas/WorkflowPhase'
         workflowUID:
           $ref: '#/components/schemas/UID'
       type: object
-    WorkflowPhase:
-      description: the workflow's phase
-      type: string
-    BatchJobDescriptionList:
-      description: BatchJobDescriptionList is a list of BatchJobDescription
-      items:
-        $ref: '#/components/schemas/BatchJobDescription'
-      type: array
-    UID:
-      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
-
-        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
-
-        intent and helps make sure that UIDs and names do not get conflated.'
-      type: string
     BatchJobDefinition:
       description: BatchJobDefinition is a common interface for BatchJob v1 and v2 which specifies necessary arguments
       properties:
@@ -348,49 +328,69 @@ components:
           description: 'Container Resources for running batch jobs: requests: Memory'
           type: string
       type: object
-    BatchJobDescription:
-      description: BatchJobDescription describes the workflow of the batch job
+    WorkflowPhase:
+      description: the workflow's phase
+      type: string
+    BatchJobGetResponse:
+      description: 'BatchJobGetResponse represents the full description and definition of a
+
+        retrieved batch job'
       properties:
-        FinishedAt:
-          description: Time when job finished
-          type: string
-        StartedAt:
-          description: Time when job started
-          type: string
+        Definition:
+          $ref: '#/components/schemas/BatchJobDefinition'
+        Description:
+          $ref: '#/components/schemas/BatchJobDescription'
+      type: object
+    BatchJobDescriptionList:
+      description: BatchJobDescriptionList is a list of BatchJobDescription
+      items:
+        $ref: '#/components/schemas/BatchJobDescription'
+      type: array
+    UID:
+      description: 'UID is a type that holds unique ID values, including UUIDs.  Because we
+
+        don''t ONLY use UUIDs, this is an alias to string.  Being a type captures
+
+        intent and helps make sure that UIDs and names do not get conflated.'
+      type: string
+    BatchJobPostResponse:
+      description: 'BatchJobPostResponse represents the name and uid of the batch job
+
+        created after a post request'
+      properties:
         workflowName:
-          description: Name of related Argo Workflow
+          description: 'Name of created Argo Workflow
+
+            in: body'
           type: string
-        workflowStatus:
-          $ref: '#/components/schemas/WorkflowPhase'
         workflowUID:
           $ref: '#/components/schemas/UID'
       type: object
+  responses:
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BatchJobPostResponse:
+      description: Batch Job Post Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobPostResponse'
+    BatchJobGetResponse:
+      description: Batch Job Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobGetResponse'
     BatchJobsListResponse:
-      description: 'BatchJobsListResponse represents the list of batch descriptions and their
-
-        limit, page, and page counts.'
-      properties:
-        batchJobs:
-          $ref: '#/components/schemas/BatchJobDescriptionList'
-        limit:
-          description: 'Limit of the request
-
-            in: body'
-          format: int64
-          type: integer
-        page:
-          description: 'Returned Page (counting from 0)
-
-            in: body'
-          format: int64
-          type: integer
-        pagesCount:
-          description: 'Number of available pages (Page = 0, ..., PagesCount - 1)
-
-            in: body'
-          format: int64
-          type: integer
-      type: object
+      description: Batch Jobs List Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BatchJobsListResponse'
   requestBodies:
     BatchJobDefinition:
       content:
