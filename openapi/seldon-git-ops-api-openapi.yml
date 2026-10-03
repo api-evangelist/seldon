@@ -389,30 +389,6 @@ components:
           description: RequestId
           type: string
       type: object
-    FileDiff:
-      description: 'note diff is html that needs to be unicode decoded/unescaped
-
-        from and to are raw values
-
-        GitHubUrl is a github compare url'
-      properties:
-        ChangeType:
-          type: string
-        CommitHash:
-          type: string
-        Diff:
-          type: string
-        FileName:
-          type: string
-        From:
-          type: string
-        GitHubUrl:
-          type: string
-        PrevCommitHash:
-          type: string
-        To:
-          type: string
-      type: object
     Message:
       description: Message Message
       properties:
@@ -439,15 +415,31 @@ components:
         Hash:
           type: string
       type: object
+    FileDiff:
+      description: 'note diff is html that needs to be unicode decoded/unescaped
+
+        from and to are raw values
+
+        GitHubUrl is a github compare url'
+      properties:
+        ChangeType:
+          type: string
+        CommitHash:
+          type: string
+        Diff:
+          type: string
+        FileName:
+          type: string
+        From:
+          type: string
+        GitHubUrl:
+          type: string
+        PrevCommitHash:
+          type: string
+        To:
+          type: string
+      type: object
   responses:
-    GitDiffsResponse:
-      description: Git Diffs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/FileDiff'
-            type: array
     ErrorDefault:
       description: ErrorDefault Error
       content:
@@ -459,13 +451,13 @@ components:
       content:
         application/json:
           schema: {}
-    GitLogsResponse:
-      description: Git Logs
+    GitDiffsResponse:
+      description: Git Diffs
       content:
         application/json:
           schema:
             items:
-              $ref: '#/components/schemas/AuditLog'
+              $ref: '#/components/schemas/FileDiff'
             type: array
     GitDiffResponse:
       description: Git Diff
@@ -479,6 +471,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Message'
+    GitLogsResponse:
+      description: Git Logs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AuditLog'
+            type: array
   securitySchemes:
     OAuth2:
       type: oauth2

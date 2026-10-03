@@ -37,20 +37,6 @@ paths:
       - Application Logs
 components:
   schemas:
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
-      type: object
     ApplicationLogsParams:
       description: 'ApplicationLogsParams describes a set of parameters that can be
 
@@ -75,6 +61,31 @@ components:
           format: int64
           type: integer
       type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
+    ApplicationLog:
+      description: 'ApplicationLog represents the message and timestamp of a single
+
+        application log entry.'
+      properties:
+        message:
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+      type: object
     ApplicationLogsResponse:
       description: 'ApplicationLogsResponse represents the collection of application logs
 
@@ -89,17 +100,6 @@ components:
         total:
           format: int64
           type: integer
-      type: object
-    ApplicationLog:
-      description: 'ApplicationLog represents the message and timestamp of a single
-
-        application log entry.'
-      properties:
-        message:
-          type: string
-        timestamp:
-          format: date-time
-          type: string
       type: object
   responses:
     ErrorDefault:

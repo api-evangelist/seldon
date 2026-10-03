@@ -70,6 +70,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1DeployDependencyHealth'
+    v1DeployDependencyStatus:
+      type: string
+      enum:
+      - UNSPECIFIED
+      - DISABLED
+      - ENABLED_AND_UNREACHABLE
+      - ENABLED_AND_REACHABLE
+      default: UNSPECIFIED
     v1DeployDependency:
       type: string
       enum:
@@ -90,32 +98,6 @@ components:
       - MINIO
       - FLUENTD
       default: ALL
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    v1DeployDependencyStatus:
-      type: string
-      enum:
-      - UNSPECIFIED
-      - DISABLED
-      - ENABLED_AND_UNREACHABLE
-      - ENABLED_AND_REACHABLE
-      default: UNSPECIFIED
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
     v1DeployDependencyHealth:
       type: object
       properties:
@@ -131,6 +113,24 @@ components:
         lastActiveFetchedAt:
           type: string
           format: date-time
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
   securitySchemes:
     OAuth2:
       type: oauth2

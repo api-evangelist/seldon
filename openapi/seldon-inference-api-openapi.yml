@@ -106,87 +106,8 @@ paths:
       - Inference
 components:
   schemas:
-    ResponseOutput:
-      title: ResponseOutput
-      type: object
-      properties:
-        name:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        datatype:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        data:
-          $ref: '#/components/schemas/TensorData'
-      required:
-      - name
-      - shape
-      - datatype
-      - data
-    Parameters:
-      type: object
-      title: Parameters
-      x-examples: {}
-      additionalProperties: true
-      properties:
-        content_type:
-          type: string
-        headers:
-          type: object
-    RequestOutput:
-      title: RequestOutput
-      type: object
-      properties:
-        name:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-    RequestInput:
-      title: RequestInput
-      type: object
-      properties:
-        name:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        datatype:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        data:
-          $ref: '#/components/schemas/TensorData'
-      required:
-      - name
-      - shape
-      - datatype
-      - data
-    InferenceResponse:
-      title: InferenceResponse
-      type: object
-      properties:
-        model_name:
-          type: string
-        model_version:
-          type: string
-        id:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResponseOutput'
-      required:
-      - model_name
-      - outputs
+    TensorData:
+      title: TensorData
     InferenceRequest:
       title: InferenceRequest
       type: object
@@ -242,11 +163,90 @@ components:
             $ref: '#/components/schemas/RequestOutput'
       required:
       - inputs
+    InferenceResponse:
+      title: InferenceResponse
+      type: object
+      properties:
+        model_name:
+          type: string
+        model_version:
+          type: string
+        id:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseOutput'
+      required:
+      - model_name
+      - outputs
+    ResponseOutput:
+      title: ResponseOutput
+      type: object
+      properties:
+        name:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        datatype:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        data:
+          $ref: '#/components/schemas/TensorData'
+      required:
+      - name
+      - shape
+      - datatype
+      - data
+    RequestInput:
+      title: RequestInput
+      type: object
+      properties:
+        name:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        datatype:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        data:
+          $ref: '#/components/schemas/TensorData'
+      required:
+      - name
+      - shape
+      - datatype
+      - data
+    RequestOutput:
+      title: RequestOutput
+      type: object
+      properties:
+        name:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+    Parameters:
+      type: object
+      title: Parameters
+      x-examples: {}
+      additionalProperties: true
+      properties:
+        content_type:
+          type: string
+        headers:
+          type: object
     InferenceErrorResponse:
       title: InferenceErrorResponse
       type: object
       properties:
         error:
           type: string
-    TensorData:
-      title: TensorData

@@ -156,6 +156,26 @@ paths:
       summary: Predict file seldon deployment
       x-summary-source: derived
 components:
+  requestBodies:
+    ReadPredictCurlSeldonPipelinePrediction:
+      content:
+        application/json:
+          schema: {}
+      description: Prediction
+      required: true
+    PredictFileSeldonPipeline:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              predictFile:
+                description: PredictionFile
+                type: string
+                format: binary
+            required:
+            - predictFile
+      required: true
   schemas:
     Error:
       description: Error Error
@@ -171,26 +191,6 @@ components:
           description: RequestId
           type: string
       type: object
-  requestBodies:
-    PredictFileSeldonPipeline:
-      content:
-        multipart/form-data:
-          schema:
-            type: object
-            properties:
-              predictFile:
-                description: PredictionFile
-                type: string
-                format: binary
-            required:
-            - predictFile
-      required: true
-    ReadPredictCurlSeldonPipelinePrediction:
-      content:
-        application/json:
-          schema: {}
-      description: Prediction
-      required: true
   responses:
     ErrorDefault:
       description: ErrorDefault Error

@@ -362,6 +362,71 @@ paths:
       - ModelMetadataService
 components:
   schemas:
+    v1ModelMetadataListResponse:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1Model'
+        nextPageToken:
+          type: string
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
+    v1RuntimeDefaults:
+      type: object
+      properties:
+        defaultProtocol:
+          $ref: '#/components/schemas/v1DefaultProtocol'
+    v1DeploymentType:
+      type: string
+      enum:
+      - UndefinedDeploymentType
+      - SeldonDeployment
+      - SeldonModel
+      - KnativeDetector
+      default: UndefinedDeploymentType
+    v1ModelMetadataDeleteResponse:
+      type: object
+    v1ModelMetadataCreateResponse:
+      type: object
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1ArtifactType:
+      type: string
+      enum:
+      - UNKNOWN
+      - CUSTOM
+      - TENSORFLOW
+      - SKLEARN
+      - XGBOOST
+      - MLFLOW
+      - PYTORCH
+      - ONNX
+      - TENSORRT
+      - ALIBI_EXPLAIN
+      - ALIBI_DETECT
+      - HUGGINGFACE
+      - MLSERVER_PYTHON
+      - TRITON_PYTHON
+      default: UNKNOWN
     v1RuntimeMetadata:
       type: object
       properties:
@@ -414,61 +479,15 @@ components:
           type: string
           format: int64
           description: The number of replicas for this model.
-    v1ModelMetadataListResponse:
+    v1FeatureCategorySchema:
       type: object
       properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1Model'
-        nextPageToken:
+        name:
           type: string
-          description: 'A pagination token returned from a previous call to `List`
-
-            that indicates from where listing should continue.'
-    v1DeploymentType:
-      type: string
-      enum:
-      - UndefinedDeploymentType
-      - SeldonDeployment
-      - SeldonModel
-      - KnativeDetector
-      default: UndefinedDeploymentType
-    v1RuntimeMetadataListResponse:
-      type: object
-      properties:
-        runtimeMetadata:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1RuntimeMetadata'
-        nextPageToken:
-          type: string
-          description: 'A pagination token returned from a previous call to `List`
-
-            that indicates from where listing should continue.'
-    v1DataType:
-      type: string
-      enum:
-      - FLOAT
-      - INT
-      - BOOL
-      - STRING
-      - BYTES
-      default: FLOAT
-    v1ModelMetadataDeleteResponse:
-      type: object
-    v1DeploymentStatus:
-      type: string
-      enum:
-      - Running
-      - Stopped
-      - Unknown
-      default: Running
-    v1RuntimeDefaults:
-      type: object
-      properties:
-        defaultProtocol:
-          $ref: '#/components/schemas/v1DefaultProtocol'
+        dataType:
+          $ref: '#/components/schemas/v1DataType'
+      required:
+      - name
     v1Model:
       type: object
       properties:
@@ -531,24 +550,61 @@ components:
       - PROTOCOL_V2
       default: PROTOCOL_UNKNOWN
       description: 'For model inference, Seldon recommends using the industry-standard Open Inference Protocol (OIP) as the preferred protocol over others.<br>This value is managed internally by the Seldon Enterprise Platform. For Seldon Deployments using the OIP, the protocol value is ''PROTOCOL_V2''. For Seldon ML Pipelines, it is ''PROTOCOL_UNKNOWN''.<br>For more information, please refer to the Seldon documentation: https://docs.seldon.ai/seldon-core-2/apis/inference/v2'
-    v1ArtifactType:
+    v1RuntimeMetadataListResponse:
+      type: object
+      properties:
+        runtimeMetadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1RuntimeMetadata'
+        nextPageToken:
+          type: string
+          description: 'A pagination token returned from a previous call to `List`
+
+            that indicates from where listing should continue.'
+    v1FeatureType:
       type: string
       enum:
-      - UNKNOWN
-      - CUSTOM
-      - TENSORFLOW
-      - SKLEARN
-      - XGBOOST
-      - MLFLOW
-      - PYTORCH
-      - ONNX
-      - TENSORRT
-      - ALIBI_EXPLAIN
-      - ALIBI_DETECT
-      - HUGGINGFACE
-      - MLSERVER_PYTHON
-      - TRITON_PYTHON
-      default: UNKNOWN
+      - REAL
+      - CATEGORICAL
+      - PROBA
+      - ONE_HOT
+      - TEXT
+      - TENSOR
+      default: REAL
+      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
+    v1ModelMetadataUpdateResponse:
+      type: object
+    v1DataType:
+      type: string
+      enum:
+      - FLOAT
+      - INT
+      - BOOL
+      - STRING
+      - BYTES
+      default: FLOAT
+    v1PredictionSchema:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureSchema'
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FeatureSchema'
+      required:
+      - requests
+      - responses
+    v1DeploymentStatus:
+      type: string
+      enum:
+      - Running
+      - Stopped
+      - Unknown
+      default: Running
     v1FeatureSchema:
       type: object
       properties:
@@ -577,62 +633,6 @@ components:
       required:
       - name
       - type
-    v1FeatureType:
-      type: string
-      enum:
-      - REAL
-      - CATEGORICAL
-      - PROBA
-      - ONE_HOT
-      - TEXT
-      - TENSOR
-      default: REAL
-      title: "- REAL: A numerical variable\n - CATEGORICAL: A categorical variable\n - PROBA: A list of probabilities\n - ONE_HOT: A list of one-hot encodings\n - TEXT: A text string\n - TENSOR: N-dimensional Tensor"
-    v1ModelMetadataUpdateResponse:
-      type: object
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    v1ModelMetadataCreateResponse:
-      type: object
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    v1FeatureCategorySchema:
-      type: object
-      properties:
-        name:
-          type: string
-        dataType:
-          $ref: '#/components/schemas/v1DataType'
-      required:
-      - name
-    v1PredictionSchema:
-      type: object
-      properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FeatureSchema'
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FeatureSchema'
-      required:
-      - requests
-      - responses
   requestBodies:
     v1Model:
       content:

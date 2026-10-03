@@ -75,6 +75,13 @@ components:
   schemas:
     v1TriggerTestAlertResponse:
       type: object
+    v1ListAlertsResponse:
+      type: object
+      properties:
+        firingAlerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FiringAlert'
     v1FiringAlert:
       type: object
       properties:
@@ -89,12 +96,6 @@ components:
         activeAt:
           type: string
           format: date-time
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
     rpcStatus:
       type: object
       properties:
@@ -107,13 +108,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    v1ListAlertsResponse:
+    protobufAny:
       type: object
       properties:
-        firingAlerts:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FiringAlert'
+        '@type':
+          type: string
+      additionalProperties: {}
   securitySchemes:
     OAuth2:
       type: oauth2

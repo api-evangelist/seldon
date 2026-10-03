@@ -72,21 +72,6 @@ paths:
       summary: Explain seldon deployment
       x-summary-source: derived
 components:
-  schemas:
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
-      type: object
   responses:
     ErrorDefault:
       description: ErrorDefault Error
@@ -105,6 +90,21 @@ components:
         application/json:
           schema: {}
       description: Prediction contains predict payload
+  schemas:
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
   securitySchemes:
     OAuth2:
       type: oauth2

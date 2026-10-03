@@ -291,24 +291,6 @@ paths:
       - InferenceLogsService
 components:
   schemas:
-    v1InferenceLogsModelItem:
-      type: object
-      properties:
-        namespace:
-          type: string
-        pipelineName:
-          type: string
-        modelName:
-          type: string
-        count:
-          type: integer
-          format: int32
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
     v1GetModelInferenceLogsResponse:
       type: object
       properties:
@@ -327,31 +309,44 @@ components:
         totalCount:
           type: integer
           format: int32
-    protobufAny:
+    v1InferenceLogsModelItem:
       type: object
       properties:
-        '@type':
+        namespace:
           type: string
-      additionalProperties: {}
-    v1ListDeploymentInferenceLogsResponse:
-      type: object
-      properties:
-        inferenceLogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
-    rpcStatus:
-      type: object
-      properties:
-        code:
+        pipelineName:
+          type: string
+        modelName:
+          type: string
+        count:
           type: integer
           format: int32
-        message:
+        startTime:
           type: string
-        details:
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    v1GetDeploymentInferenceLogsResponse:
+      type: object
+      properties:
+        namespace:
+          type: string
+        deploymentName:
+          type: string
+        predictorName:
+          type: string
+        containerName:
+          type: string
+        payloads:
           type: array
           items:
-            $ref: '#/components/schemas/protobufAny'
+            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
+        nextPageToken:
+          type: string
+        totalCount:
+          type: integer
+          format: int32
     v1InferenceLogsRawPayload:
       type: object
       properties:
@@ -389,26 +384,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1InferenceLogsModelItem'
-    v1GetDeploymentInferenceLogsResponse:
+    v1ListDeploymentInferenceLogsResponse:
       type: object
       properties:
-        namespace:
-          type: string
-        deploymentName:
-          type: string
-        predictorName:
-          type: string
-        containerName:
-          type: string
-        payloads:
+        inferenceLogs:
           type: array
           items:
-            $ref: '#/components/schemas/v1InferenceLogsRawPayload'
-        nextPageToken:
-          type: string
-        totalCount:
+            $ref: '#/components/schemas/v1InferenceLogsDeploymentItem'
+    rpcStatus:
+      type: object
+      properties:
+        code:
           type: integer
           format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
   securitySchemes:
     OAuth2:
       type: oauth2

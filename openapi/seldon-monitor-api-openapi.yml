@@ -136,6 +136,24 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FeatureStatisticsResponse:
+      description: FeatureStatisticsResponse represents a feature statistics response
+      properties:
+        feature:
+          description: FeatureName refers to the name of feature as per the model predictions schema
+          type: string
+        interaction:
+          $ref: '#/components/schemas/FeatureInteraction'
+        stats:
+          $ref: '#/components/schemas/FeatureStats'
+        total_instances:
+          description: TotalInstances represents the total prediction over which the distribution is computed
+          format: int64
+          type: integer
+        type:
+          description: FeatureType refers to the type of feature as per the model predictions schema
+          type: string
+      type: object
     Error:
       description: Error Error
       properties:
@@ -185,6 +203,28 @@ components:
             type: string
           type: array
       type: object
+    FeatureDistribution:
+      description: FeatureDistribution represents feature level distribution
+      properties:
+        buckets:
+          description: Buckets in a feature distribution
+          items:
+            $ref: '#/components/schemas/FeatureDistributionBucket'
+          type: array
+      type: object
+    FeatureDistributionBucket:
+      description: FeatureDistribution represents feature level distribution bucket
+      properties:
+        count:
+          description: Bucket Count in a feature distribution
+          format: double
+          type: number
+        distribution:
+          $ref: '#/components/schemas/FeatureDistribution'
+        key:
+          description: Bucket Key in a feature distribution
+          type: string
+      type: object
     FeatureStats:
       description: FeatureStats represents feature level statistics
       properties:
@@ -217,6 +257,18 @@ components:
           format: double
           type: number
       type: object
+    FeatureStatsBucket:
+      description: FeatureDistribution represents feature level statistics bucket
+      properties:
+        key:
+          description: Bucket Key in a feature statistics
+          type: string
+        stats:
+          $ref: '#/components/schemas/FeatureStats'
+      type: object
+    FeatureInteraction:
+      description: Feature Prediction Interaction
+      type: string
     DeploymentFeatureData:
       description: DeploymentFeatureData represents a deployment level feature data
       properties:
@@ -254,27 +306,21 @@ components:
           description: ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)
           type: boolean
       type: object
-    FeatureStatsBucket:
-      description: FeatureDistribution represents feature level statistics bucket
+    FeatureDistributionParameters:
+      description: FeatureDistributionParameters represents user defined feature distribution parameters
       properties:
-        key:
-          description: Bucket Key in a feature statistics
-          type: string
-        stats:
-          $ref: '#/components/schemas/FeatureStats'
-      type: object
-    FeatureDistributionBucket:
-      description: FeatureDistribution represents feature level distribution bucket
-      properties:
-        count:
-          description: Bucket Count in a feature distribution
+        histogram_interval:
+          description: HistogramInterval refers to the size of bins in a aggregated feature distribution or statistics queries for real features
           format: double
           type: number
-        distribution:
-          $ref: '#/components/schemas/FeatureDistribution'
-        key:
-          description: Bucket Key in a feature distribution
-          type: string
+        minimum_bucket_count:
+          description: MinimumBucketCount refers to the minimum bucket size to filter in case of categorical, proba or one_hot feature queries
+          format: int64
+          type: integer
+        number_of_time_buckets:
+          description: NumberOfTimeBuckets refers to the number of time bins in a non time-aggregated feature distribution or statistics queries
+          format: int64
+          type: integer
       type: object
     FeatureDistributionResponse:
       description: FeatureDistributionResponse represents a feature distribution response
@@ -294,65 +340,19 @@ components:
           description: FeatureType refers to the type of feature as per the model predictions schema
           type: string
       type: object
-    FeatureDistribution:
-      description: FeatureDistribution represents feature level distribution
-      properties:
-        buckets:
-          description: Buckets in a feature distribution
-          items:
-            $ref: '#/components/schemas/FeatureDistributionBucket'
-          type: array
-      type: object
-    FeatureStatisticsResponse:
-      description: FeatureStatisticsResponse represents a feature statistics response
-      properties:
-        feature:
-          description: FeatureName refers to the name of feature as per the model predictions schema
-          type: string
-        interaction:
-          $ref: '#/components/schemas/FeatureInteraction'
-        stats:
-          $ref: '#/components/schemas/FeatureStats'
-        total_instances:
-          description: TotalInstances represents the total prediction over which the distribution is computed
-          format: int64
-          type: integer
-        type:
-          description: FeatureType refers to the type of feature as per the model predictions schema
-          type: string
-      type: object
-    FeatureDistributionParameters:
-      description: FeatureDistributionParameters represents user defined feature distribution parameters
-      properties:
-        histogram_interval:
-          description: HistogramInterval refers to the size of bins in a aggregated feature distribution or statistics queries for real features
-          format: double
-          type: number
-        minimum_bucket_count:
-          description: MinimumBucketCount refers to the minimum bucket size to filter in case of categorical, proba or one_hot feature queries
-          format: int64
-          type: integer
-        number_of_time_buckets:
-          description: NumberOfTimeBuckets refers to the number of time bins in a non time-aggregated feature distribution or statistics queries
-          format: int64
-          type: integer
-      type: object
-    FeatureInteraction:
-      description: Feature Prediction Interaction
-      type: string
   responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     FeatureDistResponse:
       description: Feature Distribution Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/FeatureDistributionResponse'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     FeatureStatResponse:
       description: Feature Statistics Response
       content:

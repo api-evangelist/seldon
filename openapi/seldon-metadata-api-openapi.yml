@@ -92,6 +92,57 @@ paths:
       description: The per-model metadata endpoint provides information about a model. A model metadata request is made with an HTTP GET to a model metadata endpoint. The model name and (optionally) version must be available in the URL. If a version is not provided the server may choose a version based on its own policies or return an error.
 components:
   schemas:
+    MetadataModelResponse:
+      title: MetadataModelResponse
+      type: object
+      properties:
+        name:
+          type: string
+        versions:
+          type: array
+          items:
+            type: string
+        platform:
+          type: string
+        inputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTensor'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataTensor'
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - platform
+    MetadataTensor:
+      title: MetadataTensor
+      type: object
+      properties:
+        name:
+          type: string
+        datatype:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
+      - datatype
+      - shape
+    MetadataServerErrorResponse:
+      title: MetadataServerErrorResponse
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     MetadataServerResponse:
       title: MetadataServerResponse
       type: object
@@ -118,31 +169,6 @@ components:
           type: string
       required:
       - error
-    MetadataModelResponse:
-      title: MetadataModelResponse
-      type: object
-      properties:
-        name:
-          type: string
-        versions:
-          type: array
-          items:
-            type: string
-        platform:
-          type: string
-        inputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataTensor'
-        outputs:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataTensor'
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-      - platform
     Parameters:
       type: object
       title: Parameters
@@ -153,29 +179,3 @@ components:
           type: string
         headers:
           type: object
-    MetadataServerErrorResponse:
-      title: MetadataServerErrorResponse
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
-    MetadataTensor:
-      title: MetadataTensor
-      type: object
-      properties:
-        name:
-          type: string
-        datatype:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-      - datatype
-      - shape
