@@ -418,6 +418,8 @@ apis:
   humanURL: https://docs.seldon.ai/seldon-core-2/user-guide/inference/inference
   baseURL: https://docs.seldon.ai
   tags:
+  - GitOps
+  tags_raw:
   - Git Ops
   properties:
   - type: OpenAPI
@@ -437,6 +439,9 @@ apis:
   - type: Documentation
     url: https://deploy.seldon.io/en/v2.3/contents/product-tour/api/index.html
 common:
+  - type: CapabilityMap
+    url: capabilities/seldon-capability-edges.yml
+    name: Seldon Business Capability Map
 
   - type: AgenticAccess
     url: agentic-access/seldon-agentic-access.yml
