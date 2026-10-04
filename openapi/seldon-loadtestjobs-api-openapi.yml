@@ -186,7 +186,31 @@ paths:
       summary: Delete loadtest seldon deployment
       x-summary-source: derived
 components:
+  responses:
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Message:
+      description: Message Message
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+      type: object
     Error:
       description: Error Error
       properties:
@@ -201,30 +225,6 @@ components:
           description: RequestId
           type: string
       type: object
-    Message:
-      description: Message Message
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-      type: object
-  responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    MessageResponse:
-      description: GenericMessage Message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Message'
   requestBodies:
     CreateLoadtestPipeline:
       content:

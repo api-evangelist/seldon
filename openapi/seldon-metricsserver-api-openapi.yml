@@ -134,33 +134,6 @@ paths:
       summary: Read metrics server seldon deployment
       x-summary-source: derived
 components:
-  responses:
-    DetectorResponse:
-      description: Detector configuration data
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/DetectorData'
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    MessageResponse:
-      description: GenericMessage Message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Message'
-    DetectorListResponse:
-      description: Detector configuration data list
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/DetectorData'
-            type: array
   schemas:
     BasicDetectorConfiguration:
       properties:
@@ -175,8 +148,25 @@ components:
         storage_uri:
           type: string
       type: object
-    Error:
-      description: Error Error
+    DetectorData:
+      properties:
+        config:
+          $ref: '#/components/schemas/DetectorConfiguration'
+        deployment_kind:
+          type: string
+        deployment_name:
+          type: string
+        detector_type:
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        status:
+          $ref: '#/components/schemas/DetectorStatus'
+      type: object
+    Message:
+      description: Message Message
       properties:
         code:
           description: Code
@@ -184,9 +174,6 @@ components:
           type: integer
         message:
           description: Message
-          type: string
-        requestId:
-          description: RequestId
           type: string
       type: object
     DetectorDeploymentConfiguration:
@@ -212,24 +199,8 @@ components:
           format: int64
           type: integer
       type: object
-    DetectorConfigData:
-      properties:
-        config:
-          $ref: '#/components/schemas/DetectorConfiguration'
-        name:
-          type: string
-      type: object
-    DetectorConfiguration:
-      properties:
-        basic:
-          $ref: '#/components/schemas/BasicDetectorConfiguration'
-        deployment:
-          $ref: '#/components/schemas/DetectorDeploymentConfiguration'
-      type: object
-    DetectorStatus:
-      type: string
-    Message:
-      description: Message Message
+    Error:
+      description: Error Error
       properties:
         code:
           description: Code
@@ -238,24 +209,53 @@ components:
         message:
           description: Message
           type: string
+        requestId:
+          description: RequestId
+          type: string
       type: object
-    DetectorData:
+    DetectorConfigData:
       properties:
         config:
           $ref: '#/components/schemas/DetectorConfiguration'
-        deployment_kind:
-          type: string
-        deployment_name:
-          type: string
-        detector_type:
-          type: string
         name:
           type: string
-        namespace:
-          type: string
-        status:
-          $ref: '#/components/schemas/DetectorStatus'
       type: object
+    DetectorStatus:
+      type: string
+    DetectorConfiguration:
+      properties:
+        basic:
+          $ref: '#/components/schemas/BasicDetectorConfiguration'
+        deployment:
+          $ref: '#/components/schemas/DetectorDeploymentConfiguration'
+      type: object
+  responses:
+    DetectorListResponse:
+      description: Detector configuration data list
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/DetectorData'
+            type: array
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    DetectorResponse:
+      description: Detector configuration data
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DetectorData'
   requestBodies:
     DetectorConfigData:
       content:

@@ -156,6 +156,18 @@ paths:
       summary: Predict file seldon deployment
       x-summary-source: derived
 components:
+  responses:
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   requestBodies:
     ReadPredictCurlSeldonPipelinePrediction:
       content:
@@ -191,18 +203,6 @@ components:
           description: RequestId
           type: string
       type: object
-  responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
   securitySchemes:
     OAuth2:
       type: oauth2

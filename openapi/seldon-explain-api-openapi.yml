@@ -73,17 +73,17 @@ paths:
       x-summary-source: derived
 components:
   responses:
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
     ErrorDefault:
       description: ErrorDefault Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
   requestBodies:
     ExplainSeldonPipelineExplaindata:
       content:

@@ -292,20 +292,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SeldonMessageList:
+    TensorflowResourceHandleProto:
       type: object
       properties:
-        seldonMessages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SeldonMessage'
-    MetricType:
-      type: string
-      enum:
-      - COUNTER
-      - GAUGE
-      - TIMER
-      default: COUNTER
+        device:
+          type: string
+          description: Unique name for the device containing the resource.
+        container:
+          type: string
+          description: Container in which this resource is placed.
+        name:
+          type: string
+          description: Unique name of this resource.
+        hash_code:
+          type: string
+          format: uint64
+          description: 'Hash code for the type of the resource. Is only valid in the same device
+
+            and in the same execution.'
+        maybe_type_name:
+          type: string
+          description: 'For debug-only, the name of the type pointed to by this handle, if
+
+            available.'
+      description: 'Protocol buffer representing a handle to a tensorflow resource. Handles are
+
+        not valid across executions, but can be serialized back and forth from within
+
+        a single run.'
     Status:
       type: object
       properties:
@@ -318,12 +332,6 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/StatusStatusFlag'
-    StatusStatusFlag:
-      type: string
-      enum:
-      - SUCCESS
-      - FAILURE
-      default: SUCCESS
     Tensor:
       type: object
       properties:
@@ -337,6 +345,30 @@ components:
           items:
             type: number
             format: double
+    AnyValue:
+      description: 'Can be anything: string, number, array, object, etc.'
+    Feedback:
+      type: object
+      properties:
+        request:
+          $ref: '#/components/schemas/SeldonMessage'
+        response:
+          $ref: '#/components/schemas/SeldonMessage'
+        reward:
+          type: number
+          format: float
+        truth:
+          $ref: '#/components/schemas/SeldonMessage'
+    Metric:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/MetricType'
+        key:
+          type: string
+        value:
+          type: number
+          format: float
     TensorflowTensorShapeProto:
       type: object
       properties:
@@ -374,109 +406,6 @@ components:
 
             If true, "dim.size()" must be 0.'
       description: Dimensions of a tensor.
-    AnyValue:
-      description: 'Can be anything: string, number, array, object, etc.'
-    Meta:
-      type: object
-      properties:
-        puid:
-          type: string
-        tags:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/AnyValue'
-          example:
-            mytag: myvalue
-        routing:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int32
-          example:
-            router1: 1
-        requestPath:
-          type: object
-          additionalProperties:
-            type: string
-          example:
-            classifier: seldonio/mock_classifier:1.0
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Metric'
-    TensorflowVariantTensorDataProto:
-      type: object
-      properties:
-        type_name:
-          type: string
-          description: Name of the type of objects being serialized.
-        metadata:
-          type: string
-          format: byte
-          description: Portions of the object that are not Tensors.
-        tensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/TensorflowTensorProto'
-          description: Tensors contained within objects being serialized.
-      description: Protocol buffer representing the serialization format of DT_VARIANT tensors.
-    TensorShapeProtoDim:
-      type: object
-      properties:
-        size:
-          type: string
-          format: int64
-          description: 'Size of the tensor in that dimension.
-
-            This value must be >= -1, but values of -1 are reserved for "unknown"
-
-            shapes (values of -1 mean "unknown" dimension).  Certain wrappers
-
-            that work with TensorShapeProto may fail at runtime when deserializing
-
-            a TensorShapeProto containing a dim value of -1.'
-        name:
-          type: string
-          description: Optional name of the tensor dimension.
-      description: One dimension of the tensor.
-    Metric:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MetricType'
-        key:
-          type: string
-        value:
-          type: number
-          format: float
-    TensorflowResourceHandleProto:
-      type: object
-      properties:
-        device:
-          type: string
-          description: Unique name for the device containing the resource.
-        container:
-          type: string
-          description: Container in which this resource is placed.
-        name:
-          type: string
-          description: Unique name of this resource.
-        hash_code:
-          type: string
-          format: uint64
-          description: 'Hash code for the type of the resource. Is only valid in the same device
-
-            and in the same execution.'
-        maybe_type_name:
-          type: string
-          description: 'For debug-only, the name of the type pointed to by this handle, if
-
-            available.'
-      description: 'Protocol buffer representing a handle to a tensorflow resource. Handles are
-
-        not valid across executions, but can be serialized back and forth from within
-
-        a single run.'
     TensorflowTensorProto:
       type: object
       properties:
@@ -591,18 +520,74 @@ components:
             format: uint64
           title: DT_UINT64
       description: Protocol buffer representing a tensor.
-    Feedback:
+    SeldonMessageList:
       type: object
       properties:
-        request:
-          $ref: '#/components/schemas/SeldonMessage'
-        response:
-          $ref: '#/components/schemas/SeldonMessage'
-        reward:
-          type: number
-          format: float
-        truth:
-          $ref: '#/components/schemas/SeldonMessage'
+        seldonMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SeldonMessage'
+    Meta:
+      type: object
+      properties:
+        puid:
+          type: string
+        tags:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/AnyValue'
+          example:
+            mytag: myvalue
+        routing:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+          example:
+            router1: 1
+        requestPath:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            classifier: seldonio/mock_classifier:1.0
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+    SeldonMessage:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        data:
+          $ref: '#/components/schemas/DefaultData'
+        binData:
+          type: string
+          format: byte
+        strData:
+          type: string
+    TensorShapeProtoDim:
+      type: object
+      properties:
+        size:
+          type: string
+          format: int64
+          description: 'Size of the tensor in that dimension.
+
+            This value must be >= -1, but values of -1 are reserved for "unknown"
+
+            shapes (values of -1 mean "unknown" dimension).  Certain wrappers
+
+            that work with TensorShapeProto may fail at runtime when deserializing
+
+            a TensorShapeProto containing a dim value of -1.'
+        name:
+          type: string
+          description: Optional name of the tensor dimension.
+      description: One dimension of the tensor.
     DefaultData:
       type: object
       properties:
@@ -618,20 +603,19 @@ components:
             $ref: '#/components/schemas/AnyValue'
         tftensor:
           $ref: '#/components/schemas/TensorflowTensorProto'
-    SeldonMessage:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        meta:
-          $ref: '#/components/schemas/Meta'
-        data:
-          $ref: '#/components/schemas/DefaultData'
-        binData:
-          type: string
-          format: byte
-        strData:
-          type: string
+    StatusStatusFlag:
+      type: string
+      enum:
+      - SUCCESS
+      - FAILURE
+      default: SUCCESS
+    MetricType:
+      type: string
+      enum:
+      - COUNTER
+      - GAUGE
+      - TIMER
+      default: COUNTER
     TensorflowDataType:
       type: string
       enum:
@@ -685,6 +669,22 @@ components:
       default: DT_INVALID
       description: "- DT_INVALID: Not a legal value for DataType.  Used to indicate a DataType field\nhas not been set.\n - DT_FLOAT: Data types that all computation devices are expected to be\ncapable to support.\n - DT_FLOAT_REF: Do not use!  These are only for parameters.  Every enum above\nshould have a corresponding value below (verified by types_test)."
       title: LINT.IfChange
+    TensorflowVariantTensorDataProto:
+      type: object
+      properties:
+        type_name:
+          type: string
+          description: Name of the type of objects being serialized.
+        metadata:
+          type: string
+          format: byte
+          description: Portions of the object that are not Tensors.
+        tensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/TensorflowTensorProto'
+          description: Tensors contained within objects being serialized.
+      description: Protocol buffer representing the serialization format of DT_VARIANT tensors.
 externalDocs:
   description: Seldon Core Documentation
   url: https://github.com/SeldonIO/seldon-core

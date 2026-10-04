@@ -106,8 +106,49 @@ paths:
       - Inference
 components:
   schemas:
+    Parameters:
+      type: object
+      title: Parameters
+      x-examples: {}
+      additionalProperties: true
+      properties:
+        content_type:
+          type: string
+        headers:
+          type: object
+    ResponseOutput:
+      title: ResponseOutput
+      type: object
+      properties:
+        name:
+          type: string
+        shape:
+          type: array
+          items:
+            type: integer
+        datatype:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+        data:
+          $ref: '#/components/schemas/TensorData'
+      required:
+      - name
+      - shape
+      - datatype
+      - data
     TensorData:
       title: TensorData
+    RequestOutput:
+      title: RequestOutput
+      type: object
+      properties:
+        name:
+          type: string
+        parameters:
+          $ref: '#/components/schemas/Parameters'
+      required:
+      - name
     InferenceRequest:
       title: InferenceRequest
       type: object
@@ -182,27 +223,6 @@ components:
       required:
       - model_name
       - outputs
-    ResponseOutput:
-      title: ResponseOutput
-      type: object
-      properties:
-        name:
-          type: string
-        shape:
-          type: array
-          items:
-            type: integer
-        datatype:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-        data:
-          $ref: '#/components/schemas/TensorData'
-      required:
-      - name
-      - shape
-      - datatype
-      - data
     RequestInput:
       title: RequestInput
       type: object
@@ -224,26 +244,6 @@ components:
       - shape
       - datatype
       - data
-    RequestOutput:
-      title: RequestOutput
-      type: object
-      properties:
-        name:
-          type: string
-        parameters:
-          $ref: '#/components/schemas/Parameters'
-      required:
-      - name
-    Parameters:
-      type: object
-      title: Parameters
-      x-examples: {}
-      additionalProperties: true
-      properties:
-        content_type:
-          type: string
-        headers:
-          type: object
     InferenceErrorResponse:
       title: InferenceErrorResponse
       type: object

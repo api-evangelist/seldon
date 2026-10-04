@@ -73,15 +73,14 @@ paths:
       - AlertingService
 components:
   schemas:
-    v1TriggerTestAlertResponse:
-      type: object
-    v1ListAlertsResponse:
+    protobufAny:
       type: object
       properties:
-        firingAlerts:
-          type: array
-          items:
-            $ref: '#/components/schemas/v1FiringAlert'
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1TriggerTestAlertResponse:
+      type: object
     v1FiringAlert:
       type: object
       properties:
@@ -108,12 +107,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    protobufAny:
+    v1ListAlertsResponse:
       type: object
       properties:
-        '@type':
-          type: string
-      additionalProperties: {}
+        firingAlerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1FiringAlert'
   securitySchemes:
     OAuth2:
       type: oauth2

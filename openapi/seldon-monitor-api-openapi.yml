@@ -136,36 +136,80 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FeatureStatisticsResponse:
-      description: FeatureStatisticsResponse represents a feature statistics response
+    FeatureInteraction:
+      description: Feature Prediction Interaction
+      type: string
+    FeatureDistribution:
+      description: FeatureDistribution represents feature level distribution
       properties:
+        buckets:
+          description: Buckets in a feature distribution
+          items:
+            $ref: '#/components/schemas/FeatureDistributionBucket'
+          type: array
+      type: object
+    FeatureStatsBucket:
+      description: FeatureDistribution represents feature level statistics bucket
+      properties:
+        key:
+          description: Bucket Key in a feature statistics
+          type: string
+        stats:
+          $ref: '#/components/schemas/FeatureStats'
+      type: object
+    DeploymentFeatureData:
+      description: DeploymentFeatureData represents a deployment level feature data
+      properties:
+        aggregate_over_time:
+          description: AggregateOverTime is a boolean to decide if the distribution response is to be aggregated over the time period selected
+          type: boolean
+        deployment_endpoint:
+          description: DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query
+          type: string
+        deployment_kind:
+          description: DeploymentType refers to kubernetes kind of the deployment relevant to the feature distribution query
+          type: string
+        deployment_name:
+          description: DeploymentName refers to name of the deployment relevant to the feature distribution query
+          type: string
+        deployment_namespace:
+          description: DeploymentNamespace refers to namespace of the deployment relevant to the feature distribution query
+          type: string
+        deployment_node:
+          description: DeploymentNode refers to node name relevant to the feature distribution query
+          type: string
+        feature:
+          description: FeatureName refers to the name of feature as per the model predictions schema
+          type: string
+        filters:
+          description: Filters is a set of time, feature and/or outlier filters for the distribution/stats query
+          items:
+            $ref: '#/components/schemas/FeatureFilter'
+          type: array
+        interaction:
+          $ref: '#/components/schemas/FeatureInteraction'
+        parameters:
+          $ref: '#/components/schemas/FeatureDistributionParameters'
+        reference_data:
+          description: ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)
+          type: boolean
+      type: object
+    FeatureDistributionResponse:
+      description: FeatureDistributionResponse represents a feature distribution response
+      properties:
+        distribution:
+          $ref: '#/components/schemas/FeatureDistribution'
         feature:
           description: FeatureName refers to the name of feature as per the model predictions schema
           type: string
         interaction:
           $ref: '#/components/schemas/FeatureInteraction'
-        stats:
-          $ref: '#/components/schemas/FeatureStats'
         total_instances:
           description: TotalInstances represents the total prediction over which the distribution is computed
           format: int64
           type: integer
         type:
           description: FeatureType refers to the type of feature as per the model predictions schema
-          type: string
-      type: object
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
           type: string
       type: object
     FeatureFilter:
@@ -203,14 +247,37 @@ components:
             type: string
           type: array
       type: object
-    FeatureDistribution:
-      description: FeatureDistribution represents feature level distribution
+    FeatureStatisticsResponse:
+      description: FeatureStatisticsResponse represents a feature statistics response
       properties:
-        buckets:
-          description: Buckets in a feature distribution
-          items:
-            $ref: '#/components/schemas/FeatureDistributionBucket'
-          type: array
+        feature:
+          description: FeatureName refers to the name of feature as per the model predictions schema
+          type: string
+        interaction:
+          $ref: '#/components/schemas/FeatureInteraction'
+        stats:
+          $ref: '#/components/schemas/FeatureStats'
+        total_instances:
+          description: TotalInstances represents the total prediction over which the distribution is computed
+          format: int64
+          type: integer
+        type:
+          description: FeatureType refers to the type of feature as per the model predictions schema
+          type: string
+      type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
       type: object
     FeatureDistributionBucket:
       description: FeatureDistribution represents feature level distribution bucket
@@ -257,55 +324,6 @@ components:
           format: double
           type: number
       type: object
-    FeatureStatsBucket:
-      description: FeatureDistribution represents feature level statistics bucket
-      properties:
-        key:
-          description: Bucket Key in a feature statistics
-          type: string
-        stats:
-          $ref: '#/components/schemas/FeatureStats'
-      type: object
-    FeatureInteraction:
-      description: Feature Prediction Interaction
-      type: string
-    DeploymentFeatureData:
-      description: DeploymentFeatureData represents a deployment level feature data
-      properties:
-        aggregate_over_time:
-          description: AggregateOverTime is a boolean to decide if the distribution response is to be aggregated over the time period selected
-          type: boolean
-        deployment_endpoint:
-          description: DeploymentEndpoint refers to endpoint/predictor name relevant to the feature distribution query
-          type: string
-        deployment_kind:
-          description: DeploymentType refers to kubernetes kind of the deployment relevant to the feature distribution query
-          type: string
-        deployment_name:
-          description: DeploymentName refers to name of the deployment relevant to the feature distribution query
-          type: string
-        deployment_namespace:
-          description: DeploymentNamespace refers to namespace of the deployment relevant to the feature distribution query
-          type: string
-        deployment_node:
-          description: DeploymentNode refers to node name relevant to the feature distribution query
-          type: string
-        feature:
-          description: FeatureName refers to the name of feature as per the model predictions schema
-          type: string
-        filters:
-          description: Filters is a set of time, feature and/or outlier filters for the distribution/stats query
-          items:
-            $ref: '#/components/schemas/FeatureFilter'
-          type: array
-        interaction:
-          $ref: '#/components/schemas/FeatureInteraction'
-        parameters:
-          $ref: '#/components/schemas/FeatureDistributionParameters'
-        reference_data:
-          description: ReferenceData is a boolean to compute stats and distributions over reference data or inference data (false by default)
-          type: boolean
-      type: object
     FeatureDistributionParameters:
       description: FeatureDistributionParameters represents user defined feature distribution parameters
       properties:
@@ -322,25 +340,13 @@ components:
           format: int64
           type: integer
       type: object
-    FeatureDistributionResponse:
-      description: FeatureDistributionResponse represents a feature distribution response
-      properties:
-        distribution:
-          $ref: '#/components/schemas/FeatureDistribution'
-        feature:
-          description: FeatureName refers to the name of feature as per the model predictions schema
-          type: string
-        interaction:
-          $ref: '#/components/schemas/FeatureInteraction'
-        total_instances:
-          description: TotalInstances represents the total prediction over which the distribution is computed
-          format: int64
-          type: integer
-        type:
-          description: FeatureType refers to the type of feature as per the model predictions schema
-          type: string
-      type: object
   responses:
+    FeatureStatResponse:
+      description: Feature Statistics Response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FeatureStatisticsResponse'
     FeatureDistResponse:
       description: Feature Distribution Response
       content:
@@ -353,12 +359,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    FeatureStatResponse:
-      description: Feature Statistics Response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FeatureStatisticsResponse'
   requestBodies:
     DeploymentFeatureData:
       content:

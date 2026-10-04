@@ -374,21 +374,47 @@ paths:
       summary: Seldon deployment git revert
       x-summary-source: derived
 components:
+  responses:
+    GitLogsResponse:
+      description: Git Logs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/AuditLog'
+            type: array
+    GitDiffsResponse:
+      description: Git Diffs
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/FileDiff'
+            type: array
+    GenericResponse:
+      description: Generic
+      content:
+        application/json:
+          schema: {}
+    MessageResponse:
+      description: GenericMessage Message
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message'
+    ErrorDefault:
+      description: ErrorDefault Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    GitDiffResponse:
+      description: Git Diff
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileDiff'
   schemas:
-    Error:
-      description: Error Error
-      properties:
-        code:
-          description: Code
-          format: int64
-          type: integer
-        message:
-          description: Message
-          type: string
-        requestId:
-          description: RequestId
-          type: string
-      type: object
     Message:
       description: Message Message
       properties:
@@ -415,6 +441,20 @@ components:
         Hash:
           type: string
       type: object
+    Error:
+      description: Error Error
+      properties:
+        code:
+          description: Code
+          format: int64
+          type: integer
+        message:
+          description: Message
+          type: string
+        requestId:
+          description: RequestId
+          type: string
+      type: object
     FileDiff:
       description: 'note diff is html that needs to be unicode decoded/unescaped
 
@@ -439,46 +479,6 @@ components:
         To:
           type: string
       type: object
-  responses:
-    ErrorDefault:
-      description: ErrorDefault Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    GenericResponse:
-      description: Generic
-      content:
-        application/json:
-          schema: {}
-    GitDiffsResponse:
-      description: Git Diffs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/FileDiff'
-            type: array
-    GitDiffResponse:
-      description: Git Diff
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FileDiff'
-    MessageResponse:
-      description: GenericMessage Message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Message'
-    GitLogsResponse:
-      description: Git Logs
-      content:
-        application/json:
-          schema:
-            items:
-              $ref: '#/components/schemas/AuditLog'
-            type: array
   securitySchemes:
     OAuth2:
       type: oauth2

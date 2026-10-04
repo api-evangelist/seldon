@@ -63,6 +63,27 @@ paths:
       - Health Check Service
 components:
   schemas:
+    protobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    v1DeployDependencyHealth:
+      type: object
+      properties:
+        dependency:
+          $ref: '#/components/schemas/v1DeployDependency'
+        status:
+          $ref: '#/components/schemas/v1DeployDependencyStatus'
+        description:
+          type: string
+        fetchedAt:
+          type: string
+          format: date-time
+        lastActiveFetchedAt:
+          type: string
+          format: date-time
     v1DependencyHealthResponse:
       type: object
       properties:
@@ -70,14 +91,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1DeployDependencyHealth'
-    v1DeployDependencyStatus:
-      type: string
-      enum:
-      - UNSPECIFIED
-      - DISABLED
-      - ENABLED_AND_UNREACHABLE
-      - ENABLED_AND_REACHABLE
-      default: UNSPECIFIED
     v1DeployDependency:
       type: string
       enum:
@@ -98,21 +111,14 @@ components:
       - MINIO
       - FLUENTD
       default: ALL
-    v1DeployDependencyHealth:
-      type: object
-      properties:
-        dependency:
-          $ref: '#/components/schemas/v1DeployDependency'
-        status:
-          $ref: '#/components/schemas/v1DeployDependencyStatus'
-        description:
-          type: string
-        fetchedAt:
-          type: string
-          format: date-time
-        lastActiveFetchedAt:
-          type: string
-          format: date-time
+    v1DeployDependencyStatus:
+      type: string
+      enum:
+      - UNSPECIFIED
+      - DISABLED
+      - ENABLED_AND_UNREACHABLE
+      - ENABLED_AND_REACHABLE
+      default: UNSPECIFIED
     rpcStatus:
       type: object
       properties:
@@ -125,12 +131,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    protobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
   securitySchemes:
     OAuth2:
       type: oauth2
