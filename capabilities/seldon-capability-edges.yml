@@ -1,0 +1,154 @@
+slug: seldon
+provider: Seldon
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 14
+edges:
+- tag: PermissionManagementService
+  spec_file: seldon-permissionmanagementservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: '''Create an authorization policy.'', ''List all permissions associated with the given users
+    and groups.'', GET /iam/users'
+  reason: Users, groups and authorization policies under /iam paths are plainly identity and access management.
+- tag: ModelMetadataService
+  spec_file: seldon-modelmetadataservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: '''Create a Model Metadata entry'', ''List Runtime Metadata for all deployments associated
+    with a model''; schemas v1PredictionSchema, v1ArtifactType'
+  reason: A model metadata registry describing ML models, artefacts and prediction schemas is core AI/ML
+    model lifecycle (MLOps) management.
+- tag: Models
+  spec_file: seldon-models-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: POST /namespaces/{namespace}/models 'Create model'; schemas SeldonModel, ModelSpec, ExplainerSpec
+  reason: CRUD over machine-learning model resources (with explainer specs) on an MLOps platform realises
+    AI/ML model lifecycle management.
+- tag: SeldonDeployments
+  spec_file: seldon-seldondeployments-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.82
+  evidence: '''Create seldon deployment'', ''Validate seldon deployment''; schemas SeldonDeployment, PredictorSpec,
+    PredictiveUnitImplementation'
+  reason: Deploying and validating ML model serving deployments is model deployment within the AI/ML (MLOps)
+    lifecycle.
+- tag: DriftDetector
+  spec_file: seldon-driftdetector-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: POST /namespaces/{namespace}/pipelines/{name}/monitor/drift-detector  CreateDriftDetectorSeldonPipeline
+  reason: Create/read/delete drift detectors attached to deployed models and pipelines with schemas like
+    DetectorConfiguration and DetectorStatus — model drift monitoring, a core MLOps/AI model lifecycle
+    activity.
+- tag: Explain
+  spec_file: seldon-explain-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: POST /namespaces/{namespace}/seldondeployments/{name}/explain ExplainSeldonDeployment Explain
+    seldon deployment
+  reason: Model explainability for deployed ML models is squarely AI/ML model lifecycle and responsible-AI
+    tooling (BC-610.60); vendor description states the platform 'explain[s] machine learning models at
+    scale'.
+- tag: Inference
+  spec_file: seldon-inference-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.78
+  evidence: POST /v2/models/{model_name}/infer model-inference Model Inference; schemas InferenceRequest,
+    InferenceResponse
+  reason: Serving predictions from deployed ML models is the runtime execution leg of the AI/ML model
+    lifecycle (BC-610.60 Artificial Intelligence Management).
+- tag: Monitor
+  spec_file: seldon-monitor-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.78
+  evidence: '''Seldon deployment feature distributions'', ''Seldon pipeline feature statistics''; schemas
+    FeatureDistribution, FeatureStats'
+  reason: Feature distribution and statistics monitoring of deployed ML models/pipelines is model monitoring
+    within the MLOps lifecycle, not generic service observability.
+- tag: OutlierDetector
+  spec_file: seldon-outlierdetector-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.78
+  evidence: '''Create outlier detector seldon deployment''; schemas DetectorConfiguration, DetectorStatus'
+  reason: Lifecycle management of outlier detectors attached to model deployments is ML model monitoring
+    / responsible-AI tooling, part of AI/ML management.
+- tag: Pipelines
+  spec_file: seldon-pipelines-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.78
+  evidence: '''Create pipeline'', ''Create pipeline explainer'', ''List pipeline models''; schemas SeldonPipeline,
+    PipelineStep, ModelStatus'
+  reason: Inference pipelines composed of ML models and explainers are ML serving artefacts; their lifecycle
+    management falls under AI/ML (MLOps) management.
+- tag: MetricsServer
+  spec_file: seldon-metricsserver-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: POST /namespaces/{namespace}/seldondeployments/{name}/monitor/metrics-server — 'Create metrics
+    server seldon deployment'; schemas DetectorConfiguration, DetectorStatus
+  reason: Operations deploy and manage drift/metrics detectors attached to deployed ML models — monitoring
+    within the ML model lifecycle (MLOps), which is AI/ML management rather than generic IT observability.
+- tag: Experiments
+  spec_file: seldon-experiments-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /namespaces/{namespace}/pipelines/{name}/experiment/canary CreateCanaryExperiment; PUT
+    .../shadow PromoteShadow
+  reason: Canary/shadow experiments over ML pipelines are part of the model deployment lifecycle on an
+    MLOps platform, which BC-610.60 explicitly names (AI/ML model lifecycle, MLOps). Progressive-deployment
+    reading (BC-4210.40) is also plausible, hence moderate confidence.
+- tag: LoadtestJobs
+  spec_file: seldon-loadtestjobs-api-openapi.yml
+  capability_id: BC-4220.50
+  capability_id_l1: BC-4220
+  capability_name: Capacity & Performance Management
+  confidence: 0.7
+  evidence: POST /namespaces/{namespace}/seldondeployments/{name}/loadtestjobs CreateLoadtestSeldonDeployment
+    Create loadtest seldon deployment
+  reason: Creating and managing load-test jobs against deployed services is performance testing, named
+    in BC-4220.50 Capacity & Performance Management.
+- tag: Predict
+  spec_file: seldon-predict-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /namespaces/{namespace}/seldondeployments/{name}/predict  PredictSeldonDeployment  'Predict
+    seldon deployment'
+  reason: Inference/prediction invocation against deployed models is the runtime of the ML model lifecycle;
+    no other candidate capability fits, though the surface is thin (only an Error schema).
