@@ -94,3 +94,35 @@ plans:
       - Unlimited platform users
       - Priority enterprise support
       - Professional services and onboarding
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units: []
+  plans:
+  - name: Seldon Core (Open Source)
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: MLServer (Open Source)
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Seldon Enterprise Platform
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Seldon Core+ (Enterprise Add-on)
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
